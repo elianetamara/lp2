@@ -3,7 +3,7 @@ import java.util.*;
 /**
  * escrever documentacao
  *
- * @author Eliane Tamara
+ * @author Eliane Tamara - 122110693
  */
 
 public class RegistroResumos {
@@ -11,7 +11,12 @@ public class RegistroResumos {
     private String[] titulos;
     private String[] resumos;
 
-    public RegistroResumos(int numeroDeResumos){
+	/**
+	 * Constrói
+	 *
+	 * @param numeroDeResumos o número de resumos que vão ser registrados
+	 */
+	public RegistroResumos(int numeroDeResumos){
     	titulos = new String[numeroDeResumos];
     	resumos = new String[numeroDeResumos];
 
