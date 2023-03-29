@@ -35,8 +35,12 @@ public class RegistroResumos {
     public String imprimeResumos() {
     	String saida = "- " + conta() + " resumo(s) cadastrado(s)\n";
     	String resumos = "- ";
-    	for(String titulo: titulos) {
-    		resumos += titulo + " | ";
+    	for(int i = 0; i < conta(); i++) {
+    		if(i == (conta()-1)) {
+    			resumos += titulos[i];
+    		}else {
+    			resumos += titulos[i] + " | ";
+    		}
     	}
     	saida += resumos;
         return saida;
