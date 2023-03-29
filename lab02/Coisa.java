@@ -1,12 +1,12 @@
 
 public class Coisa {
     public static void main(String[] args) {
-        /*registrarDescanso();
+        registrarDescanso();
         System.out.println("-----");
         registrarTempoOnline();
         System.out.println("-----");
         controlarDisciplina();
-        System.out.println("-----");*/
+        System.out.println("-----");
         registrarResumos();
     }
     public static void registrarDescanso() {

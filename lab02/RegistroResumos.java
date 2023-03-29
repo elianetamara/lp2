@@ -23,7 +23,8 @@ public class RegistroResumos {
     	for(int i = 0; i < resumos.length; i++) {
     		if(resumos[i] == null) {
     			titulos[i] = tema;
-    			resumos[i] = titulos[i] + ": " + resumos[i];
+    			resumos[i] = titulos[i] + ": " + conteudo;
+    			break;
     		}
     	}
     }
@@ -48,7 +49,7 @@ public class RegistroResumos {
 
     public boolean temResumo(String tema) {
     	for(String tituloResumo: titulos) {
-    		if(tituloResumo.equals(tema)) {
+    		if(tituloResumo != null && tituloResumo.equals(tema)) {
     			return true;
     		}
     	}
