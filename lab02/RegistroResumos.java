@@ -8,32 +8,27 @@ import java.util.*;
 
 public class RegistroResumos {
 
-    private int numeroDeResumos;
     private String[] titulos;
-    private String[] conteudo;
+    private String[] resumos;
 
     public RegistroResumos(int numeroDeResumos){
-    	this.numeroDeResumos = numeroDeResumos;
-    	titulos = new String[this.numeroDeResumos];
-    	conteudo = new String[this.numeroDeResumos];
+    	titulos = new String[numeroDeResumos];
+    	resumos = new String[numeroDeResumos];
 
     }
 
     private int contador;
-    public void adiciona(String classes, String s) {
+    public void adiciona(String tema, String conteudo) {
     	contador++;
-    	for(int i = 0; i < titulos.length; i++) {
-    		titulos[i] = classes;
-    		conteudo[i] = s;
+    	for(int i = 0; i < resumos.length; i++) {
+    		if(resumos[i] == null) {
+    			titulos[i] = tema;
+    			resumos[i] = titulos[i] + ": " + resumos[i];
+    		}
     	}
     }
 
 	public String[] pegaResumos() {
-    	String[] resumos = new String[titulos.length];
-    	for(int i = 0; i < 1; i++) {
-    		String resumo = titulos[i] + ": " + conteudo[i];
-        	resumos[i] = resumo;	
-    	}
         return resumos;
     }
 
@@ -47,9 +42,9 @@ public class RegistroResumos {
         return saida;
     }
 
-    public boolean temResumo(String classes) {
+    public boolean temResumo(String tema) {
     	for(String tituloResumo: titulos) {
-    		if(tituloResumo.equals(classes)) {
+    		if(tituloResumo.equals(tema)) {
     			return true;
     		}
     	}
