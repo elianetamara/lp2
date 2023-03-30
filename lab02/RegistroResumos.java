@@ -41,7 +41,7 @@ public class RegistroResumos {
      * @param tema o título/assunto do resumo
      * @param conteudo o corpo do resumo
      */
-    public void adiciona(String tema, String conteudo) {
+    void adiciona(String tema, String conteudo) {
     	contadorDeResumos++;
     	for(int i = 0; i < resumos.length; i++) {
     		if(resumos[i] == null) {
@@ -57,7 +57,7 @@ public class RegistroResumos {
      *
      * @return os resumos adicionados
      */
-	public String[] pegaResumos() {
+	String[] pegaResumos() {
         return resumos;
     }
 	
@@ -68,7 +68,7 @@ public class RegistroResumos {
      * @return uma String contendo o número de resumos 
      * cadastrados, e seus títulos
      */
-    public String imprimeResumos() {
+    String imprimeResumos() {
     	String impressao = conta() + " resumo(s) cadastrado(s)\n- ";
     	for(int i = 0; i < conta(); i++) {
     		if(i == (conta()-1)) {
@@ -87,7 +87,7 @@ public class RegistroResumos {
      * @param tema titulo a ser procurado
      * @return true caso tenha resumo, false caso contrário
      */
-    public boolean temResumo(String tema) {
+    boolean temResumo(String tema) {
     	for(String titulo: titulos) {
     		if(titulo != null && titulo.equals(tema)) {
     			return true;
@@ -103,7 +103,7 @@ public class RegistroResumos {
      * eturn numero de resumos
      * 
      */
-    public int conta() {
+    int conta() {
         return contadorDeResumos;
     }
 }

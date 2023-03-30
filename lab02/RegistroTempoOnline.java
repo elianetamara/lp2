@@ -49,7 +49,7 @@ public class RegistroTempoOnline {
      * 
      * @param tempo valor a ser atribuído
      */
-    public void adicionaTempoOnline(int tempo) {
+    void adicionaTempoOnline(int tempo) {
        tempoGasto += tempo;
     }
 
@@ -58,7 +58,7 @@ public class RegistroTempoOnline {
      * 
      * @return true se for aprovado, false caso contrário
      */
-    public boolean atingiuMetaTempoOnline() {
+    boolean atingiuMetaTempoOnline() {
         if(tempoGasto >= tempoEsperado){
             return true;
         }else {

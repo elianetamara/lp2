@@ -21,10 +21,22 @@ public class Descanso {
     private String statusGeral;
 
     /**
+     * Constrói uma disciplina a partir de seu nome.
+     * Toda disciplina começa com os campos horas e notas como nulo;
+     *
+     */
+    public Descanso(){
+        this.horasDescanso = 0;
+        this.numeroSemanas = 0;
+        this.statusGeral = "";
+
+    }
+
+    /**
      * Atribui valor ao atributo horasDescanso
      * @param horas valor a ser atribuído
      */
-    public void defineHorasDescanso(int horas) {
+    void defineHorasDescanso(int horas) {
         horasDescanso = 0;
         horasDescanso += horas;
     }
@@ -33,7 +45,7 @@ public class Descanso {
      * Atribui valor ao atributo numeroSemanas
      * @param semanas valor a ser atribuído
      */
-    public void defineNumeroSemanas(int semanas) {
+    void defineNumeroSemanas(int semanas) {
         numeroSemanas = 0;
         numeroSemanas += semanas;
     }
@@ -44,7 +56,7 @@ public class Descanso {
      *
      * @return a representação em String de statusGeral.
      */
-    public String getStatusGeral() {
+    String getStatusGeral() {
         statusGeral = "cansado";
         if (numeroSemanas != 0) {
             if (!(horasDescanso / numeroSemanas < 26)) {

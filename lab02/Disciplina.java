@@ -36,7 +36,7 @@ public class Disciplina {
      * Atribui valor ao atributo horasEstudo
      * @param horas valor a ser atribuído
      */
-    public void cadastraHoras(int horas) {
+    void cadastraHoras(int horas) {
         horasEstudo += horas;
     }
 
@@ -45,7 +45,7 @@ public class Disciplina {
      * @param numero numero da nota a ser cadastrada
      * @param nota nota da disciplina
      */
-    public void cadastraNota(int numero, double nota) {
+    void cadastraNota(int numero, double nota) {
         notas[numero-1] = nota;
     }
 
@@ -54,7 +54,7 @@ public class Disciplina {
      * @param notas  lista de notas
      * @return a média da disciplina
      */
-    private double calculaMedia(double[] notas) {
+    double calculaMedia(double[] notas) {
         int soma = 0;
         for(double nota: notas){
             soma += nota;
@@ -66,7 +66,7 @@ public class Disciplina {
      * Vefifica se o aluno foi aprovado
      * @return true se for aprovado, false caso contrário
      */
-    public boolean aprovado() {
+    boolean aprovado() {
         double media = calculaMedia(notas);
         if (media >= 7.0) {
             return true;
