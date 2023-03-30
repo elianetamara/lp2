@@ -20,6 +20,8 @@ public class Descanso {
      */
     private String statusGeral;
 
+    private String emoji;
+
     /**
      * Constrói uma disciplina a partir de seu nome.
      * Toda disciplina começa com os campos horas e notas como nulo;
@@ -29,6 +31,7 @@ public class Descanso {
         this.horasDescanso = 0;
         this.numeroSemanas = 0;
         this.statusGeral = "";
+        this.emoji = "";
 
     }
 
@@ -37,8 +40,13 @@ public class Descanso {
      * @param horas valor a ser atribuído
      */
     void defineHorasDescanso(int horas) {
+        emoji = "";
         horasDescanso = 0;
         horasDescanso += horas;
+    }
+
+    void definirEmoji(String emoji){
+        this.emoji = emoji;
     }
 
     /**
@@ -62,6 +70,9 @@ public class Descanso {
             if (!(horasDescanso / numeroSemanas < 26)) {
                 statusGeral = "descansado";
             }
+        }
+        if(emoji != ""){
+            statusGeral += " - " + emoji;
         }
         return statusGeral;
     }

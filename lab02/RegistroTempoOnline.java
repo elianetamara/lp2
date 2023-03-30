@@ -28,6 +28,7 @@ public class RegistroTempoOnline {
     public RegistroTempoOnline(String nomeDisciplina){
         this.nomeDisciplina = nomeDisciplina;
         this.tempoEsperado = 60 * 2;
+        this.tempoGasto = 0;
 
     }
 
@@ -41,6 +42,7 @@ public class RegistroTempoOnline {
     public RegistroTempoOnline(String nomeDisciplina, int tempoEsperado){
         this.nomeDisciplina = nomeDisciplina;
         this.tempoEsperado = tempoEsperado;
+        this.tempoGasto = 0;
 
     }
 

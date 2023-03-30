@@ -20,16 +20,47 @@ public class Disciplina {
     /**
      *  Lista de notas da disciplina
      */
-    private double[] notas = new double[4];
+    private double[] notas;
+    /**
+     *  Lista de pesoas das notas da disciplina
+     */
+    private int[] pesos;
 
     /**
      * Constrói uma disciplina a partir de seu nome.
-     * Toda disciplina começa com os campos horas e notas como nulo;
+     * Toda disciplina começa com os campos horas e notas como sero/nulo;
      *
      * @param nomeDisciplina o nome da disciplina
      */
     public Disciplina(String nomeDisciplina) {
         this.nomeDisciplina = nomeDisciplina;
+        this.notas = new double[4];
+    }
+
+    /**
+     * Constrói uma disciplina a partir de seu nome e do número de notas dela.
+     * Toda disciplina começa com o camponotas como nulo;
+     *
+     * @param nomeDisciplina o nome da disciplina
+     * @param numNotas o número de notas que a disciplina tem
+     */
+    public Disciplina(String nomeDisciplina, int numNotas) {
+        this.nomeDisciplina = nomeDisciplina;
+        this.notas = new double[numNotas];
+    }
+
+    /**
+     * Constrói uma disciplina a partir de seu nomedo número de notas, dos pesos de cada nota.
+     * Toda disciplina começa com o campo notas como nulo;
+     *
+     * @param nomeDisciplina o nome da disciplina
+     * @param numNotas o número de notas que a disciplina tem
+     * @param pesos os pesos de cada nota da disciplina
+     */
+    public Disciplina(String nomeDisciplina, int numNotas, int[] pesos) {
+        this.nomeDisciplina = nomeDisciplina;
+        this.notas = new double[numNotas];
+        this.pesos = pesos;
     }
 
     /**
@@ -54,12 +85,23 @@ public class Disciplina {
      * @param notas  lista de notas
      * @return a média da disciplina
      */
-    double calculaMedia(double[] notas) {
-        int soma = 0;
-        for(double nota: notas){
-            soma += nota;
+    private double calculaMedia(double[] notas) {
+        if(pesos != null){
+            int somaNotas = 0;
+            for(int i = 0; i < notas.length; i++){
+                somaNotas += (notas[i]*pesos[i]);
+            }
+            int somaPesos = 0;
+            for(int peso: pesos){
+                somaPesos += peso;
+            }
+            return somaNotas/ somaPesos;
         }
-        return soma/4;
+        int somaNotas = 0;
+        for(double nota: notas){
+            somaNotas += nota;
+        }
+        return somaNotas/ notas.length;
     }
 
     /**
