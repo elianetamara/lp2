@@ -13,10 +13,11 @@ public class RegistroResumos {
      *  Lista de Strings com os títulos dos resumos
      */
     private String[] titulos;
+
     /**
      *  Lista de Strings contendo os resumos
      */
-    private String[] resumos;
+    private String[] conteudos;
 
 	/**
 	 * Constrói um registro de resumo a partir do 
@@ -26,7 +27,7 @@ public class RegistroResumos {
 	 */
 	public RegistroResumos(int numeroDeResumos){
     	titulos = new String[numeroDeResumos];
-    	resumos = new String[numeroDeResumos];
+    	conteudos = new String[numeroDeResumos];
 
     }
 	
@@ -43,10 +44,10 @@ public class RegistroResumos {
      */
     void adiciona(String tema, String conteudo) {
     	contadorDeResumos++;
-    	for(int i = 0; i < resumos.length; i++) {
-    		if(resumos[i] == null) {
+    	for(int i = 0; i < conteudos.length; i++) {
+    		if(conteudos[i] == null) {
     			titulos[i] = tema;
-    			resumos[i] = titulos[i] + ": " + conteudo;
+    			conteudos[i] = conteudo;
     			break;
     		}
     	}
@@ -58,6 +59,10 @@ public class RegistroResumos {
      * @return os resumos adicionados
      */
 	String[] pegaResumos() {
+		String[] resumos = new String[titulos.length];
+		for(int i = 0; i < titulos.length; i++){
+			resumos[i] = titulos[i] + ": " + conteudos[i];
+		}
         return resumos;
     }
 	
@@ -99,11 +104,29 @@ public class RegistroResumos {
     /**
      * Informa quantos resumos foram cadastrados
      * 
-     * @
-     * eturn numero de resumos
+     * @return numero de resumos
      * 
      */
     int conta() {
         return contadorDeResumos;
     }
+
+	/**
+	 * Procura dentre os resumos se existe algum
+	 * sobre aquele tema cadastrado
+	 *
+	 * @param chaveDeBusca trecho de texto a ser procurado
+	 * @return lista de conteúdos achados na busca
+	 */
+	/*String[] busca(String chaveDeBusca){
+		String[] achados = new String[conteudos.length];
+		for(int i = 0; i < conteudos.length; i++) {
+			int conteudo = Character.toLowerCase(conteudos[i]);
+			chaveDeBusca = Character.toLowerCase(chaveDeBusca);
+			if (conteudo.contains(chaveDeBusca)) {
+				achados[i] = conteudos[i];
+			}
+		}
+		return achados;
+	}*/
 }

@@ -11,15 +11,20 @@ public class Descanso {
      *  Quantidade de horas descansadas pelo aluno
      */
     private int horasDescanso;
+
     /**
      *  Quantidade de semanas em que ele teve os tempos de descanso
      */
     private int numeroSemanas;
+
     /**
      *  Status do aluno, que pode ser "cansado" ou "descansado"
      */
     private String statusGeral;
 
+    /**
+     *  Emoji que descreve a última sensação em geral do aluno
+     */
     private String emoji;
 
     /**
