@@ -34,19 +34,19 @@ public class Disciplina {
 
     /**
      * Atribui valor ao atributo horasEstudo
-     * @param i valor a ser atribuído
+     * @param horas valor a ser atribuído
      */
-    public void cadastraHoras(int i) {
-        horasEstudo += i;
+    public void cadastraHoras(int horas) {
+        horasEstudo += horas;
     }
 
     /**
      * Atribui valor ao atributo horasDescanso
-     * @param i numero da nota a ser cadastrada
-     * @param v nota da disciplina
+     * @param numero numero da nota a ser cadastrada
+     * @param nota nota da disciplina
      */
-    public void cadastraNota(int i, double v) {
-        notas[i-1] = v;
+    public void cadastraNota(int numero, double nota) {
+        notas[numero-1] = nota;
     }
 
     /**
@@ -54,7 +54,7 @@ public class Disciplina {
      * @param notas  lista de notas
      * @return a média da disciplina
      */
-    public double calculaMedia(double[] notas) {
+    private double calculaMedia(double[] notas) {
         int soma = 0;
         for(double nota: notas){
             soma += nota;

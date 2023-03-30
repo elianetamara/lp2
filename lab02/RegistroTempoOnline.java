@@ -1,6 +1,6 @@
 /**
- * Mnatém a informação sobre quantidade de horas
- * de internet que o aluno tem dedicado a uma disciplina remota
+ * Mantém a informação sobre quantidade de horas
+ * de internet que o aluno tem dedicado a uma disciplina
  *
  * @author Eliane Tamara - 122110693
  */
@@ -46,14 +46,16 @@ public class RegistroTempoOnline {
 
     /**
      * Atribui valor ao atributo tempoGasto
-     * @param i valor a ser atribuído
+     * 
+     * @param tempo valor a ser atribuído
      */
-    public void adicionaTempoOnline(int i) {
-       tempoGasto += i;
+    public void adicionaTempoOnline(int tempo) {
+       tempoGasto += tempo;
     }
 
     /**
      * Vefifica se o aluno atingiu a meta de tempo online
+     * 
      * @return true se for aprovado, false caso contrário
      */
     public boolean atingiuMetaTempoOnline() {

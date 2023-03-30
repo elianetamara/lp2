@@ -22,20 +22,20 @@ public class Descanso {
 
     /**
      * Atribui valor ao atributo horasDescanso
-     * @param i valor a ser atribuído
+     * @param horas valor a ser atribuído
      */
-    public void defineHorasDescanso(int i) {
+    public void defineHorasDescanso(int horas) {
         horasDescanso = 0;
-        horasDescanso += i;
+        horasDescanso += horas;
     }
 
     /**
      * Atribui valor ao atributo numeroSemanas
-     * @param i valor a ser atribuído
+     * @param semanas valor a ser atribuído
      */
-    public void defineNumeroSemanas(int i) {
+    public void defineNumeroSemanas(int semanas) {
         numeroSemanas = 0;
-        numeroSemanas += i;
+        numeroSemanas += semanas;
     }
 
     /**
