@@ -1,4 +1,4 @@
-package lab02;
+package src;
 
 /**
  * Mantém a informação sobre quantidade de horas

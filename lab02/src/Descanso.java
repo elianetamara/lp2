@@ -1,4 +1,4 @@
-package lab02;
+package src;
 
 /**
  * Representação contendo informações sobre a

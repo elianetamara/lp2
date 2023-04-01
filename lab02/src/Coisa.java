@@ -1,4 +1,4 @@
-package lab02;
+package src;
 
 public class Coisa {
     public static void main(String[] args) {
