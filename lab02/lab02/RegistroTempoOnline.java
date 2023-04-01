@@ -1,3 +1,5 @@
+package lab02;
+
 /**
  * Mantém a informação sobre quantidade de horas
  * de internet que o aluno tem dedicado a uma disciplina

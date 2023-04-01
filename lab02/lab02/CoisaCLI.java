@@ -1,4 +1,6 @@
-public class CoisaBonus {
+package lab02;
+
+public class CoisaCLI {
     public static void main(String[] args) {
         System.out.println("-----");
     }
@@ -7,13 +9,13 @@ public class CoisaBonus {
             "- TEMPOONLINE HORAS <num>: adicionar <num> horas\n" +
             "- TEMPOONLINE META: verificar se atingiu a meta de tempo";
 
-    String menuDescanso = "Descanso:\n" +
+    String menuDescanso = "lab02.Descanso:\n" +
             "- DESCANSO HORAS <num>: definir horas de descanso\n" +
             "- DESCANSO EMOJI <emoji>: definir emoji\n" +
             "- DESCANSO SEMANAS <num>: define número de semanas\n" +
             "- DESCANSO STATUS: ver status geral";
 
-    String menuDisciplina = "Disciplina:\n" +
+    String menuDisciplina = "lab02.Disciplina:\n" +
             "- DISCIPLINA HORAS: cadastra horas de estudo\n" +
             "- DISCIPLINA NOTA: cadastra notas\n" +
             "- DISCIPLINA AROVADO: verifica se o aluno foi aprovado";
@@ -25,5 +27,5 @@ public class CoisaBonus {
             "- RESUMOS IMPRIME: informações sobre os resumos\n" +
             "- RESUMOS TEM <titulo>: procura resumo sobre determinado tema\n" +
             "- RESUMOS CONTA: informa quantos resumos foram cadastrados\n" +
-            "- RESUMOS BUSCA <texto>:"
+            "- RESUMOS BUSCA <texto>:";
 }

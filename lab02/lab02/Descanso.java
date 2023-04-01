@@ -1,3 +1,5 @@
+package lab02;
+
 /**
  * Representação contendo informações sobre a
  * rotina de descanso de um estudante

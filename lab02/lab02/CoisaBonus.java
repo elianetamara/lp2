@@ -1,8 +1,12 @@
+package lab02;
+
 public class CoisaBonus {
     public static void main(String[] args) {
-        //registrarDescanso();
+        /*registrarDescanso();
         System.out.println("-----");
         controlarDisciplina();
+        System.out.println("-----");*/
+        registrarResumos();
     }
     public static void registrarDescanso() {
         Descanso descanso = new Descanso();
@@ -28,6 +32,19 @@ public class CoisaBonus {
         System.out.println(lprog2.aprovado());
         System.out.println(prog2.toString());
         System.out.println(lprog2.toString());
+    }
+
+    private static void registrarResumos() {
+        RegistroResumos meusResumos = new RegistroResumos(5);  // 5 resumos
+
+        meusResumos.adiciona("Classes", "Classes definem um tipo e a base de código para criação de objetos.");
+        meusResumos.adiciona("Tipo", "Identifica a semântica (operações e significados) de um conjunto de dados.");
+
+        System.out.println("----------------------------------");
+        String[] resumos2 = meusResumos.busca("Base");
+        for (int i = 0; i < resumos2.length; i++) {
+            System.out.println(resumos2[i]);
+        }
     }
 
 }
