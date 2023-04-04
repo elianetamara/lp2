@@ -19,19 +19,23 @@ public class CoisaCLI {
         String atividade = entrada.nextLine();
         switch (atividade) {
             case OpcoesMenu.TEMPOONLINE:
-                menuTempoOnline(entrada);
+                RegistroTempoOnline tempoOnline = criaTempoOnline();
+                menuTempoOnline(entrada, tempoOnline);
                 break;
 
             case OpcoesMenu.DESCANSO:
-                menuDescanso(entrada);
+                Descanso descanso = criaDescanso();
+                menuDescanso(entrada, descanso);
                 break;
 
             case OpcoesMenu.DISCIPLINA:
-                menuDisciplina(entrada);
+                Disciplina disciplina = criaDisciplina();
+                menuDisciplina(entrada, disciplina);
                 break;
 
             case OpcoesMenu.RESUMOS:
-                menuResumos(entrada);
+                RegistroResumos resumos = criaResumo();
+                menuResumos(entrada, resumos);
                 break;
 
             default:
@@ -39,66 +43,88 @@ public class CoisaCLI {
         }
     }
 
-    private static void menuTempoOnline(Scanner entrada) {
+    private static RegistroResumos criaResumo() {
+        RegistroResumos resumos = null;
+        return resumos;
+    }
+
+    private static Disciplina criaDisciplina() {
+        Disciplina disciplina = null;
+        return disciplina;
+    }
+
+    private static Descanso criaDescanso() {
+        Descanso descanso = null;
+        return descanso;
+    }
+
+    private static RegistroTempoOnline criaTempoOnline() {
+        RegistroTempoOnline tempoOnline = null;
+        return tempoOnline;
+    }
+
+    private static void menuTempoOnline(Scanner entrada, RegistroTempoOnline tempoOnline) {
         System.out.println(opcoesMenuTempoOnline);
         String comando = entrada.nextLine();
         switch (comando) {
             case OpcoesMenu.HORAS:
                 System.out.println("Digite quantas horas você quer adicionar:");
                 int horas = entrada.nextInt();
-                //adicionaTempoOnline(horas);
+                tempoOnline.adicionaTempoOnline(horas);
                 break;
             case OpcoesMenu.META:
-                //atingiuMetaTempoOnline()
+                tempoOnline.atingiuMetaTempoOnline();
                 break;
         }
     }
 
-    private static void menuDescanso(Scanner entrada) {
+    private static void menuDescanso(Scanner entrada, Descanso descanso) {
         System.out.println(opcoesMenuDescanso);
         String comando = entrada.nextLine();
         switch (comando) {
             case OpcoesMenu.HORAS:
                 System.out.println("Digite quantas horas você quer adicionar:");
                 int horas = entrada.nextInt();
-                //comando
+                descanso.defineHorasDescanso(horas);
                 break;
             case OpcoesMenu.EMOJI:
+                System.out.println("Digite o emoji que você quer adicionar:");
                 String emoji = entrada.nextLine();
-                //comando
+                descanso.definirEmoji(emoji);
                 break; 
             case OpcoesMenu.SEMANAS:
+                System.out.println("Digite quantas semanas você quer adicionar:");
                 int semanas = entrada.nextInt();
-                //comando
+                descanso.defineNumeroSemanas(semanas);
                 break;
             case OpcoesMenu.STATUS:
-                //comando
+                descanso.getStatusGeral();
                 break;
         }
     }
 
-    private static void menuDisciplina(Scanner entrada) {
+    private static void menuDisciplina(Scanner entrada, Disciplina disciplina) {
         System.out.println(opcoesMenuDisciplina);
         String comando = entrada.nextLine();
         switch (comando) {
             case OpcoesMenu.HORAS:
                 System.out.println("Digite quantas horas você quer adicionar:");
                 int horas = entrada.nextInt();
-                //comando
+                disciplina.cadastraHoras(horas);
                 break;
             case OpcoesMenu.NOTA:
                 System.out.println("Digite qual nota e o valor dela:");
                 int numNota = entrada.nextInt();
                 double nota = entrada.nextDouble();
-                //comando
+                disciplina.cadastraNota(numNota, nota);
                 break;
             case OpcoesMenu.APROVADO:
-                //comando
+                disciplina.aprovado();
                 break;
         }
     }
 
-    private static void menuResumos(Scanner entrada) {
+    private static void menuResumos(Scanner entrada, RegistroResumos resumos) {
         System.out.println(opcoesMenuResumos);
         String comando = entrada.nextLine();
         switch (comando) {
@@ -106,26 +132,26 @@ public class CoisaCLI {
                 System.out.println("Digite o título e o conteúdo do resumo:");
                 String titulo = entrada.next();
                 String conteudo = entrada.next();
-                //comando
+                resumos.adiciona(titulo, conteudo);
                 break;
             case OpcoesMenu.PEGA:
-                //comando
+                resumos.pegaResumos();
                 break;
             case OpcoesMenu.IMPRIME:
-                //comando
+                resumos.imprimeResumos();
                 break;
             case OpcoesMenu.TEM:
                 System.out.println("Digite o título do resumo:");
                 String tituloPesquisa = entrada.next();
-                //comando
+                resumos.temResumo(tituloPesquisa);
                 break;
             case OpcoesMenu.CONTA:
-                //comando
+                resumos.conta();
                 break;
             case OpcoesMenu.BUSCA:
                 System.out.println("Digite a palavra a ser procurada:");
                 String palavra = entrada.next();
-                //comando
+                resumos.busca(palavra);
                 break;
         }
     }
