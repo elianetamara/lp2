@@ -83,4 +83,13 @@ public class Descanso {
         }
         return statusGeral;
     }
+
+    @Override
+    public String toString() {
+        return "Descanso: " +
+                "horas de descanso - " + horasDescanso +
+                ", numero de semanas - " + numeroSemanas +
+                ", status geral - " + statusGeral + '\'' +
+                ", emoji - " + emoji + '\'';
+    }
 }

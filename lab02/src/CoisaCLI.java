@@ -54,7 +54,8 @@ public class CoisaCLI {
     }
 
     private static Descanso criaDescanso() {
-        Descanso descanso = null;
+        System.out.println("Objeto criado!");
+        Descanso descanso = new Descanso();
         return descanso;
     }
 
@@ -100,7 +101,10 @@ public class CoisaCLI {
             case OpcoesMenu.STATUS:
                 descanso.getStatusGeral();
                 break;
+            default:
+                // menu de novo
         }
+        System.out.println(descanso.toString());
     }
 
     private static void menuDisciplina(Scanner entrada, Disciplina disciplina) {
