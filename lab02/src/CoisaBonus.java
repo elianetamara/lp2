@@ -1,11 +1,18 @@
 package src;
 
+/**
+ * Classe Main para testes das
+ * funcionalidades bônus
+ *
+ * @author Eliane Tamara - 122110693
+ */
+
 public class CoisaBonus {
     public static void main(String[] args) {
-        /*registrarDescanso();
+        registrarDescanso();
         System.out.println("-----");
         controlarDisciplina();
-        System.out.println("-----");*/
+        System.out.println("-----");
         registrarResumos();
     }
     public static void registrarDescanso() {
@@ -40,8 +47,7 @@ public class CoisaBonus {
         meusResumos.adiciona("Classes", "Classes definem um tipo e a base de código para criação de objetos.");
         meusResumos.adiciona("Tipo", "Identifica a semântica (operações e significados) de um conjunto de dados.");
 
-        System.out.println("----------------------------------");
-        String[] resumos2 = meusResumos.busca("Base");
+        String[] resumos2 = meusResumos.busca("UM");
         for (int i = 0; i < resumos2.length; i++) {
             System.out.println(resumos2[i]);
         }

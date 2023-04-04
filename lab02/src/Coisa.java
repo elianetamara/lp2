@@ -1,5 +1,11 @@
 package src;
 
+/**
+ * Classe Main do coISA
+ *
+ * @author Eliane Tamara - 122110693
+ */
+
 public class Coisa {
     public static void main(String[] args) {
         registrarDescanso();

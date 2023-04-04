@@ -51,7 +51,6 @@ public class RegistroResumos {
 			indiceResumos = 0;
 			ListaResumos[indiceResumos].setTitulo(tema);
 			ListaResumos[indiceResumos].setConteudo(conteudo);
-			indiceResumos++;
 		}
 		indiceResumos++;
     }

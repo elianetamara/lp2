@@ -1,5 +1,11 @@
 package src;
 
+/**
+ * Classe que representa a interação com o usuário
+ *
+ * @author Eliane Tamara - 122110693
+ */
+
 import java.util.Scanner;
 
 public class CoisaCLI {
