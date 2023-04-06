@@ -8,10 +8,20 @@ package src;
 
 public class Resumos {
 
+    /**
+     *  Título do resumo
+     */
     private String titulo;
 
+    /**
+     *  Conteúdo do resumo
+     */
     private String conteudo;
 
+    /**
+     * Constrói um resumo om seus valores vazios.
+     *
+     */
     public Resumos(){
         this.titulo = "";
         this.conteudo = "";

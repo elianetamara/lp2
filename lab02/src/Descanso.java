@@ -30,8 +30,7 @@ public class Descanso {
     private String emoji;
 
     /**
-     * Constrói uma disciplina a partir de seu nome.
-     * Toda disciplina começa com os campos horas e notas como nulo;
+     * Constrói um descanso com seus valores vazios.
      *
      */
     public Descanso(){
@@ -52,6 +51,10 @@ public class Descanso {
         horasDescanso += horas;
     }
 
+    /**
+     * Atribui valor ao atributo emoji
+     * @param emoji valor a ser atribuído
+     */
     void definirEmoji(String emoji){
         this.emoji = emoji;
     }
@@ -84,12 +87,4 @@ public class Descanso {
         return statusGeral;
     }
 
-    @Override
-    public String toString() {
-        return "Descanso: " +
-                "horas de descanso - " + horasDescanso +
-                ", numero de semanas - " + numeroSemanas +
-                ", status geral - " + statusGeral + '\'' +
-                ", emoji - " + emoji + '\'';
-    }
 }
