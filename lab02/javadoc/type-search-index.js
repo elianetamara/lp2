@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"src","l":"Coisa"},{"p":"src","l":"CoisaBonus"},{"p":"src","l":"CoisaCLI"},{"p":"src","l":"Descanso"},{"p":"src","l":"Disciplina"},{"p":"src","l":"OpcoesMenu"},{"p":"src","l":"RegistroResumos"},{"p":"src","l":"RegistroTempoOnline"},{"p":"src","l":"Resumos"}];updateSearchResults();
