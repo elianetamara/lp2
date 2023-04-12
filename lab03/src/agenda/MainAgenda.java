@@ -86,11 +86,13 @@ public class MainAgenda {
 	 * @param agenda A agenda sendo manipulada.
 	 */
 	private static void listaContatos(Agenda agenda) {
+		// refatorar
 		System.out.println("\nLista de contatos: ");
-		String[] contatos = agenda.getContatos();
-		for (int i = 0; i < contatos.length; i++) {
+		Contato[] contatos = agenda.getContatos();
+		int numContatos = agenda.conta();
+		for (int i = 0; i < numContatos; i++) {
 			if (contatos[i] != null) {
-				System.out.println(formataContato(i, contatos[i]));
+				System.out.println(formataContato(i, contatos[i].getNome()));
 			}
 		}
 	}
@@ -104,8 +106,8 @@ public class MainAgenda {
 	private static void exibeContato(Agenda agenda, Scanner scanner) {
 		System.out.print("\nContato> ");
 		int posicao = scanner.nextInt();
-		String contato = agenda.getContato(posicao);
-		System.out.println("Dados do contato:\n" + contato);
+		// tratamento erro posicao invalida
+		System.out.println(agenda.getContato(posicao).toString());
 	}
 
 	/**
@@ -134,6 +136,7 @@ public class MainAgenda {
 		String sobrenome = scanner.next();
 		System.out.print("\nTelefone> ");
 		String telefone = scanner.next();
+		// tratamento entradas invalidas
 		agenda.cadastraContato(posicao, nome, sobrenome, telefone);
 	}
 

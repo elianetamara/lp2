@@ -9,14 +9,16 @@ package agenda;
 
 public class Contato {
 
-    //private int posicao;
+    private int posicao;
     private String nome;
     private String sobrenome;
     private String telefone;
 
     public Contato(){
-        nome, sobrenome, telefone = new String();
-        //posicao = 0;
+        nome = "";
+        sobrenome = "";
+        telefone = "";
+        posicao = 0;
     }
 
     public String getNome() {
@@ -41,6 +43,20 @@ public class Contato {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public void setPosicao(int posicao) {
+        this.posicao = posicao;
+    }
+
+    /**
+     * Exibe dados de um contato expecífico
+     *
+     * @return Dados do contato
+     */
+    @Override
+    public String toString() {
+        return "Dados do contato: \n" + this.getNome() + " " + this.getSobrenome() + "\n" + this.getTelefone()  ;
     }
 
     public boolean equals(Object object) {
