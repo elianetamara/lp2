@@ -88,25 +88,21 @@ public class MainAgenda {
 	 * @param agenda A agenda sendo manipulada.
 	 */
 	private static void listaContatos(Agenda agenda) {
-		// refatorar
 		System.out.println("\nLista de contatos: ");
-		Contato[] contatos = agenda.getContatos();
-		int numContatos = agenda.conta();
-		for (int i = 0; i < numContatos; i++) {
-			if (contatos[i] != null) {
-				System.out.println(formataContato(i, contatos[i].getNome()));
-			}
+		String[] listaContatos = agenda.listaContatos();
+		for (String s: listaContatos) {
+			System.out.println(s);
 		}
 	}
 
 	/**
-	 * Imprime os detalhes de um dos contatos da agenda. 
-	 * 
+	 * Imprime os detalhes de um dos contatos da agenda.
+	 *
 	 * @param agenda A agenda.
 	 * @param scanner Scanner para capturar qual contato.
+	 * @throws IllegalArgumentException Se a posição for inválida
 	 */
-	private static void exibeContato(Agenda agenda, Scanner scanner) {
-		String saida = null;
+	private static void exibeContato(Agenda agenda, Scanner scanner) throws IllegalArgumentException{
 		System.out.print("\nContato> ");
 		int posicao = scanner.nextInt();
 		try {
@@ -117,12 +113,13 @@ public class MainAgenda {
 	}
 
 	/**
-	 * Cadastra um contato na agenda. 
-	 * 
+	 * Cadastra um contato na agenda.
+	 *
 	 * @param agenda A agenda.
 	 * @param scanner Scanner para pedir informações do contato.
+	 * @throws IllegalArgumentException Se os argumentos forem inválidos
 	 */
-	private static void cadastraContato(Agenda agenda, Scanner scanner) {
+	private static void cadastraContato(Agenda agenda, Scanner scanner) throws IllegalArgumentException{
 		System.out.print("\nPosição na agenda> ");
 		int posicao = scanner.nextInt();
 		System.out.print("\nNome> ");

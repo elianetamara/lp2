@@ -59,14 +59,6 @@ public class Contato {
         return "Dados do contato: \n" + this.getNome() + " " + this.getSobrenome() + "\n" + this.getTelefone()  ;
     }
 
-    /*public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
-        Contato contato = (Contato) object;
-        return getNome().equals(contato.getNome()) && getSobrenome().equals(contato.getSobrenome());
-    }*/
-
     public boolean equals(String nome, String sobrenome) {
         return getNome().equals(nome) && getSobrenome().equals(sobrenome);
     }

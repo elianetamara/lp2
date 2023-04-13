@@ -56,6 +56,21 @@ public class Agenda {
 	}
 
 	/**
+	 * Retorna lista de contatos formatados da agenda.
+	 *
+	 */
+	public String[] listaContatos() {
+		Contato[] contatos = getContatos();
+		String[] listaContatos = new String[conta()];
+		for (int i = 0; i < listaContatos.length; i++) {
+			if (contatos[i].getNome() != "") {
+				listaContatos[i] = formataContato(i+1, contatos[i].getNome());
+			}
+		}
+		return listaContatos;
+	}
+
+	/**
 	 * Formata um contato para impressão na interface.
 	 *
 	 * @param posicao A posição do contato (que é exibida)/
