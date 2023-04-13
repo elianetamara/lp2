@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
+import static agenda.Agenda.formataContato;
+
 /**
  * Interface com menus texto para manipular uma agenda de contatos.
  * 
@@ -104,21 +106,14 @@ public class MainAgenda {
 	 * @param scanner Scanner para capturar qual contato.
 	 */
 	private static void exibeContato(Agenda agenda, Scanner scanner) {
+		String saida = null;
 		System.out.print("\nContato> ");
 		int posicao = scanner.nextInt();
-		// tratamento erro posicao invalida
-		System.out.println(agenda.getContato(posicao).toString());
-	}
-
-	/**
-	 * Formata um contato para impressão na interface. 
-	 * 
-	 * @param posicao A posição do contato (que é exibida)/
-	 * @param contato O contato a ser impresso.
-	 * @return A String formatada.
-	 */
-	private static String formataContato(int posicao, String contato) {
-		return posicao + " - " + contato;
+		try {
+			System.out.println(agenda.exibeContato(posicao));
+		}catch (IllegalArgumentException e){
+			System.out.println(e.getMessage());
+		}
 	}
 
 	/**
@@ -136,8 +131,11 @@ public class MainAgenda {
 		String sobrenome = scanner.next();
 		System.out.print("\nTelefone> ");
 		String telefone = scanner.next();
-		// tratamento entradas invalidas
-		agenda.cadastraContato(posicao, nome, sobrenome, telefone);
+		try {
+			agenda.cadastraContato(posicao, nome, sobrenome, telefone);
+		}catch (IllegalArgumentException e){
+			System.out.println(e.getMessage());
+		}
 	}
 
 	/**
