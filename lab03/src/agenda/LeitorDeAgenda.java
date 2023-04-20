@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * Lógica para ler de arquivos csv os dados necessários e povoar uma agenda. 
  * 
- * @author nazarenoandrade
+ * @author eliane - 122110693
  *
  */
 public class LeitorDeAgenda {

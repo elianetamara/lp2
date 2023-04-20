@@ -3,14 +3,14 @@ package agenda;
 /**
  * Uma agenda que mantém uma lista de contatos com posições. Podem existir 100 contatos. 
  * 
- * @author nazareno
+ * @author eliane - 122110693
  *
  */
 public class Agenda {
 
 	private static final int TAMANHO_AGENDA = 100;
 
-	private Contato[] contatos; //apenas uma simplificacao de contato
+	private Contato[] contatos;
 
 	private Contato[] favoritos;
 
@@ -172,6 +172,12 @@ public class Agenda {
 		}
 		return numContatos;
 	}
+
+	/**
+	 * Remove contato da lista de favoritos
+	 *
+	 * @param posicao a posição do contato a ser removido
+	 */
 
 	public void removeFavorito(int posicao) {
 		if(posicao < 1 || posicao > 10){

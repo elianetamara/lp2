@@ -7,7 +7,7 @@ import java.util.Scanner;
 /**
  * Interface com menus texto para manipular uma agenda de contatos.
  * 
- * @author nazarenoandrade
+ * @author eliane - 122110693
  *
  */
 public class MainAgenda {
@@ -95,7 +95,11 @@ public class MainAgenda {
 	private static void removerFavorito(Agenda agenda, Scanner scanner) {
 		System.out.print("\nPosição> ");
 		int posicao = scanner.nextInt();
-		agenda.removeFavorito(posicao);
+		try {
+			agenda.removeFavorito(posicao);
+		}catch (IllegalArgumentException e){
+			System.out.println(e.getMessage());
+		}
 	}
 
 	private static void adicionarFavorito(Agenda agenda, Scanner scanner) {
@@ -103,13 +107,17 @@ public class MainAgenda {
 		int indiceContato = scanner.nextInt();
 		System.out.print("\nPosição> ");
 		int posicao = scanner.nextInt();
-		agenda.cadastraFavorito(agenda.getContato(indiceContato), posicao);
+		try{
+			agenda.cadastraFavorito(agenda.getContato(indiceContato), posicao);
+		}catch (IllegalArgumentException e){
+			System.out.println(e.getMessage());
+		}
 	}
 
 	private static void exibeFavoritos(Agenda agenda) {
 		String[] listaFavoritos = agenda.listaFavoritos();
 		for (String s : listaFavoritos) {
-			if(!s.equals(null)) {
+			if(s != null) {
 				System.out.println(s);
 			}
 		}
