@@ -122,7 +122,7 @@ public class Agenda {
 		if (posicao < 1 || posicao > 100){
 			throw new IllegalArgumentException("POSIÇÃO INVÁLIDA");
 		}
-		if (/*nome.isBlank() || telefone.isBlank()*/ nome.isEmpty() || telefone.isEmpty()){
+		if (nome.isBlank() || telefone.isBlank()){
 			throw new IllegalArgumentException("CONTATO INVALIDO");
 		}
 		for (Contato c: getContatos()) {
