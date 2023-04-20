@@ -4,8 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static agenda.Agenda.formataContato;
-
 /**
  * Interface com menus texto para manipular uma agenda de contatos.
  * 
@@ -30,7 +28,7 @@ public class MainAgenda {
 		}
 
 		Scanner scanner = new Scanner(System.in);
-		String escolha = "";
+		String escolha;
 		while (true) {
 			escolha = menu(scanner);
 			comando(escolha, agenda, scanner);
@@ -49,7 +47,10 @@ public class MainAgenda {
 				"\n---\nMENU\n" + 
 						"(C)adastrar Contato\n" + 
 						"(L)istar Contatos\n" + 
-						"(E)xibir Contato\n" + 
+						"(E)xibir Contato\n" +
+						"(F)avoritos\n" +
+						"(A)dicionar Favorito\n" +
+						"(R)emover Favorito\n" +
 						"(S)air\n" + 
 						"\n" + 
 						"Opção> ");
@@ -77,8 +78,40 @@ public class MainAgenda {
 		case "S":
 			sai();
 			break;
+		case "F":
+			exibeFavoritos(agenda);
+			break;
+		case "A":
+			adicionarFavorito(agenda, scanner);
+			break;
+		case "R":
+			removerFavorito(agenda, scanner);
+			break;
 		default:
 			System.out.println("Opção inválida!");
+		}
+	}
+
+	private static void removerFavorito(Agenda agenda, Scanner scanner) {
+		System.out.print("\nPosição> ");
+		int posicao = scanner.nextInt();
+		agenda.removeFavorito(posicao);
+	}
+
+	private static void adicionarFavorito(Agenda agenda, Scanner scanner) {
+		System.out.print("\nContato> ");
+		int indiceContato = scanner.nextInt();
+		System.out.print("\nPosição> ");
+		int posicao = scanner.nextInt();
+		agenda.cadastraFavorito(agenda.getContato(indiceContato), posicao);
+	}
+
+	private static void exibeFavoritos(Agenda agenda) {
+		String[] listaFavoritos = agenda.listaFavoritos();
+		for (String s : listaFavoritos) {
+			if(!s.equals(null)) {
+				System.out.println(s);
+			}
 		}
 	}
 

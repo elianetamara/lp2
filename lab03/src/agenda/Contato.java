@@ -56,11 +56,11 @@ public class Contato {
      */
     @Override
     public String toString() {
-        return "Dados do contato: \n" + this.getNome() + " " + this.getSobrenome() + "\n" + this.getTelefone()  ;
+        return this.getNome() + " " + this.getSobrenome() + "\n" + this.getTelefone()  ;
     }
 
     public boolean equals(String nome, String sobrenome) {
-        return getNome().equals(nome) && getSobrenome().equals(sobrenome);
+        return getNome().toLowerCase().equalsIgnoreCase(nome) && getSobrenome().toLowerCase().equalsIgnoreCase(sobrenome);
     }
 
     public int hashCode() {
