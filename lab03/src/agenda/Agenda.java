@@ -63,7 +63,7 @@ public class Agenda {
 		Contato[] contatos = getContatos();
 		String[] listaContatos = new String[conta()];
 		for (int i = 0; i < listaContatos.length; i++) {
-			if (contatos[i].getNome() != "") {
+			if (contatos[i].getNome().equals("")) {
 				listaContatos[i] = formataContato(i+1, contatos[i].getNome());
 			}
 		}
@@ -93,7 +93,7 @@ public class Agenda {
 		if (posicao < 1 || posicao > 100){
 			throw new IllegalArgumentException("POSIÇÃO INVÁLIDA");
 		}
-		if (nome.isBlank() || telefone.isBlank()){
+		if (/*nome.isBlank() || telefone.isBlank()*/ nome.isEmpty() || telefone.isEmpty()){
 			throw new IllegalArgumentException("CONTATO INVALIDO");
 		}
 		for (Contato c: getContatos()) {
@@ -115,8 +115,8 @@ public class Agenda {
 	 * @return  o numero de contatos
 	 */
 	public int conta(){
-		for (int i = 0; i < contatos.length; i++) {
-			if(contatos[i].getNome() != ""){
+		for (Contato c: contatos) {
+			if(c.getNome().equals("")){
 				numContatos++;
 			}
 		}
