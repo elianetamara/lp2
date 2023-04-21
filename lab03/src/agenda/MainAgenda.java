@@ -97,7 +97,7 @@ public class MainAgenda {
 		int posicao = scanner.nextInt();
 		try {
 			agenda.removeFavorito(posicao);
-		}catch (IllegalArgumentException e){
+		}catch (IndexOutOfBoundsException | IllegalArgumentException e){
 			System.out.println(e.getMessage());
 		}
 	}
@@ -109,7 +109,7 @@ public class MainAgenda {
 		int posicao = scanner.nextInt();
 		try{
 			System.out.println(agenda.cadastraFavorito(agenda.getContato(indiceContato), posicao));
-		}catch (IllegalArgumentException e){
+		}catch (IndexOutOfBoundsException | IllegalArgumentException e){
 			System.out.println(e.getMessage());
 		}
 	}
@@ -141,14 +141,14 @@ public class MainAgenda {
 	 *
 	 * @param agenda A agenda.
 	 * @param scanner Scanner para capturar qual contato.
-	 * @throws IllegalArgumentException Se a posição for inválida
+	 * @throws IndexOutOfBoundsException Se a posição for inválida
 	 */
-	private static void exibeContato(Agenda agenda, Scanner scanner) throws IllegalArgumentException{
+	private static void exibeContato(Agenda agenda, Scanner scanner){
 		System.out.print("\nContato> ");
 		int posicao = scanner.nextInt();
 		try {
 			System.out.println(agenda.exibeContato(posicao));
-		}catch (IllegalArgumentException e){
+		}catch (IndexOutOfBoundsException e){
 			System.out.println(e.getMessage());
 		}
 	}
@@ -160,7 +160,7 @@ public class MainAgenda {
 	 * @param scanner Scanner para pedir informações do contato.
 	 * @throws IllegalArgumentException Se os argumentos forem inválidos
 	 */
-	private static void cadastraContato(Agenda agenda, Scanner scanner) throws IllegalArgumentException{
+	private static void cadastraContato(Agenda agenda, Scanner scanner){
 		System.out.print("\nPosição na agenda> ");
 		int posicao = scanner.nextInt();
 		System.out.print("\nNome> ");
@@ -171,7 +171,7 @@ public class MainAgenda {
 		String telefone = scanner.next();
 		try {
 			agenda.cadastraContato(posicao, nome, sobrenome, telefone);
-		}catch (IllegalArgumentException e){
+		}catch (IllegalArgumentException | NullPointerException | IndexOutOfBoundsException e){
 			System.out.println(e.getMessage());
 		}
 	}

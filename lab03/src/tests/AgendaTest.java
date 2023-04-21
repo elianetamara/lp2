@@ -24,7 +24,7 @@ class AgendaTest {
     }
 
     @Test
-    @DisplayName("Adicionar contatos a lista sem lançamento de exceção")
+    @DisplayName("Adicionar contatos na lista")
     void testaCadastraContatos() {
         Agenda agenda = new Agenda();
         //Posições vazias
@@ -50,20 +50,29 @@ class AgendaTest {
     @DisplayName("Posição inválida")
     void testaCadastroPosicaoInvalida() {
         //Abaixo do limite
-        assertThrows(IllegalArgumentException.class,
+        assertThrows(IndexOutOfBoundsException.class,
                 () -> agendaBase.cadastraContato(0, "João", "Gaudencio", "(83) 99999-0000"));
         //Acima do limite
-        assertThrows(IllegalArgumentException.class,
+        assertThrows(IndexOutOfBoundsException.class,
                 () -> agendaBase.cadastraContato(101, "João", "Gaudencio", "(83) 99999-0000"));
     }
 
     @Test
-    @DisplayName("Campos obrigatórios vazios")
-    void testaCadastroSemObrigatorios() {
+    @DisplayName("Adicionar contatos com campos obrigatórios vazios")
+    void testaCadastroObrigatoriosVazios() {
         assertThrows(IllegalArgumentException.class,
                 () -> agendaBase.cadastraContato(1, "João", "Gaudencio", ""));
         assertThrows(IllegalArgumentException.class,
                 () -> agendaBase.cadastraContato(1, "", "Gaudencio", "(83) 99999-0000"));
+    }
+
+    @Test
+    @DisplayName("Adicionar contatos com campos obrigatórios nulos")
+    void testaCadastroObrigatoriosNulos() {
+        assertThrows(NullPointerException.class,
+                () -> agendaBase.cadastraContato(1, "João", "Gaudencio", null));
+        assertThrows(NullPointerException.class,
+                () -> agendaBase.cadastraContato(1, null, "Gaudencio", "(83) 99999-0000"));
     }
 
     @Test
@@ -116,10 +125,10 @@ class AgendaTest {
     @DisplayName("Adicionando contato favorito com posição inválida")
     void testaFavoritoPosicaoInvalida() {
         //Abaixo do limite
-        assertThrows(IllegalArgumentException.class,
+        assertThrows(IndexOutOfBoundsException.class,
                 () -> agendaBase.cadastraFavorito(agendaBase.getContato(1), 0));
         //Acima do limite
-        assertThrows(IllegalArgumentException.class,
+        assertThrows(IndexOutOfBoundsException.class,
                 () -> agendaBase.cadastraFavorito(agendaBase.getContato(1), 11));
     }
 
@@ -162,10 +171,10 @@ class AgendaTest {
     @Test
     @DisplayName("Remover favorito com índice inválido")
     void testaRemoveFavoritoIndiceInvalido() {
-        assertThrows(IllegalArgumentException.class,
+        assertThrows(IndexOutOfBoundsException.class,
                 () -> agendaBase.removeFavorito(11));
 
-        assertThrows(IllegalArgumentException.class,
+        assertThrows(IndexOutOfBoundsException.class,
                 () -> agendaBase.removeFavorito(0));
     }
 
@@ -177,7 +186,7 @@ class AgendaTest {
     }
 
     @Test
-    @DisplayName("Exibir um contato que é favoritado")
+    @DisplayName("Exibir um contato favoritado")
     void testaExibeContatoFavorito() {
         agendaBase.cadastraFavorito(agendaBase.getContato(1), 1);
         agendaBase.cadastraFavorito(agendaBase.getContato(2), 2);

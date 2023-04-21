@@ -90,11 +90,13 @@ public class Agenda {
 	 * @param nome      Nome do contato.
 	 * @param sobrenome Sobrenome do contato.
 	 * @param telefone  Telefone do contato.
-	 * @throws IllegalArgumentException se entradas forem inválidas
 	 */
-	public void cadastraContato(int posicao, String nome, String sobrenome, String telefone) throws IllegalArgumentException {
+	public void cadastraContato(int posicao, String nome, String sobrenome, String telefone){
 		if (posicao < 1 || posicao > TAMANHO_AGENDA) {
-			throw new IllegalArgumentException("POSIÇÃO INVÁLIDA");
+			throw new IndexOutOfBoundsException("POSIÇÃO INVÁLIDA");
+		}
+		if (nome == null || telefone == null) {
+			throw new NullPointerException("CONTATO INVALIDO");
 		}
 		if (nome.isBlank() || telefone.isBlank()) {
 			throw new IllegalArgumentException("CONTATO INVALIDO");
@@ -110,11 +112,10 @@ public class Agenda {
 	/**
 	 * @param posicao Posição do contato.
 	 * @return String que represneta o contato
-	 * @throws IllegalArgumentException Se a posição for inválida
 	 */
-	public String exibeContato(int posicao) throws IllegalArgumentException {
+	public String exibeContato(int posicao){
 		if (posicao < 1 || posicao > TAMANHO_AGENDA) {
-			throw new IllegalArgumentException("POSIÇÃO INVÁLIDA");
+			throw new IndexOutOfBoundsException("POSIÇÃO INVÁLIDA");
 		}
 		return getContato(posicao).toString();
 	}
@@ -139,11 +140,10 @@ public class Agenda {
 	 * @param posicao Posição do contato.
 	 * @param contato o contado a ser favoritado
 	 * @return mensagem caso seja cadastrado com sucesso
-	 * @throws IllegalArgumentException Se a posição for inválida
 	 */
-	public String cadastraFavorito(Contato contato, int posicao) throws IllegalArgumentException {
+	public String cadastraFavorito(Contato contato, int posicao){
 		if (posicao < 1 || posicao > TAMANHO_FAVORITOS) {
-			throw new IllegalArgumentException("POSIÇÃO INVÁLIDA");
+			throw new IndexOutOfBoundsException("POSIÇÃO INVÁLIDA");
 		}
 		if (contato.isEhFavorito()) {
 			throw new IllegalArgumentException("CONTATO JÁ É FAVORITO");
@@ -173,11 +173,10 @@ public class Agenda {
 	 * Remove contato da lista de favoritos
 	 *
 	 * @param posicao a posição do contato a ser removido
-	 * @throws IllegalArgumentException Se a posição for inválida
 	 */
-	public void removeFavorito(int posicao) throws IllegalArgumentException{
+	public void removeFavorito(int posicao){
 		if(posicao < 1 || posicao > TAMANHO_FAVORITOS){
-			throw new IllegalArgumentException("POSIÇÃO INVÁLIDA");
+			throw new IndexOutOfBoundsException("POSIÇÃO INVÁLIDA");
 		}
 		if(getFavorito(posicao).getNome().equals("")){
 			throw new IllegalArgumentException("CONTATO NÃO ESTÁ NOS FAVORITOS");
