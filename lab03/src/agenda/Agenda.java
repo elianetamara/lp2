@@ -63,7 +63,13 @@ public class Agenda {
 		return contatos[posicao - 1];
 	}
 
-	private Contato getFavorito(int posicao) {
+	/**
+	 * Acessa um dos contatos da lista de favoritos a partir da posição
+	 *
+	 * @param posicao a posição na lista
+	 * @return O contato da lista
+	 */
+	public Contato getFavorito(int posicao) {
 		return favoritos[posicao - 1];
 	}
 
@@ -107,6 +113,20 @@ public class Agenda {
 			}
 		}
 		contatos[posicao - 1] = new Contato(nome, sobrenome, telefone);
+	}
+
+	/**
+	 *
+	 * @param posicao A posição do contato na lista
+	 */
+	public void removeContato(int posicao){
+		if(posicao < 1 || posicao > TAMANHO_FAVORITOS){
+			throw new IndexOutOfBoundsException("POSIÇÃO INVÁLIDA");
+		}
+		if(contatos[posicao-1].isEhFavorito()){
+			removeFavorito(pegaIndiceEmFavoritos(contatos[posicao-1]));
+		}
+		contatos[posicao - 1] =  new Contato("", "", "");
 	}
 
 	/**
@@ -205,6 +225,17 @@ public class Agenda {
 				break;
 			}
 		}
+	}
+
+	private int pegaIndiceEmFavoritos(Contato contato){
+		int indice = 0;
+		for (int i = 0; i < favoritos.length; i++) {
+			if(favoritos[i].equals(contato.getNome(), contato.getSobrenome())){
+				indice = i;
+				break;
+			}
+		}
+		return indice+1;
 	}
 
 	private static String formataContato(int posicao, String contato) {

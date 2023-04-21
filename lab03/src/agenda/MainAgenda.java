@@ -51,7 +51,7 @@ public class MainAgenda {
 						"(M)udar Telefone\n" +
 						"(F)avoritos\n" +
 						"(A)dicionar Favorito\n" +
-						"(R)emover Favorito\n" +
+						"(R)emover\n" +
 						"(S)air\n" +
 						"\n" +
 						"Opção> ");
@@ -89,10 +89,33 @@ public class MainAgenda {
 				adicionarFavorito(agenda, scanner);
 				break;
 			case "R":
-				removerFavorito(agenda, scanner);
+				remover(agenda, scanner);
 				break;
 			default:
 				System.out.println("Opção inválida!");
+		}
+	}
+
+	private static void remover(Agenda agenda, Scanner scanner) {
+		System.out.print("\nDe agenda - 1\nDos favoritos - 2\n> ");
+		int opcao = scanner.nextInt();
+		switch (opcao) {
+			case 1:
+				removerAgenda(agenda, scanner);
+				break;
+			case 2:
+				removerFavorito(agenda, scanner);
+				break;
+		}
+	}
+
+	private static void removerAgenda(Agenda agenda, Scanner scanner) {
+		System.out.print("\nPosição> ");
+		int posicao = scanner.nextInt();
+		try {
+			agenda.removeContato(posicao);
+		}catch (IndexOutOfBoundsException | IllegalArgumentException e){
+			System.out.println(e.getMessage());
 		}
 	}
 
@@ -114,7 +137,7 @@ public class MainAgenda {
 		int posicao = scanner.nextInt();
 		try {
 			agenda.removeFavorito(posicao);
-		}catch (IndexOutOfBoundsException | IllegalArgumentException e){
+		}catch (IndexOutOfBoundsException e){
 			System.out.println(e.getMessage());
 		}
 	}

@@ -123,6 +123,35 @@ class AgendaTest {
     }
 
     @Test
+    @DisplayName("Remover um contato")
+    void testaRemoverContato() {
+
+        agendaBase.removeContato(1);
+        assertEquals("",  agendaBase.getContato(1).getNome());
+    }
+
+    @Test
+    @DisplayName("Remover um contato que é favoritado")
+    void testaRemoverContatoFavoritado() {
+        agendaBase.cadastraFavorito(agendaBase.getContato(1), 1);
+
+        agendaBase.removeContato(1);
+        assertEquals("",  agendaBase.getContato(1).getNome());
+        assertEquals("",  agendaBase.getFavorito(1).getNome());
+    }
+
+    @Test
+    @DisplayName("Remover contato com índice inválido")
+    void testaRemoveContatoIndiceInvalido() {
+        assertThrows(IndexOutOfBoundsException.class,
+                () -> agendaBase.removeContato(110));
+
+        assertThrows(IndexOutOfBoundsException.class,
+                () -> agendaBase.removeContato(0));
+    }
+
+
+    @Test
     @DisplayName("Adicionar um favorito")
     void testaAdicionarFavorito() {
         // Posições limite
@@ -182,7 +211,7 @@ class AgendaTest {
        agendaBase.cadastraFavorito(agendaBase.getContato(1), 1);
 
        agendaBase.removeFavorito(1);
-       assertEquals("",  agendaBase.getFavoritos()[1].getNome());
+       assertEquals("",  agendaBase.getFavorito(1).getNome());
     }
 
     @Test
