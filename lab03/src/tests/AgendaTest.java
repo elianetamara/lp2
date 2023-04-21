@@ -75,6 +75,7 @@ class AgendaTest {
                 System.out.println(contato);
             }
         }
+        System.out.println("--------------------");
     }
 
     @Test
@@ -82,6 +83,7 @@ class AgendaTest {
     void testaPegarContato() {
         Contato contato = agendaBase.getContato(2);
         System.out.println(contato);
+        System.out.println("--------------------");
     }
 
     @Test
@@ -91,6 +93,7 @@ class AgendaTest {
         for (String s: listaContatos) {
             System.out.println(s);
         }
+        System.out.println("--------------------");
     }
 
     @Test
@@ -132,6 +135,7 @@ class AgendaTest {
                 System.out.println(fav);
             }
         }
+        System.out.println("--------------------");
     }
 
     @Test
@@ -143,6 +147,7 @@ class AgendaTest {
         for (String s: listaFavoritos) {
             System.out.println(s);
         }
+        System.out.println("--------------------");
     }
 
    @Test
@@ -171,16 +176,19 @@ class AgendaTest {
                 () -> agendaBase.removeFavorito(1));
     }
 
-    /*@Test
-    @DisplayName("Quando eu preciso exibir um contato favoritado")
-    void QuandoPrecisoPegarContatosFavorito() {
-        agendaBase.cadastraContato(1, "Matheus", "Gaudêncio", "(83) 21012101");
-        agendaBase.cadastraContato(2, "John", "Doe", "(83) 996303247");
-        Contato contato1 = agendaBase.getContato(1);
-        Contato contato2 = agendaBase.getContato(2);
+    @Test
+    @DisplayName("Exibir um contato que é favoritado")
+    void testaExibeContatoFavorito() {
+        agendaBase.cadastraFavorito(agendaBase.getContato(1), 1);
+        agendaBase.cadastraFavorito(agendaBase.getContato(2), 2);
+        assertEquals("❤ Livia Campos\n(83) 90000-0000", agendaBase.exibeContato(1));
+        assertEquals("❤ Ouvidoria UFCG \n(83) 2102-2102", agendaBase.exibeContato(2));
+    }
 
-        agendaBase.cadastraFavorito(contato1, 1);
-        agendaBase.cadastraFavorito(contato2, 2);
-    }*/
-
+    @Test
+    @DisplayName("Exibir um contato que não é favoritado")
+    void testaExibeContato() {
+        assertEquals("Livia Campos\n(83) 90000-0000", agendaBase.exibeContato(1));
+        assertEquals("Ouvidoria UFCG \n(83) 2102-2102", agendaBase.exibeContato(2));
+    }
 }
