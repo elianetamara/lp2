@@ -27,5 +27,12 @@ public class ContatoTest {
         assertEquals("Eliane Tamara\n839876-1234", contatoTeste.toString());
     }
 
+    @Test
+    void testaToStringFavorito() {
+        Contato contatoFav = new Contato("Maria", "Tamara", "831234-1234");
+        contatoFav.setEhFavorito(true);
+        assertEquals("❤ Maria Tamara\n831234-1234", contatoFav.toString());
+    }
+
 }
 

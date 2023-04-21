@@ -13,6 +13,8 @@ public class Contato {
     private String sobrenome;
     private String telefone;
 
+    private boolean ehFavorito;
+
     public Contato(String nome, String sobrenome, String telefone){
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -31,6 +33,14 @@ public class Contato {
         return telefone;
     }
 
+    public boolean isEhFavorito() {
+        return ehFavorito;
+    }
+
+    public void setEhFavorito(boolean ehFavorito) {
+        this.ehFavorito = ehFavorito;
+    }
+
     /**
      * Exibe dados de um contato expecífico
      *
@@ -38,7 +48,11 @@ public class Contato {
      */
     @Override
     public String toString() {
-        return this.getNome() + " " + this.getSobrenome() + "\n" + this.getTelefone()  ;
+        if(ehFavorito){
+            return "❤ " + this.getNome() + " " + this.getSobrenome() + "\n" + this.getTelefone();
+        }else{
+            return this.getNome() + " " + this.getSobrenome() + "\n" + this.getTelefone()  ;
+        }
     }
 
     public boolean equals(String nome, String sobrenome) {
