@@ -38,57 +38,57 @@ public class MainAgenda {
 
 	/**
 	 * Exibe o menu e captura a escolha do/a usuário/a.
-	 * 
+	 *
 	 * @param scanner Para captura da opção do usuário.
 	 * @return O comando escolhido.
 	 */
 	private static String menu(Scanner scanner) {
 		System.out.println(
-				"\n---\nMENU\n" + 
-						"(C)adastrar Contato\n" + 
-						"(L)istar Contatos\n" + 
+				"\n---\nMENU\n" +
+						"(C)adastrar Contato\n" +
+						"(L)istar Contatos\n" +
 						"(E)xibir Contato\n" +
 						"(F)avoritos\n" +
 						"(A)dicionar Favorito\n" +
 						"(R)emover Favorito\n" +
-						"(S)air\n" + 
-						"\n" + 
+						"(S)air\n" +
+						"\n" +
 						"Opção> ");
 		return scanner.next().toUpperCase();
 	}
 
 	/**
 	 * Interpreta a opção escolhida por quem está usando o sistema.
-	 * 
+	 *
 	 * @param opcao   Opção digitada.
 	 * @param agenda  A agenda que estamos manipulando.
 	 * @param scanner Objeto scanner para o caso do comando precisar de mais input.
 	 */
 	private static void comando(String opcao, Agenda agenda, Scanner scanner) {
 		switch (opcao) {
-		case "C":
-			cadastraContato(agenda, scanner);
-			break;
-		case "L":
-			listaContatos(agenda);
-			break;
-		case "E":
-			exibeContato(agenda, scanner);
-			break;
-		case "S":
-			sai();
-			break;
-		case "F":
-			exibeFavoritos(agenda);
-			break;
-		case "A":
-			adicionarFavorito(agenda, scanner);
-			break;
-		case "R":
-			removerFavorito(agenda, scanner);
-			break;
-		default:
-			System.out.println("Opção inválida!");
+			case "C":
+				cadastraContato(agenda, scanner);
+				break;
+			case "L":
+				listaContatos(agenda);
+				break;
+			case "E":
+				exibeContato(agenda, scanner);
+				break;
+			case "S":
+				sai();
+				break;
+			case "F":
+				exibeFavoritos(agenda);
+				break;
+			case "A":
+				adicionarFavorito(agenda, scanner);
+				break;
+			case "R":
+				removerFavorito(agenda, scanner);
+				break;
+			default:
+				System.out.println("Opção inválida!");
 		}
 	}
 
@@ -108,7 +108,7 @@ public class MainAgenda {
 		System.out.print("\nPosição> ");
 		int posicao = scanner.nextInt();
 		try{
-			agenda.cadastraFavorito(agenda.getContato(indiceContato), posicao);
+			System.out.println(agenda.cadastraFavorito(agenda.getContato(indiceContato), posicao));
 		}catch (IllegalArgumentException e){
 			System.out.println(e.getMessage());
 		}
@@ -125,7 +125,7 @@ public class MainAgenda {
 
 	/**
 	 * Imprime lista de contatos da agenda.
-	 * 
+	 *
 	 * @param agenda A agenda sendo manipulada.
 	 */
 	private static void listaContatos(Agenda agenda) {
@@ -185,15 +185,15 @@ public class MainAgenda {
 	}
 
 	/**
-	 * Lê uma agenda de um arquivo csv. 
-	 * 
+	 * Lê uma agenda de um arquivo csv.
+	 *
 	 * @param arquivoContatos O caminho para o arquivo.
-	 * @param agenda A agenda que deve ser populada com os dados. 
+	 * @param agenda A agenda que deve ser populada com os dados.
 	 * @throws IOException Caso o arquivo não exista ou não possa ser lido.
 	 */
 	private static void carregaAgenda(String arquivoContatos, Agenda agenda) throws FileNotFoundException, IOException {
 		LeitorDeAgenda leitor = new LeitorDeAgenda();
-		
+
 		int carregados =  leitor.carregaContatos(arquivoContatos, agenda);
 		System.out.println("Carregamos " + carregados + " registros.");
 	}
