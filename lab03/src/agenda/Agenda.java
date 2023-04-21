@@ -182,7 +182,17 @@ public class Agenda {
 		if(getFavorito(posicao).getNome().equals("")){
 			throw new IllegalArgumentException("CONTATO NÃO ESTÁ NOS FAVORITOS");
 		}
+		desfavoritaContato(getFavorito(posicao));
 		favoritos[posicao - 1] =  new Contato("", "", "");
+	}
+
+	private void desfavoritaContato(Contato favorito){
+		for (Contato c: getContatos()) {
+			if (c.equals(favorito.getNome(), favorito.getSobrenome())){
+				c.setEhFavorito(false);
+				break;
+			}
+		}
 	}
 
 	private static String formataContato(int posicao, String contato) {
