@@ -40,6 +40,23 @@ class AgendaTest {
     }
 
     @Test
+    @DisplayName("Muda telefone dos contatos na lista")
+    void testaMudancaTelefone() {
+        //Sem lançamento de Exceção
+        agendaBase.mudarTelefone(2,  "123456789");
+        //Telefone nulo
+        assertThrows(NullPointerException.class,
+                () -> agendaBase.mudarTelefone(3, null));
+        //Telefone vazio
+        assertThrows(IllegalArgumentException.class,
+                () -> agendaBase.mudarTelefone(3, ""));
+        // Posição inválida
+        assertThrows(IndexOutOfBoundsException.class,
+                () -> agendaBase.mudarTelefone(200, "123456789"));
+
+    }
+
+    @Test
     @DisplayName("Adicionando contato duplicado")
     void testaCadastroContatoDuplicado() {
         assertThrows(IllegalArgumentException.class,

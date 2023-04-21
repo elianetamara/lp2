@@ -48,6 +48,7 @@ public class MainAgenda {
 						"(C)adastrar Contato\n" +
 						"(L)istar Contatos\n" +
 						"(E)xibir Contato\n" +
+						"(M)udar Telefone\n" +
 						"(F)avoritos\n" +
 						"(A)dicionar Favorito\n" +
 						"(R)emover Favorito\n" +
@@ -75,6 +76,9 @@ public class MainAgenda {
 			case "E":
 				exibeContato(agenda, scanner);
 				break;
+			case "M":
+				mudarTelefone(agenda, scanner);
+				break;
 			case "S":
 				sai();
 				break;
@@ -90,6 +94,19 @@ public class MainAgenda {
 			default:
 				System.out.println("Opção inválida!");
 		}
+	}
+
+	private static void mudarTelefone(Agenda agenda, Scanner scanner) {
+		System.out.print("\nPosição> ");
+		int posicao = scanner.nextInt();
+		System.out.print("\nNovo Telefone> ");
+		String novoTelefone = scanner.next();
+		try{
+			agenda.mudarTelefone(posicao, novoTelefone);
+		}catch (IllegalArgumentException | NullPointerException | IndexOutOfBoundsException e){
+			System.out.println(e.getMessage());
+		}
+
 	}
 
 	private static void removerFavorito(Agenda agenda, Scanner scanner) {
@@ -123,11 +140,6 @@ public class MainAgenda {
 		}
 	}
 
-	/**
-	 * Imprime lista de contatos da agenda.
-	 *
-	 * @param agenda A agenda sendo manipulada.
-	 */
 	private static void listaContatos(Agenda agenda) {
 		System.out.println("\nLista de contatos: ");
 		String[] listaContatos = agenda.listaContatos();
@@ -136,13 +148,6 @@ public class MainAgenda {
 		}
 	}
 
-	/**
-	 * Imprime os detalhes de um dos contatos da agenda.
-	 *
-	 * @param agenda A agenda.
-	 * @param scanner Scanner para capturar qual contato.
-	 * @throws IndexOutOfBoundsException Se a posição for inválida
-	 */
 	private static void exibeContato(Agenda agenda, Scanner scanner){
 		System.out.print("\nContato> ");
 		int posicao = scanner.nextInt();
@@ -153,13 +158,6 @@ public class MainAgenda {
 		}
 	}
 
-	/**
-	 * Cadastra um contato na agenda.
-	 *
-	 * @param agenda A agenda.
-	 * @param scanner Scanner para pedir informações do contato.
-	 * @throws IllegalArgumentException Se os argumentos forem inválidos
-	 */
 	private static void cadastraContato(Agenda agenda, Scanner scanner){
 		System.out.print("\nPosição na agenda> ");
 		int posicao = scanner.nextInt();
@@ -176,9 +174,6 @@ public class MainAgenda {
 		}
 	}
 
-	/**
-	 * Sai da aplicação.
-	 */
 	private static void sai() {
 		System.out.println("\nVlw flw o/");
 		System.exit(0);

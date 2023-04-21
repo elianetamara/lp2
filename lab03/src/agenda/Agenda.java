@@ -110,6 +110,19 @@ public class Agenda {
 	}
 
 	/**
+	 *
+	 * @param posicao A posição do copntato na agenda
+	 * @param novoTelefone Novo valor valor de telefone
+	 */
+	public void mudarTelefone(int posicao, String novoTelefone) {
+		if (posicao < 1 || posicao > TAMANHO_AGENDA) {
+			throw new IndexOutOfBoundsException("POSIÇÃO INVÁLIDA");
+		}
+		contatos[posicao-1].setTelefone(novoTelefone);
+
+	}
+
+	/**
 	 * @param posicao Posição do contato.
 	 * @return String que represneta o contato
 	 */
@@ -197,4 +210,5 @@ public class Agenda {
 	private static String formataContato(int posicao, String contato) {
 		return posicao + " - " + contato;
 	}
+
 }

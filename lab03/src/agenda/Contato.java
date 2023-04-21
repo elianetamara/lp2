@@ -41,6 +41,16 @@ public class Contato {
         this.ehFavorito = ehFavorito;
     }
 
+    public void setTelefone(String novoTelefone) {
+        if (novoTelefone == null) {
+            throw new NullPointerException("CONTATO INVALIDO");
+        }
+        if (novoTelefone.isBlank()) {
+            throw new IllegalArgumentException("CONTATO INVALIDO");
+        }
+        this.telefone = novoTelefone;
+    }
+
     /**
      * Exibe dados de um contato expecífico
      *
