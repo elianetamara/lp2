@@ -36,12 +36,6 @@ public class MainAgenda {
 
 	}
 
-	/**
-	 * Exibe o menu e captura a escolha do/a usuário/a.
-	 *
-	 * @param scanner Para captura da opção do usuário.
-	 * @return O comando escolhido.
-	 */
 	private static String menu(Scanner scanner) {
 		System.out.println(
 				"\n---\nMENU\n" +
@@ -58,13 +52,6 @@ public class MainAgenda {
 		return scanner.next().toUpperCase();
 	}
 
-	/**
-	 * Interpreta a opção escolhida por quem está usando o sistema.
-	 *
-	 * @param opcao   Opção digitada.
-	 * @param agenda  A agenda que estamos manipulando.
-	 * @param scanner Objeto scanner para o caso do comando precisar de mais input.
-	 */
 	private static void comando(String opcao, Agenda agenda, Scanner scanner) {
 		switch (opcao) {
 			case "C":

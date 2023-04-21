@@ -116,6 +116,7 @@ public class Agenda {
 	}
 
 	/**
+	 * Remove o contato da agenda
 	 *
 	 * @param posicao A posição do contato na lista
 	 */
