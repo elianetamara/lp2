@@ -29,7 +29,7 @@ public class DogHost {
                 throw new IllegalArgumentException("Cachorro já cadastrado");
             }
         }
-        cachorros[cont] = new Dog(nome, tutor, qtdRacao, "");
+        cachorros[cont] = new Dog(nome, tutor, qtdRacao);
         cont++;
         return true;
     }
@@ -38,6 +38,7 @@ public class DogHost {
         boolean adicionou = adicionaDog(nome, tutor, qtdRacao);
         if(adicionou){
             cachorros[cont].setRestricao(tipoRestricao);
+            cachorros[cont].setQtdRacao(qtdRacao*2);
             return true;
         }
         return false;
@@ -55,8 +56,38 @@ public class DogHost {
         return lista;
     }
 
-    public double consultaValorHospedagem(Dog toto, int dias){
+    public int pegaRacaoTotal(){
+        int total = 0;
+        for (Dog d: cachorros) {
+            total += d.getQtdRacao();
+        }
+        return total;
+    }
 
-        return 0;
+    public double pegaValorTotalHospedagem(){
+        double total = 0;
+        for (Dog d: cachorros) {
+            total += consultaValorHospedagem(d, 1);
+        }
+        return total;
+    }
+
+    public double consultaValorHospedagem(Dog toto, int dias){
+        boolean temCachorro = procuraCachorro(toto);
+        if(!temCachorro){
+            throw new IllegalArgumentException("Esse cachorro não existe");
+        }
+        return toto.getQtdRacao() * 0.4 * dias;
+    }
+
+    private boolean procuraCachorro(Dog toto){
+        boolean temCachorro = false;
+        for (Dog d: cachorros) {
+            if(d.equals(toto.getNome(), toto.getTutor())){
+                temCachorro = true;
+                break;
+            }
+        }
+        return temCachorro;
     }
 }

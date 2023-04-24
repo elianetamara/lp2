@@ -12,19 +12,36 @@ public class Dog {
 
     private String restricao;
 
-    public Dog(String nome, String tutor, int qtdRacao, String restricao) {
+
+    public Dog(String nome, String tutor, int qtdRacao) {
         this.nome = nome;
         this.tutor = tutor;
-        this.restricao = restricao;
-        if(!restricao.isBlank()){
-            this.qtdRacao = qtdRacao*2;
-        }else{
-            this.qtdRacao = qtdRacao;
-        }
+        this.qtdRacao = qtdRacao;
+    }
+
+    public Dog(String nome, String tutor, int qtdRacao, String restricao) {
+        this(nome, tutor, qtdRacao);
+        this.qtdRacao = qtdRacao*2;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getTutor() {
+        return tutor;
+    }
+
+    public int getQtdRacao() {
+        return qtdRacao;
     }
 
     public void setRestricao(String restricao) {
         this.restricao = restricao;
+    }
+
+    public void setQtdRacao(int qtdRacao) {
+        this.qtdRacao = qtdRacao;
     }
 
     @Override
