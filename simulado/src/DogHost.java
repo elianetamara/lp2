@@ -10,11 +10,14 @@ public class DogHost {
 
     private Dog[] cachorros;
 
-    DogHost(String nome, int qtdMaxRacao, int qtdMaxCachorros){
+    public DogHost(String nome, int qtdMaxRacao, int qtdMaxCachorros){
         this.nome = nome;
         this.qtdMaxRacao = qtdMaxRacao;
         this.qtdMaxCachorros = qtdMaxCachorros;
         this.cachorros = new Dog[qtdMaxCachorros];
+        for (int i = 0; i < qtdMaxCachorros; i++) {
+            cachorros[i] = new Dog("", "", 0);
+        }
     }
 
     private int cont = 0;
