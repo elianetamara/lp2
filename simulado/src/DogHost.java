@@ -1,5 +1,13 @@
 package src;
 
+/**
+ * Representação de um host
+ * de cachorros pro sistema da
+ * HugsAndSmiles
+ *
+ * @author eliane - 122110693
+ */
+
 public class DogHost {
 
     private String nome;
@@ -21,6 +29,14 @@ public class DogHost {
     }
 
     private int cont = 0;
+
+    /**
+     * Adiciona cachorro sem restrição
+     * @param nome nome do cachorro
+     * @param tutor nome do tutor
+     * @param qtdRacao quantidade diária de ração
+     * @return true se for adicionado, false se contrário
+     */
     public boolean adicionaDog(String nome, String tutor, int qtdRacao){
         if(qtdRacao > qtdMaxRacao){
             throw new IllegalArgumentException("Excede quantidade máxima de ração");
@@ -37,6 +53,14 @@ public class DogHost {
         return true;
     }
 
+    /**
+     * Adiciona cachorro com restrição
+     * @param nome nome do cachorro
+     * @param tutor nome do tutor
+     * @param qtdRacao quantidade diária de ração
+     * @param tipoRestricao o tipo da restriçã́o do cachorro
+     * @return true se for adicionado, false se contrário
+     */
     public boolean adicionaDog(String nome, String tutor, int qtdRacao, String tipoRestricao){
         boolean adicionou = adicionaDog(nome, tutor, qtdRacao);
         if(adicionou){
@@ -47,6 +71,10 @@ public class DogHost {
         return false;
     }
 
+    /**
+     * Lista de cachorros do host
+     * @return String listando os cachorros de certo host
+     */
     public String listaDogs(){
         String lista = nome + ":\n";
         for (int i = 0; i < cachorros.length; i++) {
@@ -59,6 +87,10 @@ public class DogHost {
         return lista;
     }
 
+    /**
+     * Somatório das rações de todos os cachorros
+     * @return quantidade total da ração
+     */
     public int pegaRacaoTotal(){
         int total = 0;
         for (Dog d: cachorros) {
@@ -67,6 +99,10 @@ public class DogHost {
         return total;
     }
 
+    /**
+     * Somatório do valor das hospedagens dos cães
+     * @return valor total das hospedagens
+     */
     public double pegaValorTotalHospedagem(){
         double total = 0;
         for (Dog d: cachorros) {
@@ -75,6 +111,12 @@ public class DogHost {
         return total;
     }
 
+    /**
+     * Calcula valor total da hospedagem por cachorro
+     * @param toto cachorro a ser procurado
+     * @param dias dias de hospedagem
+     * @return valor da hospedagem do cachorro
+     */
     public double consultaValorHospedagem(Dog toto, int dias){
         boolean temCachorro = procuraCachorro(toto);
         if(!temCachorro){

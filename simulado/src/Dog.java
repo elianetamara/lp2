@@ -2,6 +2,12 @@ package src;
 
 import java.util.Objects;
 
+/**
+ * Representação de um cachorro para o
+ * sistema da HugsAndSmiles
+ *
+ * @author eliane - 122110693
+ */
 public class Dog {
 
     private String nome;
