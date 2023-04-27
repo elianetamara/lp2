@@ -4,4 +4,9 @@ extras/dirlididi.py
 
 out
 
-extras/extras.iml
+*.iml
+
+
+lab04/target/
+
+*xml
