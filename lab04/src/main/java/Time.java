@@ -1,3 +1,5 @@
+import java.util.HashSet;
+
 public class Time {
 
     private String id;
@@ -6,22 +8,17 @@ public class Time {
 
     private String mascote;
 
+    private final HashSet<Campeonato> campeonatos;
+
     public Time(String id, String nome, String mascote) {
         this.id = id;
         this.nome = nome;
         this.mascote = mascote;
+        this.campeonatos = new HashSet<>();
     }
 
     public String getId() {
         return id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public String getMascote() {
-        return mascote;
     }
 
     @Override
@@ -37,5 +34,22 @@ public class Time {
     @Override
     public int hashCode() {
         return getId().hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "[" + id + "] " + nome + " / " + mascote;
+    }
+
+    public void adicionaCampeonato(Campeonato c){
+        campeonatos.add(c);
+    }
+
+    public String pegaCampeonatos() {
+        StringBuilder saida = new StringBuilder("Campeonatos do " + nome + ":");
+        for (Campeonato c: campeonatos) {
+            saida.append("\n* " + c.getNome() + " - " + c.getIndiceTime() + "/" + c.getMaxTimes());
+        }
+        return saida.toString();
     }
 }

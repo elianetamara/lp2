@@ -1,3 +1,4 @@
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class MainMisterBet {
@@ -25,7 +26,7 @@ public class MainMisterBet {
                         "(T)Tentar a sorte e status\n" +
                         "(!)Já pode fechar o programa!\n" +
                         "Opção> ");
-        return scanner.next().toUpperCase();
+        return scanner.nextLine().toUpperCase();
     }
 
     private static void comando(String opcao, MrBet mrBet, Scanner scanner) {
@@ -63,7 +64,7 @@ public class MainMisterBet {
 
     private static void sorteOuStatus(MrBet mrBet, Scanner scanner) {
         System.out.print("\n(A)Apostar ou (S)Status das Apostas? ");
-        String opcao = scanner.next();
+        String opcao = scanner.nextLine();
         switch (opcao) {
             case "A":
                 apostarTime(mrBet, scanner);
@@ -81,12 +82,19 @@ public class MainMisterBet {
     }
 
     private static void exibeCampeonatosTime(MrBet mrBet, Scanner scanner) {
+        System.out.print("Time: ");
+        String time = scanner.nextLine();
+        try {
+            System.out.println(mrBet.recuperaCampeonatosTime(time));
+        }catch (NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void incluirOuVerificarTimeCamp(MrBet mrBet, Scanner scanner) {
         System.out.print("\n(I) Incluir time em campeonato ou (V) Verificar se time está em campeonato? ");
-        String opcao = scanner.next();
-        switch (opcao) {
+        String opcao = scanner.nextLine();
+        switch (opcao.toUpperCase()) {
             case "I":
                 incluirTimeCampeonato(mrBet, scanner);
                 break;
@@ -97,17 +105,63 @@ public class MainMisterBet {
     }
 
     private static void verificarTimeCampeonato(MrBet mrBet, Scanner scanner) {
+        System.out.print("Código: ");
+        String codigo = scanner.nextLine();
+        System.out.print("Campeonato: ");
+        String campeonato = scanner.nextLine();
+        try{
+            System.out.println(mrBet.recuperaTimeCampeonato(campeonato, codigo));
+        }catch (NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
     private static void incluirTimeCampeonato(MrBet mrBet, Scanner scanner) {
+        System.out.print("Código: ");
+        String codigo = scanner.nextLine();
+        System.out.print("Campeonato: ");
+        String campeonato = scanner.nextLine();
+        try{
+            System.out.println(mrBet.cadastraTimeCampeonato(campeonato, codigo));
+        }catch (IllegalArgumentException | NoSuchElementException | IllegalStateException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void adicionaCampeonato(MrBet mrBet, Scanner scanner) {
+        System.out.print("Campeonato: ");
+        String campeonato = scanner.nextLine();
+        System.out.print("Participantes: ");
+        int participantes = Integer.parseInt(scanner.nextLine());
+        try{
+            System.out.println(mrBet.cadastraCampeonato(campeonato, participantes));
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void recuperaTime(MrBet mrBet, Scanner scanner) {
+        System.out.print("Código: ");
+        String codigo = scanner.nextLine();
+        try{
+            System.out.println(mrBet.recuperaTime(codigo));
+        }catch (IllegalArgumentException | NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void incluirTime(MrBet mrBet, Scanner scanner) {
+        System.out.print("Código: ");
+        String codigo = scanner.nextLine();
+        System.out.print("Nome: ");
+        String nome = scanner.nextLine();
+        System.out.print("Mascote: ");
+        String mascote = scanner.nextLine();
+        try{
+            System.out.println(mrBet.cadastraTime(codigo, nome, mascote));
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
     }
 }
