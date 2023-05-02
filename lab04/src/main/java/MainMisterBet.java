@@ -65,7 +65,7 @@ public class MainMisterBet {
     private static void sorteOuStatus(MrBet mrBet, Scanner scanner) {
         System.out.print("\n(A)Apostar ou (S)Status das Apostas? ");
         String opcao = scanner.nextLine();
-        switch (opcao) {
+        switch (opcao.toUpperCase()) {
             case "A":
                 apostarTime(mrBet, scanner);
                 break;
@@ -79,6 +79,19 @@ public class MainMisterBet {
     }
 
     private static void apostarTime(MrBet mrBet, Scanner scanner) {
+        System.out.print("Código: ");
+        String codigo = scanner.nextLine();
+        System.out.print("Campeonato: ");
+        String campeonato = scanner.nextLine();
+        System.out.print("Colocação: ");
+        int colocacao = Integer.parseInt(scanner.nextLine());
+        System.out.print("Valor: ");
+        String valor = scanner.nextLine();
+        try {
+            System.out.println(mrBet.apostaTime(codigo, campeonato, colocacao, valor));
+        }catch (NoSuchElementException | IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     private static void exibeCampeonatosTime(MrBet mrBet, Scanner scanner) {

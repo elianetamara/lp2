@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.NoSuchElementException;
@@ -6,12 +7,12 @@ public class MrBet {
 
     private final HashMap<String, Time> times;
     private final HashSet<Campeonato> campeonatos;
-    //private final ArrayList<Aposta> apostas;
+    private final ArrayList<Aposta> apostas;
 
     public MrBet() {
         this.times = new HashMap<>();
         this.campeonatos = new HashSet<>();
-        //this.apostas = new ArrayList<>();
+        this.apostas = new ArrayList<>();
     }
 
     private Campeonato getCampeonato(String nome){
@@ -73,7 +74,10 @@ public class MrBet {
         if (c == null) {
             throw new NoSuchElementException("O CAMPEONATO NÃO EXISTE!");
         }
-        return c.existeTime(codigo);
+        if(c.existeTime(codigo)){
+            return "O TIME ESTÁ NO CAMPEONATO!";
+        }
+        return "O TIME NÃO ESTÁ NO CAMPEONATO!";
     }
 
     public String recuperaCampeonatosTime(String time) {
@@ -81,5 +85,23 @@ public class MrBet {
             throw new NoSuchElementException("TIME NÃO EXISTE!");
         }
         return times.get(time).pegaCampeonatos();
+    }
+
+    public String apostaTime(String codigo, String campeonato, int colocacao, String valor) {
+        if(!times.containsKey(codigo)){
+            throw new NoSuchElementException("TIME NÃO EXISTE!");
+        }
+        Campeonato c = getCampeonato(campeonato);
+        if (c == null) {
+            throw new NoSuchElementException("O CAMPEONATO NÃO EXISTE!");
+        }
+        if(!c.existeTime(codigo)){
+            throw new IllegalArgumentException("O TIME NÃO ESTÁ NO CAMPEONATO!");
+        }
+        if(colocacao > c.getMaxTimes()){
+            return "APOSTA NÃO REGISTRADA!";
+        }
+        apostas.add(new Aposta(colocacao, valor, times.get(codigo), c));
+        return "APOSTA REGISTRADA!";
     }
 }

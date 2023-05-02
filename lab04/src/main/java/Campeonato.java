@@ -18,13 +18,13 @@ public class Campeonato {
         this.maxTimes = participantes;
     }
 
-    public String existeTime(String codigo){
+    public boolean existeTime(String codigo){
         for (Time t : times) {
             if (t != null && t.getId().equals(codigo)) {
-                return "O TIME ESTÁ NO CAMPEONATO!";
+                return true;
             }
         }
-        return "O TIME NÃO ESTÁ NO CAMPEONATO!";
+        return false;
     }
 
     public void adicionaTime(Time time){
