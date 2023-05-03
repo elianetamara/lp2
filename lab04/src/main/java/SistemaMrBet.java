@@ -3,13 +3,13 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.NoSuchElementException;
 
-public class MrBet {
+public class SistemaMrBet {
 
     private final HashMap<String, Time> times;
     private final HashSet<Campeonato> campeonatos;
     private final ArrayList<Aposta> apostas;
 
-    public MrBet() {
+    public SistemaMrBet() {
         this.times = new HashMap<>();
         this.campeonatos = new HashSet<>();
         this.apostas = new ArrayList<>();
