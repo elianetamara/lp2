@@ -15,6 +15,10 @@ public class MrBet {
         this.apostas = new ArrayList<>();
     }
 
+    public ArrayList<Aposta> getApostas() {
+        return (ArrayList<Aposta>) apostas.clone();
+    }
+
     private Campeonato getCampeonato(String nome){
         Campeonato campeonato = null;
         for (Campeonato c: campeonatos) {
@@ -103,5 +107,13 @@ public class MrBet {
         }
         apostas.add(new Aposta(colocacao, valor, times.get(codigo), c));
         return "APOSTA REGISTRADA!";
+    }
+
+    public String recuperaStatusApostas() {
+        String saida = "Apostas:\n";
+        for (int i = 0; i < apostas.size(); i++) {
+            saida += i+1 + ". " + apostas.get(i).toString() + "\n";
+        }
+        return saida;
     }
 }

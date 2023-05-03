@@ -16,7 +16,7 @@ public class MainMisterBet {
     }
 
     private static String menu(Scanner scanner) {
-        System.out.println(
+        System.out.print(
                 "\n---\nMENU\n" +
                         "(M)Minha inclusão de times\n" +
                         "(R)Recuperar time\n" +
@@ -58,7 +58,7 @@ public class MainMisterBet {
     }
 
     private static void sai() {
-        System.out.println("\nPor hoje é só pessoal!");
+        System.out.print("\nPor hoje é só pessoal!");
         System.exit(0);
     }
 
@@ -70,12 +70,13 @@ public class MainMisterBet {
                 apostarTime(mrBet, scanner);
                 break;
             case "S":
-                statusApostas(mrBet, scanner);
+                statusApostas(mrBet);
                 break;
         }
     }
 
-    private static void statusApostas(MrBet mrBet, Scanner scanner) {
+    private static void statusApostas(MrBet mrBet) {
+        System.out.print(mrBet.recuperaStatusApostas());
     }
 
     private static void apostarTime(MrBet mrBet, Scanner scanner) {
@@ -88,9 +89,9 @@ public class MainMisterBet {
         System.out.print("Valor: ");
         String valor = scanner.nextLine();
         try {
-            System.out.println(mrBet.apostaTime(codigo, campeonato, colocacao, valor));
+            System.out.print(mrBet.apostaTime(codigo, campeonato, colocacao, valor));
         }catch (NoSuchElementException | IllegalArgumentException e){
-            System.out.println(e.getMessage());
+            System.out.print(e.getMessage());
         }
     }
 
@@ -98,9 +99,9 @@ public class MainMisterBet {
         System.out.print("Time: ");
         String time = scanner.nextLine();
         try {
-            System.out.println(mrBet.recuperaCampeonatosTime(time));
+            System.out.print(mrBet.recuperaCampeonatosTime(time));
         }catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
+            System.out.print(e.getMessage());
         }
     }
 
@@ -123,9 +124,9 @@ public class MainMisterBet {
         System.out.print("Campeonato: ");
         String campeonato = scanner.nextLine();
         try{
-            System.out.println(mrBet.recuperaTimeCampeonato(campeonato, codigo));
+            System.out.print(mrBet.recuperaTimeCampeonato(campeonato, codigo));
         }catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
+            System.out.print(e.getMessage());
         }
 
     }
@@ -136,9 +137,9 @@ public class MainMisterBet {
         System.out.print("Campeonato: ");
         String campeonato = scanner.nextLine();
         try{
-            System.out.println(mrBet.cadastraTimeCampeonato(campeonato, codigo));
+            System.out.print(mrBet.cadastraTimeCampeonato(campeonato, codigo));
         }catch (IllegalArgumentException | NoSuchElementException | IllegalStateException e){
-            System.out.println(e.getMessage());
+            System.out.print(e.getMessage());
         }
     }
 
@@ -148,9 +149,9 @@ public class MainMisterBet {
         System.out.print("Participantes: ");
         int participantes = Integer.parseInt(scanner.nextLine());
         try{
-            System.out.println(mrBet.cadastraCampeonato(campeonato, participantes));
+            System.out.print(mrBet.cadastraCampeonato(campeonato, participantes));
         }catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
+            System.out.print(e.getMessage());
         }
     }
 
@@ -158,9 +159,9 @@ public class MainMisterBet {
         System.out.print("Código: ");
         String codigo = scanner.nextLine();
         try{
-            System.out.println(mrBet.recuperaTime(codigo));
+            System.out.print(mrBet.recuperaTime(codigo));
         }catch (IllegalArgumentException | NoSuchElementException e){
-            System.out.println(e.getMessage());
+            System.out.print(e.getMessage());
         }
     }
 
@@ -172,9 +173,9 @@ public class MainMisterBet {
         System.out.print("Mascote: ");
         String mascote = scanner.nextLine();
         try{
-            System.out.println(mrBet.cadastraTime(codigo, nome, mascote));
+            System.out.print(mrBet.cadastraTime(codigo, nome, mascote));
         }catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
+            System.out.print(e.getMessage());
         }
     }
 }

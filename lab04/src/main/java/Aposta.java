@@ -17,4 +17,11 @@ public class Aposta {
         this.campeonato = campeonato;
     }
 
+    @Override
+    public String toString() {
+        return time.toString() + "\n" +
+                campeonato.getNome() + "\n" +
+                colocacao + "/" + campeonato.getMaxTimes() +
+                "\nR$ " + valor;
+    }
 }
