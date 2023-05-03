@@ -20,10 +20,6 @@ public class SistemaMrBet {
         this.apostas = new ArrayList<>();
     }
 
-    public ArrayList<Aposta> getApostas() {
-        return (ArrayList<Aposta>) apostas.clone();
-    }
-
     private Campeonato getCampeonato(String nome){
         Campeonato campeonato = null;
         for (Campeonato c: campeonatos) {
@@ -157,7 +153,7 @@ public class SistemaMrBet {
                 frequentes.add(t);
             }
         }
-        if(frequentes.get(0).getId() == ""){
+        if(frequentes.get(0).getId().equals("")){
             frequentes.remove(0);
         }
         for (Time f : frequentes) {
