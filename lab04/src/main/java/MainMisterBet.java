@@ -1,6 +1,13 @@
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+/**
+ * Classe Main para interação do usuaŕio
+ * com o sistema Mr Bet
+ *
+ * @author eliane - 122110693
+ */
+
 public class MainMisterBet {
 
     public static void main(String[] args) {

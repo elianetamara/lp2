@@ -1,5 +1,8 @@
-import java.util.Locale;
-
+/**
+ * Classe para representação de um campeonato
+ *
+ * @author eliane - 122110693
+ */
 public class Campeonato {
 
     private String nome;
@@ -18,6 +21,13 @@ public class Campeonato {
         this.maxTimes = participantes;
     }
 
+    /**
+     * Verifica a partir do códgio do time se
+     * ele existe no campeonato
+     *
+     * @param codigo o código do time
+     * @return true se o time existir, false caso contrário
+     */
     public boolean existeTime(String codigo){
         for (Time t : times) {
             if (t != null && t.getId().equals(codigo)) {
@@ -27,6 +37,11 @@ public class Campeonato {
         return false;
     }
 
+    /**
+     * Adiciona um time ao campeonato
+     *
+     * @param time a ser adicionado
+     */
     public void adicionaTime(Time time){
         if(verificaLotacao()){
             throw new IllegalStateException("TODOS OS TIMES DESSE CAMPEONATO JÁ FORAM INCLUÍDOS!");
@@ -36,6 +51,11 @@ public class Campeonato {
         time.adicionaCampeonato(this);
     }
 
+    /**
+     * Verifica se o campeonato está cheio
+     *
+     * @return true caso estea cheio, false caso contrário
+     */
     private boolean verificaLotacao(){
         int qtdTimes = 0;
         for (Time c: times) {
@@ -72,5 +92,10 @@ public class Campeonato {
     @Override
     public int hashCode() {
         return getNome().hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "\n* " + getNome() + " - " + getIndiceTime() + "/" + getMaxTimes();
     }
 }

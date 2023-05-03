@@ -1,5 +1,10 @@
 import java.util.HashSet;
 
+/**
+ * Classe para representação de um time
+ *
+ * @author eliane - 122110693
+ */
 public class Time {
 
     private String id;
@@ -71,10 +76,15 @@ public class Time {
         campeonatos.add(c);
     }
 
+    /**
+     * Mostra campeonatos que o time participa
+     *
+     * @return String contendo os campeonatos
+     */
     public String pegaCampeonatos() {
         StringBuilder saida = new StringBuilder("Campeonatos do " + nome + ":");
         for (Campeonato c: campeonatos) {
-            saida.append("\n* " + c.getNome() + " - " + c.getIndiceTime() + "/" + c.getMaxTimes());
+            saida.append(c.toString());
         }
         return saida.toString();
     }

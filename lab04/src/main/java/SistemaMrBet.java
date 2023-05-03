@@ -3,6 +3,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.NoSuchElementException;
 
+/**
+ * Classe que representa o sistema de Mr Bet
+ *
+ * @author eliane - 122110693
+ */
 public class SistemaMrBet {
 
     private final HashMap<String, Time> times;

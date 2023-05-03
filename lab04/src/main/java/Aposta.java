@@ -1,5 +1,8 @@
-import java.util.ArrayList;
-
+/**
+ * Classe para representação de uma aposta
+ *
+ * @author eliane - 122110693
+ */
 public class Aposta {
 
     private int colocacao;
