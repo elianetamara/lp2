@@ -10,15 +10,26 @@ public class Time {
 
     private final HashSet<Campeonato> campeonatos;
 
+    private int qtdCampeonatos;
+
     public Time(String id, String nome, String mascote) {
         this.id = id;
         this.nome = nome;
         this.mascote = mascote;
         this.campeonatos = new HashSet<>();
+        this.qtdCampeonatos = 0;
     }
 
     public String getId() {
         return id;
+    }
+
+    public void increaseQtdCampeonatos(){
+        qtdCampeonatos++;
+    }
+
+    public int getQtdCampeonatos() {
+        return qtdCampeonatos;
     }
 
     @Override

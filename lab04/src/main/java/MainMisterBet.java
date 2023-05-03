@@ -24,6 +24,7 @@ public class MainMisterBet {
                         "(B)Bora incluir time em campeonato e Verificar se time está em campeonato\n" +
                         "(E)Exibir campeonatos que o time participa\n" +
                         "(T)Tentar a sorte e status\n" +
+                        "(H) Histórico\n" +
                         "(!)Já pode fechar o programa!\n" +
                         "Opção> ");
         return scanner.nextLine().toUpperCase();
@@ -49,6 +50,9 @@ public class MainMisterBet {
             case "T":
                 sorteOuStatus(mrBet, scanner);
                 break;
+            case "H":
+                historico(mrBet);
+                break;
             case "!":
                 sai();
                 break;
@@ -60,6 +64,15 @@ public class MainMisterBet {
     private static void sai() {
         System.out.print("\nPor hoje é só pessoal!");
         System.exit(0);
+    }
+
+    private static void historico(MrBet mrBet) {
+        System.out.println("Participação mais frequente em campeonatos");
+        //System.out.println(mrBet.recuperaMaxParticipacao());
+        System.out.println("Ainda não participou de campeonato");
+        System.out.println(mrBet.recuperaMinParticipacao());
+        System.out.println("Popularidade em apostas");
+        //System.out.println(mrBet.recuperaPopularidade());
     }
 
     private static void sorteOuStatus(MrBet mrBet, Scanner scanner) {
@@ -80,13 +93,13 @@ public class MainMisterBet {
     }
 
     private static void apostarTime(MrBet mrBet, Scanner scanner) {
-        System.out.print("Código: ");
+        System.out.println("Código: ");
         String codigo = scanner.nextLine();
-        System.out.print("Campeonato: ");
+        System.out.println("Campeonato: ");
         String campeonato = scanner.nextLine();
-        System.out.print("Colocação: ");
+        System.out.println("Colocação: ");
         int colocacao = Integer.parseInt(scanner.nextLine());
-        System.out.print("Valor: ");
+        System.out.println("Valor: ");
         String valor = scanner.nextLine();
         try {
             System.out.print(mrBet.apostaTime(codigo, campeonato, colocacao, valor));
@@ -96,7 +109,7 @@ public class MainMisterBet {
     }
 
     private static void exibeCampeonatosTime(MrBet mrBet, Scanner scanner) {
-        System.out.print("Time: ");
+        System.out.println("Time: ");
         String time = scanner.nextLine();
         try {
             System.out.print(mrBet.recuperaCampeonatosTime(time));
@@ -119,9 +132,9 @@ public class MainMisterBet {
     }
 
     private static void verificarTimeCampeonato(MrBet mrBet, Scanner scanner) {
-        System.out.print("Código: ");
+        System.out.println("Código: ");
         String codigo = scanner.nextLine();
-        System.out.print("Campeonato: ");
+        System.out.println("Campeonato: ");
         String campeonato = scanner.nextLine();
         try{
             System.out.print(mrBet.recuperaTimeCampeonato(campeonato, codigo));
@@ -132,9 +145,9 @@ public class MainMisterBet {
     }
 
     private static void incluirTimeCampeonato(MrBet mrBet, Scanner scanner) {
-        System.out.print("Código: ");
+        System.out.println("Código: ");
         String codigo = scanner.nextLine();
-        System.out.print("Campeonato: ");
+        System.out.println("Campeonato: ");
         String campeonato = scanner.nextLine();
         try{
             System.out.print(mrBet.cadastraTimeCampeonato(campeonato, codigo));
@@ -144,9 +157,9 @@ public class MainMisterBet {
     }
 
     private static void adicionaCampeonato(MrBet mrBet, Scanner scanner) {
-        System.out.print("Campeonato: ");
+        System.out.println("Campeonato: ");
         String campeonato = scanner.nextLine();
-        System.out.print("Participantes: ");
+        System.out.println("Participantes: ");
         int participantes = Integer.parseInt(scanner.nextLine());
         try{
             System.out.print(mrBet.cadastraCampeonato(campeonato, participantes));
@@ -156,7 +169,7 @@ public class MainMisterBet {
     }
 
     private static void recuperaTime(MrBet mrBet, Scanner scanner) {
-        System.out.print("Código: ");
+        System.out.println("Código: ");
         String codigo = scanner.nextLine();
         try{
             System.out.print(mrBet.recuperaTime(codigo));
@@ -166,11 +179,11 @@ public class MainMisterBet {
     }
 
     private static void incluirTime(MrBet mrBet, Scanner scanner) {
-        System.out.print("Código: ");
+        System.out.println("Código: ");
         String codigo = scanner.nextLine();
-        System.out.print("Nome: ");
+        System.out.println("Nome: ");
         String nome = scanner.nextLine();
-        System.out.print("Mascote: ");
+        System.out.println("Mascote: ");
         String mascote = scanner.nextLine();
         try{
             System.out.print(mrBet.cadastraTime(codigo, nome, mascote));

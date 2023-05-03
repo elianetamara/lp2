@@ -66,7 +66,9 @@ public class MrBet {
         if (c == null) {
             throw new NoSuchElementException("CAMPEONATO NÃO EXISTE!");
         }
-        c.adicionaTime(times.get(codigo));
+        Time time = times.get(codigo);
+        c.adicionaTime(time);
+        time.increaseQtdCampeonatos();
         return "TIME INCLUÍDO NO CAMPEONATO!";
     }
 
@@ -113,6 +115,16 @@ public class MrBet {
         String saida = "Apostas:\n";
         for (int i = 0; i < apostas.size(); i++) {
             saida += i+1 + ". " + apostas.get(i).toString() + "\n";
+        }
+        return saida;
+    }
+
+    public String recuperaMinParticipacao() {
+        String saida = "";
+        for (Time t: times.values()) {
+            if(t.getQtdCampeonatos() == 0){
+                saida += t.toString() + "\n";
+            }
         }
         return saida;
     }

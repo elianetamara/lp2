@@ -59,10 +59,6 @@ public class Campeonato {
         return maxTimes;
     }
 
-    public Time[] getTimes() {
-        return times.clone();
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
