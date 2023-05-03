@@ -17,6 +17,14 @@ public class Aposta {
         this.campeonato = campeonato;
     }
 
+    public int getColocacao() {
+        return colocacao;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
     @Override
     public String toString() {
         return time.toString() + "\n" +

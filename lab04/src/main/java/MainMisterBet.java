@@ -68,15 +68,15 @@ public class MainMisterBet {
 
     private static void historico(MrBet mrBet) {
         System.out.println("Participação mais frequente em campeonatos");
-        //System.out.println(mrBet.recuperaMaxParticipacao());
+        System.out.print(mrBet.recuperaMaxParticipacao());
         System.out.println("Ainda não participou de campeonato");
-        System.out.println(mrBet.recuperaMinParticipacao());
+        System.out.print(mrBet.recuperaMinParticipacao());
         System.out.println("Popularidade em apostas");
-        //System.out.println(mrBet.recuperaPopularidade());
+        System.out.print(mrBet.recuperaPopularidade());
     }
 
     private static void sorteOuStatus(MrBet mrBet, Scanner scanner) {
-        System.out.print("\n(A)Apostar ou (S)Status das Apostas? ");
+        System.out.println("\n(A)Apostar ou (S)Status das Apostas? ");
         String opcao = scanner.nextLine();
         switch (opcao.toUpperCase()) {
             case "A":
@@ -119,7 +119,7 @@ public class MainMisterBet {
     }
 
     private static void incluirOuVerificarTimeCamp(MrBet mrBet, Scanner scanner) {
-        System.out.print("\n(I) Incluir time em campeonato ou (V) Verificar se time está em campeonato? ");
+        System.out.println("\n(I) Incluir time em campeonato ou (V) Verificar se time está em campeonato? ");
         String opcao = scanner.nextLine();
         switch (opcao.toUpperCase()) {
             case "I":

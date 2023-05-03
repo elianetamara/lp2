@@ -108,6 +108,9 @@ public class MrBet {
             return "APOSTA NÃO REGISTRADA!";
         }
         apostas.add(new Aposta(colocacao, valor, times.get(codigo), c));
+        if(colocacao == 1){
+            times.get(codigo).increasePrimeiroLugar();
+        }
         return "APOSTA REGISTRADA!";
     }
 
@@ -120,11 +123,40 @@ public class MrBet {
     }
 
     public String recuperaMinParticipacao() {
-        String saida = "";
+        String saida = "\n";
         for (Time t: times.values()) {
             if(t.getQtdCampeonatos() == 0){
                 saida += t.toString() + "\n";
             }
+        }
+        return saida;
+    }
+
+    public String recuperaPopularidade() {
+        String saida = "\n";
+        for (Time t: times.values()) {
+            saida += t.getNome() + " / " + t.getQtdPrimeiroLugar() + "\n";
+        }
+        return saida;
+    }
+
+    public String recuperaMaxParticipacao() {
+        ArrayList<Time> frequentes = new ArrayList<>();
+        frequentes.add(new Time("", "", ""));
+        String saida = "\n";
+        for (Time t: times.values()) {
+            if(t.getQtdCampeonatos() > frequentes.get(0).getQtdCampeonatos()){
+                frequentes.remove(0);
+                frequentes.add(t);
+            } else if (t.getQtdCampeonatos() == frequentes.get(0).getQtdCampeonatos()) {
+                frequentes.add(t);
+            }
+        }
+        if(frequentes.get(0).getId() == ""){
+            frequentes.remove(0);
+        }
+        for (Time f : frequentes) {
+            saida += f.toString() + " / " + f.getQtdCampeonatos() + "\n";
         }
         return saida;
     }

@@ -12,24 +12,39 @@ public class Time {
 
     private int qtdCampeonatos;
 
+    private int qtdPrimeiroLugar;
+
     public Time(String id, String nome, String mascote) {
         this.id = id;
         this.nome = nome;
         this.mascote = mascote;
         this.campeonatos = new HashSet<>();
         this.qtdCampeonatos = 0;
+        this.qtdPrimeiroLugar = 0;
     }
 
     public String getId() {
         return id;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
     public void increaseQtdCampeonatos(){
         qtdCampeonatos++;
     }
 
+    public void increasePrimeiroLugar(){
+        qtdPrimeiroLugar++;
+    }
+
     public int getQtdCampeonatos() {
         return qtdCampeonatos;
+    }
+
+    public int getQtdPrimeiroLugar() {
+        return qtdPrimeiroLugar;
     }
 
     @Override
