@@ -30,6 +30,13 @@ public class SistemaMrBet {
         return campeonato;
     }
 
+    /**
+     * Cadastra um time contendo código, nome e mascote
+     * @param codigo o codigo do time
+     * @param nome o nome do time
+     * @param mascote o mascote do time
+     * @return mensagem de sucesso do cadastro
+     */
     public String cadastraTime(String codigo, String nome, String mascote) {
         if (codigo == null || codigo.isBlank()) {
             throw new IllegalArgumentException("CÓDIGO OBRIGATÓRIO");
@@ -41,6 +48,11 @@ public class SistemaMrBet {
         return "INCLUSÃO REALIZADA!";
     }
 
+    /**
+     * Busca time pelo seu código identificador
+     * @param codigo o codigo a ser pesquisado
+     * @return string com as informações do time
+     */
     public String recuperaTime(String codigo) {
         if(!times.containsKey(codigo)){
             throw new NoSuchElementException("TIME NÃO EXISTE!");
@@ -48,6 +60,12 @@ public class SistemaMrBet {
         return times.get(codigo).toString();
     }
 
+    /**
+     * Cadastra um campeonato com nome e o número de participantes
+     * @param campeonato o nome do campeonato
+     * @param participantes o número de participantes
+     * @return mensagem de sucesso do cadastro
+     */
     public String cadastraCampeonato(String campeonato, int participantes) {
         if (campeonato == null || campeonato.isBlank()) {
             throw new IllegalArgumentException("NOME OBRIGATÓRIO");
@@ -59,6 +77,12 @@ public class SistemaMrBet {
         return "CAMPEONATO ADICIONADO!";
     }
 
+    /**
+     * Cadastra um time no campeonato
+     * @param campeonato nome do campeonato
+     * @param codigo o codigo do time a ser adicionado
+     * @return mensagem de sucesso do cadastro
+     */
     public String cadastraTimeCampeonato(String campeonato, String codigo) {
         if(!times.containsKey(codigo)){
             throw new NoSuchElementException("TIME NÃO EXISTE!");
@@ -73,6 +97,12 @@ public class SistemaMrBet {
         return "TIME INCLUÍDO NO CAMPEONATO!";
     }
 
+    /**
+     * Verifica se o time no campeonato pelo seu código
+     * @param campeonato nome do campeonato
+     * @param codigo o codigo do time a ser adicionado
+     * @return mensagem de sucesso do cadastro
+     */
     public String recuperaTimeCampeonato(String campeonato, String codigo) {
         if(!times.containsKey(codigo)){
             throw new NoSuchElementException("TIME NÃO EXISTE!");
@@ -87,6 +117,11 @@ public class SistemaMrBet {
         return "O TIME NÃO ESTÁ NO CAMPEONATO!";
     }
 
+    /**
+     * Busca campeonatos que o time participa
+     * @param time o código do time
+     * @return string com as informações dos campeonatos do time
+     */
     public String recuperaCampeonatosTime(String time) {
         if(!times.containsKey(time)){
             throw new NoSuchElementException("TIME NÃO EXISTE!");
@@ -94,6 +129,14 @@ public class SistemaMrBet {
         return times.get(time).pegaCampeonatos();
     }
 
+    /**
+     * Cadastra uma aposta
+     * @param codigo o código do time
+     * @param campeonato nome do campeonato
+     * @param colocacao suposta posição do time no campeonato
+     * @param valor valor da aposta
+     * @return mensagem de sucesso do cadastro
+     */
     public String apostaTime(String codigo, String campeonato, int colocacao, String valor) {
         if(!times.containsKey(codigo)){
             throw new NoSuchElementException("TIME NÃO EXISTE!");
@@ -115,6 +158,10 @@ public class SistemaMrBet {
         return "APOSTA REGISTRADA!";
     }
 
+    /**
+     * Mostra informações gerais sobre as apostas cadastradas
+     * @return string com as informações gerais
+     */
     public String recuperaStatusApostas() {
         String saida = "Apostas:\n";
         for (int i = 0; i < apostas.size(); i++) {
@@ -123,6 +170,10 @@ public class SistemaMrBet {
         return saida;
     }
 
+    /**
+     * Mostra times que não estão em campeonato nenhum
+     * @return string contendo os times
+     */
     public String recuperaMinParticipacao() {
         String saida = "\n";
         for (Time t: times.values()) {
@@ -133,6 +184,10 @@ public class SistemaMrBet {
         return saida;
     }
 
+    /**
+     * Mostra times que tiveram apostas onde a colocação na aposta é igual a 1
+     * @return string contendo os times e a popularidade
+     */
     public String recuperaPopularidade() {
         String saida = "\n";
         for (Time t: times.values()) {
@@ -141,10 +196,22 @@ public class SistemaMrBet {
         return saida;
     }
 
+    /**
+     * Mostra times que tiveram o maior número de participação em campeonatos
+     * @return string contendo os times e a participação
+     */
     public String recuperaMaxParticipacao() {
+        String saida = "\n";
+        ArrayList<Time> frequentes = maxParticipacao();
+        for (Time f : frequentes) {
+            saida += f.toString() + " / " + f.getQtdCampeonatos() + "\n";
+        }
+        return saida;
+    }
+
+    private ArrayList<Time> maxParticipacao(){
         ArrayList<Time> frequentes = new ArrayList<>();
         frequentes.add(new Time("", "", ""));
-        String saida = "\n";
         for (Time t: times.values()) {
             if(t.getQtdCampeonatos() > frequentes.get(0).getQtdCampeonatos()){
                 frequentes.remove(0);
@@ -156,9 +223,6 @@ public class SistemaMrBet {
         if(frequentes.get(0).getId().equals("")){
             frequentes.remove(0);
         }
-        for (Time f : frequentes) {
-            saida += f.toString() + " / " + f.getQtdCampeonatos() + "\n";
-        }
-        return saida;
+        return frequentes;
     }
 }
