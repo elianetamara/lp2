@@ -22,7 +22,7 @@ public class Campeonato {
     }
 
     /**
-     * Verifica a partir do códgio do time se
+     * Verifica a partir do código do time se
      * ele existe no campeonato
      *
      * @param codigo o código do time
