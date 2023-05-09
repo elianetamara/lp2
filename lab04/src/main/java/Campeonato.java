@@ -46,9 +46,11 @@ public class Campeonato {
         if(verificaLotacao()){
             throw new IllegalStateException("TODOS OS TIMES DESSE CAMPEONATO JÁ FORAM INCLUÍDOS!");
         }
-        times[indiceTime] = time;
-        indiceTime++;
-        time.adicionaCampeonato(this);
+        if(!existeTime(time.getId())){
+            times[indiceTime] = time;
+            indiceTime++;
+            time.adicionaCampeonato(this);
+        }
     }
 
     /**
