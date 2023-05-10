@@ -1,7 +1,7 @@
-package tests;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import src.Campeonato;
+import src.Time;
 
 import static org.junit.jupiter.api.Assertions.*;
 

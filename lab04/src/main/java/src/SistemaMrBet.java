@@ -1,3 +1,5 @@
+package src;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -93,6 +95,7 @@ public class SistemaMrBet {
         }
         Time time = times.get(codigo);
         c.adicionaTime(time);
+        time.adicionaCampeonato(c);
         time.increaseQtdCampeonatos();
         return "TIME INCLUÍDO NO CAMPEONATO!";
     }
@@ -175,11 +178,14 @@ public class SistemaMrBet {
      * @return string contendo os times
      */
     public String recuperaMinParticipacao() {
-        String saida = "\n";
+        String saida = "";
         for (Time t: times.values()) {
             if(t.getQtdCampeonatos() == 0){
-                saida += t.toString() + "\n";
+                saida += t + "\n";
             }
+        }
+        if(saida.equals("")){
+            saida += "\n";
         }
         return saida;
     }
@@ -189,9 +195,14 @@ public class SistemaMrBet {
      * @return string contendo os times e a popularidade
      */
     public String recuperaPopularidade() {
-        String saida = "\n";
+        String saida = "";
         for (Time t: times.values()) {
-            saida += t.getNome() + " / " + t.getQtdPrimeiroLugar() + "\n";
+            if(t.getQtdPrimeiroLugar() > 0) {
+                saida += t.getNome() + " / " + t.getQtdPrimeiroLugar() + "\n";
+            }
+        }
+        if(saida.equals("")){
+            saida += "\n";
         }
         return saida;
     }
@@ -201,10 +212,13 @@ public class SistemaMrBet {
      * @return string contendo os times e a participação
      */
     public String recuperaMaxParticipacao() {
-        String saida = "\n";
+        String saida = "";
         ArrayList<Time> frequentes = maxParticipacao();
         for (Time f : frequentes) {
             saida += f.toString() + " / " + f.getQtdCampeonatos() + "\n";
+        }
+        if(frequentes.size() == 0){
+            saida += "\n";
         }
         return saida;
     }
@@ -213,10 +227,10 @@ public class SistemaMrBet {
         ArrayList<Time> frequentes = new ArrayList<>();
         frequentes.add(new Time("", "", ""));
         for (Time t: times.values()) {
-            if(t.getQtdCampeonatos() > frequentes.get(0).getQtdCampeonatos()){
+            if(t.getQtdCampeonatos() > frequentes.get(0).getQtdCampeonatos() && t.getQtdCampeonatos() != 0){
                 frequentes.remove(0);
                 frequentes.add(t);
-            } else if (t.getQtdCampeonatos() == frequentes.get(0).getQtdCampeonatos()) {
+            } else if (t.getQtdCampeonatos() == frequentes.get(0).getQtdCampeonatos() && t.getQtdCampeonatos() != 0) {
                 frequentes.add(t);
             }
         }

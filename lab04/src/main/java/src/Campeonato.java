@@ -1,3 +1,5 @@
+package src;
+
 /**
  * Classe para representação de um campeonato
  *

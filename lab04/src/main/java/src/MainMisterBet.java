@@ -1,3 +1,5 @@
+package src;
+
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -77,7 +79,7 @@ public class MainMisterBet {
         System.out.println("Participação mais frequente em campeonatos");
         System.out.print(sistemaMrBet.recuperaMaxParticipacao());
         System.out.println("Ainda não participou de campeonato");
-        System.out.print(sistemaMrBet.recuperaMinParticipacao());
+        System.out.println(sistemaMrBet.recuperaMinParticipacao());
         System.out.println("Popularidade em apostas");
         System.out.print(sistemaMrBet.recuperaPopularidade());
     }
