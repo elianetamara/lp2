@@ -2,7 +2,7 @@ package documin;
 
 import documin.documento.DocumentoController;
 
-public class Facade implements FacadeInterface{
+public class Facade{
 
     private DocumentoController documentoController;
 
