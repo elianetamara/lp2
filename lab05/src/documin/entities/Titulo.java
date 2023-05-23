@@ -1,6 +1,6 @@
 package documin.entities;
 
-public class Titulo extends  Elemento{
+public class Titulo extends Elemento{
 
     private int nivel;
 

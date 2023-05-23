@@ -1,4 +1,4 @@
-package documin;
+package documin.system;
 
 import documin.documento.DocumentoController;
 
@@ -11,25 +11,23 @@ public class Facade{
     }
 
     public boolean criarDocumento(String titulo) {
-        // // exemplo de chamada a ser implementado
         return this.documentoController.criarDocumento(titulo);
-
     }
 
     public boolean criarDocumento(String titulo, int tamanhoMaximo) {
-        return false;
+        return this.documentoController.criarDocumento(titulo, tamanhoMaximo);
     }
 
     public void removerDocumento(String titulo) {
-
+        this.documentoController.removerDocumento(titulo);
     }
 
     public int contarElementos(String titulo) {
-        return 0;
+        return this.documentoController.contarElementos(titulo);
     }
 
     public String[] exibirDocumento(String titulo) {
-        return new String[0];
+        return this.documentoController.exibirDocumento(titulo);
     }
 
     public int criarTexto(String tituloDoc, String valor, int prioridade) {

@@ -23,6 +23,14 @@ public class Documento {
         this.elementos = new ArrayList<>(tamanho);
     }
 
+    public int contaElementos(){
+        return elementos.size();
+    }
+
+    public Elemento[] getElementosArray() {
+        return (Elemento[]) elementos.clone();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

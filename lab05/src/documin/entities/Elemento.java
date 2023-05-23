@@ -1,6 +1,6 @@
 package documin.entities;
 
-public abstract class Elemento {
+public class Elemento implements ElementoInterface{
 
     private int prioridade;
 
@@ -11,8 +11,13 @@ public abstract class Elemento {
         this.valor = valor;
     }
 
-    public abstract String representacaoCompleta();
+    @Override
+    public String representacaoCompleta() {
+        return valor;
+    }
 
-    public abstract String representacaoResumida();
-
+    @Override
+    public String representacaoResumida() {
+        return valor;
+    }
 }
