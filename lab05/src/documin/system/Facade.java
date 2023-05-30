@@ -42,11 +42,11 @@ public class Facade{
     }
 
     public int criarLista(String tituloDoc, String valorLista, int prioridade, String separador, String charLista) {
-        return 0;
+        return this.elementoController.criarLista(tituloDoc, valorLista, prioridade, separador, charLista);
     }
 
     public int criarTermos(String tituloDoc, String valorTermos, int prioridade, String separador, String ordem) {
-        return 0;
+        return this.elementoController.criarTermos(tituloDoc, valorTermos, prioridade, separador, ordem);
     }
 
     public String pegarRepresentacaoCompleta(String tituloDoc, int elementoPosicao) {
@@ -58,15 +58,13 @@ public class Facade{
     }
 
     public boolean apagarElemento(String tituloDoc, int elementoPosicao) {
-        return false;
+        return this.elementoController.apagarElemento(tituloDoc, elementoPosicao);
     }
 
     public void moverParaCima(String tituloDoc, int elementoPosicao) {
-
     }
 
     public void moverParaBaixo(String tituloDoc, int elementoPosicao) {
-
     }
 
     public int criarAtalho(String tituloDoc, String tituloDocReferenciado) {

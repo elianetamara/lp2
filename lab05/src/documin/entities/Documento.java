@@ -60,4 +60,16 @@ public class Documento {
         elementos.add(e);
         return elementos.indexOf(e);
     }
+
+    public int criarLista( String valorLista, int prioridade, String separador, String charLista) {
+        Elemento e = new Lista(prioridade, valorLista, charLista, separador);
+        elementos.add(e);
+        return elementos.indexOf(e);
+    }
+
+    public int criarTermos(String valorTermos, int prioridade, String separador, String ordem) {
+        Elemento e= new Termos(prioridade, valorTermos, ordem, separador);
+        elementos.add(e);
+        return elementos.indexOf(e);
+    }
 }

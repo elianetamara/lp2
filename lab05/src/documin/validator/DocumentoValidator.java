@@ -37,4 +37,12 @@ public class DocumentoValidator {
             return true;
         }
     }
+
+    public static boolean validaPosicaoLista(Documento doc, int posicao){
+        if(doc.getElementosArray()[posicao] == null){
+            throw new IllegalArgumentException("NÃO EXISTE ELEMENTO NA POSIÇÃO");
+        }else{
+            return true;
+        }
+    }
 }
