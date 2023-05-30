@@ -1,8 +1,10 @@
-package documin.documento;
+package documin.controller;
+
+import documin.entities.*;
 
 import java.util.HashMap;
 
-import static documin.documento.DocumentoValidator.*;
+import static documin.validator.DocumentoValidator.*;
 
 public class DocumentoController {
 
@@ -10,6 +12,10 @@ public class DocumentoController {
 
     public DocumentoController() {
         documentos = new HashMap<>();
+    }
+
+    public Documento getDocumento(String tituloDoc){
+        return documentos.get(tituloDoc);
     }
 
     public boolean criarDocumento(String titulo) {

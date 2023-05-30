@@ -1,6 +1,4 @@
-package documin.documento;
-
-import documin.entities.Elemento;
+package documin.entities;
 
 import java.util.ArrayList;
 
@@ -15,6 +13,7 @@ public class Documento {
     public Documento(String titulo) {
         this.titulo = titulo;
         this.elementos = new ArrayList<>();
+        this.tamanho = 0;
     }
 
     public Documento(String titulo, int tamanho) {
@@ -31,6 +30,10 @@ public class Documento {
         return (Elemento[]) elementos.clone();
     }
 
+    public int getTamanho() {
+        return tamanho;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -44,5 +47,17 @@ public class Documento {
     @Override
     public int hashCode() {
         return titulo.hashCode();
+    }
+
+    public int criarTexto(String valor, int prioridade) {
+        Elemento e = new Texto(prioridade, valor);
+        elementos.add(e);
+        return elementos.indexOf(e);
+    }
+
+    public int criarTitulo(String valor, int prioridade, int nivel, boolean linkavel) {
+        Elemento e = new Titulo(nivel, linkavel, prioridade, valor);
+        elementos.add(e);
+        return elementos.indexOf(e);
     }
 }

@@ -1,4 +1,7 @@
-package documin.documento;
+package documin.validator;
+
+import documin.entities.Documento;
+import documin.entities.Lista;
 
 import java.util.HashMap;
 import java.util.NoSuchElementException;
@@ -22,6 +25,14 @@ public class DocumentoValidator {
     public static boolean validaTituloDocExistente(String titulo, HashMap<String, Documento> docs){
         if(!docs.containsKey(titulo)){
             throw new NoSuchElementException("ELEMENTO NÃO EXISTE");
+        }else{
+            return true;
+        }
+    }
+
+    public static boolean validaListaElemen(Documento doc){
+        if(doc.getTamanho() != 0 && doc.contaElementos() == doc.getTamanho()){
+            throw new ArrayIndexOutOfBoundsException("DOCUMENTO JÁ ESTÁ CHEIO");
         }else{
             return true;
         }

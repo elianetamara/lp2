@@ -1,10 +1,13 @@
 package documin.system;
 
-import documin.documento.DocumentoController;
+import documin.controller.DocumentoController;
+import documin.controller.ElementoController;
 
 public class Facade{
 
     private DocumentoController documentoController;
+
+    private ElementoController elementoController;
 
     public Facade() {
         this.documentoController = new DocumentoController();
@@ -31,11 +34,11 @@ public class Facade{
     }
 
     public int criarTexto(String tituloDoc, String valor, int prioridade) {
-        return 0;
+        return this.elementoController.criarTexto(tituloDoc, valor, prioridade);
     }
 
     public int criarTitulo(String tituloDoc, String valor, int prioridade, int nivel, boolean linkavel) {
-        return 0;
+        return this.elementoController.criarTitulo(tituloDoc, valor, prioridade, nivel, linkavel);
     }
 
     public int criarLista(String tituloDoc, String valorLista, int prioridade, String separador, String charLista) {
