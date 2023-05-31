@@ -14,14 +14,22 @@ public class DocumentoValidator {
         return true;
     }
 
-    public static boolean validaTituloDoc(String titulo){
+    public static void validaTitulo(String titulo, HashMap<String, Documento> docs){
+        if(titulo.isBlank()){
+            throw new IllegalArgumentException("TÍTULO INVÁLIDO");
+        }if(!docs.containsKey(titulo)){
+            throw new NoSuchElementException("DOCUMENTO NÃO EXISTE");
+        }
+    }
+
+    public static boolean validaTituloVazio(String titulo){
         if(titulo.isBlank()){
             throw new IllegalArgumentException("TÍTULO INVÁLIDO");
         }
         return true;
     }
 
-    public static boolean validaTituloDocExistente(String titulo, HashMap<String, Documento> docs){
+    public static boolean validaTituloVazioExistente(String titulo, HashMap<String, Documento> docs){
         if(!docs.containsKey(titulo)){
             throw new NoSuchElementException("DOCUMENTO NÃO EXISTE");
         }else{
@@ -29,7 +37,7 @@ public class DocumentoValidator {
         }
     }
 
-    public static boolean validaListaElemen(Documento doc){
+    public static boolean validaTamListaElemen(Documento doc){
         if(doc.getTamanho() != 0 && doc.contaElementos() == doc.getTamanho()){
             throw new ArrayIndexOutOfBoundsException("DOCUMENTO JÁ ESTÁ CHEIO");
         }else{

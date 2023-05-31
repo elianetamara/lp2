@@ -15,7 +15,7 @@ public class DocumentoController {
     }
 
     public Documento getDocumento(String tituloDoc){
-        validaTituloDocExistente(tituloDoc, getDocumentos());
+        validaTitulo(tituloDoc, getDocumentos());
         return documentos.get(tituloDoc);
     }
 
@@ -24,7 +24,7 @@ public class DocumentoController {
     }
 
     public boolean criarDocumento(String titulo) {
-        if(validaTituloDoc(titulo) && !validaTituloDocExistente(titulo, documentos)){
+        if(validaTituloVazio(titulo) && !validaTituloVazioExistente(titulo, documentos)){
             documentos.put(titulo ,new Documento(titulo));
             return true;
         }
@@ -32,7 +32,7 @@ public class DocumentoController {
     }
 
     public boolean criarDocumento(String titulo, int tamanhoMaximo) {
-        if(validaTituloDoc(titulo) && validaTamanhoDoc(tamanhoMaximo) && !validaTituloDocExistente(titulo, documentos)){
+        if(validaTituloVazio(titulo) && validaTamanhoDoc(tamanhoMaximo) && !validaTituloVazioExistente(titulo, documentos)){
             documentos.put(titulo, new Documento(titulo, tamanhoMaximo));
             return true;
         }
@@ -40,28 +40,23 @@ public class DocumentoController {
     }
     
     public void removerDocumento(String titulo) {
-        validaTituloDocExistente(titulo, documentos);
+        validaTitulo(titulo, documentos);
         documentos.remove(titulo);
     }
     
     public int contarElementos(String titulo){
-        int numElementos = 0;
-        if(validaTituloDoc(titulo) && validaTituloDocExistente(titulo, documentos)){
-            numElementos = documentos.get(titulo).contaElementos();
-        }
-        return numElementos;
+        validaTitulo(titulo, documentos);
+        return documentos.get(titulo).contaElementos();
     }
 
     public String[] exibirDocumento(String titulo){
-        Documento d;
-        String[] doc = new String[0];
-        if(validaTituloDoc(titulo) && validaTituloDocExistente(titulo, documentos)){
-           d = documentos.get(titulo);
-           doc = new String[d.contaElementos()];
-           for (int i = 0; i < d.contaElementos(); i++) {
-               doc[i] = d.getElementosArray()[i].toString();
-           }
+        validaTitulo(titulo, documentos);
+        Documento d = documentos.get(titulo);
+        String[] doc = new String[d.contaElementos()];
+        for (int i = 0; i < d.contaElementos(); i++) {
+            doc[i] = d.getElementosArray()[i].toString();
         }
+
         return doc;
     }
 
@@ -75,5 +70,13 @@ public class DocumentoController {
         docRef.setAtalho(true);
 
         return docRef.getElementos().indexOf(a);
+    }
+
+    public int criarVisaoCompleta(String tituloDoc) {
+        validaTitulo(tituloDoc, documentos);
+        Documento doc = documentos.get(tituloDoc);
+        String visao = doc.visaoCompleta();
+        doc.adicionaVisao(visao);
+        return doc.getVisoes().indexOf(visao);
     }
 }
