@@ -14,6 +14,12 @@ public class DocumentoValidator {
         return true;
     }
 
+    public static void validaPrioridade(int prioridade){
+        if(prioridade < 1 || prioridade > 5){
+            throw new IllegalArgumentException("PRIORIDADE FORA DO ESCOPO!");
+        }
+    }
+
     public static void validaTitulo(String titulo, HashMap<String, Documento> docs){
         if(titulo.isBlank()){
             throw new IllegalArgumentException("TÍTULO INVÁLIDO");
@@ -37,16 +43,20 @@ public class DocumentoValidator {
         }
     }
 
-    public static boolean validaDocumentoCheio(Documento doc){
-        if(doc.getTamanho() != 0 && doc.contaElementos() == doc.getTamanho()){
+    public static void validaDocumentoCheio(Documento doc){
+        if(doc.getTamanho() != 0 && doc.contaElementos() == doc.getTamanho()) {
             throw new ArrayIndexOutOfBoundsException("DOCUMENTO JÁ ESTÁ CHEIO");
-        }else{
-            return true;
         }
     }
 
     public static void validaPosicaoElemento(Documento doc, int posicao){
         if(doc.getElementosArray()[posicao] == null) {
+            throw new IllegalArgumentException("NÃO EXISTE ELEMENTO NA POSIÇÃO");
+        }
+    }
+
+    public static void validaPosicaoVisao(Documento doc, int posicao){
+        if(doc.getVisoesArray()[posicao] == null) {
             throw new IllegalArgumentException("NÃO EXISTE ELEMENTO NA POSIÇÃO");
         }
     }

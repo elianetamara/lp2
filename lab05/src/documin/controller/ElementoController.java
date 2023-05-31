@@ -17,41 +17,34 @@ public class ElementoController {
     public int criarTexto(String tituloDoc, String valor, int prioridade) {
         validaTitulo(tituloDoc, documentoController.getDocumentos());
         Documento doc = documentoController.getDocumento(tituloDoc);
-        if(validaDocumentoCheio(doc)){
-            return doc.criarTexto(valor, prioridade);
-        }else {
-            return 0;
-        }
+        validaPrioridade(prioridade);
+        validaDocumentoCheio(doc);
+        return doc.criarTexto(valor, prioridade);
+
     }
 
     public int criarTitulo(String tituloDoc, String valor, int prioridade, int nivel, boolean linkavel) {
         validaTitulo(tituloDoc, documentoController.getDocumentos());
         Documento doc = documentoController.getDocumento(tituloDoc);
-        if(validaDocumentoCheio(doc)){
-            return doc.criarTitulo(valor, prioridade, nivel, linkavel);
-        }else {
-            return 0;
-        }
+        validaPrioridade(prioridade);
+        validaDocumentoCheio(doc);
+        return doc.criarTitulo(valor, prioridade, nivel, linkavel);
     }
 
     public int criarLista(String tituloDoc, String valorLista, int prioridade, String separador, String charLista) {
         validaTitulo(tituloDoc, documentoController.getDocumentos());
         Documento doc = documentoController.getDocumento(tituloDoc);
-        if(validaDocumentoCheio(doc)){
-            return doc.criarLista(valorLista, prioridade, separador, charLista);
-        }else {
-            return 0;
-        }
+        validaPrioridade(prioridade);
+        validaDocumentoCheio(doc);
+        return doc.criarLista(valorLista, prioridade, separador, charLista);
     }
 
     public int criarTermos(String tituloDoc, String valorTermos, int prioridade, String separador, String ordem) {
         validaTitulo(tituloDoc, documentoController.getDocumentos());
         Documento doc = documentoController.getDocumento(tituloDoc);
-        if(validaDocumentoCheio(doc)){
-            return doc.criarTermos(valorTermos, prioridade, separador, ordem);
-        }else {
-            return 0;
-        }
+        validaPrioridade(prioridade);
+        validaDocumentoCheio(doc);
+        return doc.criarTermos(valorTermos, prioridade, separador, ordem);
     }
 
     public boolean apagarElemento(String tituloDoc, int elementoPosicao) {

@@ -30,29 +30,26 @@ public class Documento implements VisaoInterface{
         this.visoes = new ArrayList<>();
     }
 
-    public int contaElementos(){
-        return elementos.size();
-    }
-
     public Elemento[] getElementosArray() {
         return (Elemento[]) elementos.clone();
-    }
-
-    public int getTamanho() {
-        return tamanho;
     }
 
     public Elemento getElemento(int elementoPosicao) {
         return elementos.get(elementoPosicao);
     }
 
+    public ArrayList<Elemento> getElementos() {
+        return (ArrayList<Elemento>) elementos.clone();
+    }
+
     public ArrayList<String> getVisoes() {
         return (ArrayList<String>) visoes.clone();
     }
 
-    public ArrayList<Elemento> getElementos() {
-        return (ArrayList<Elemento>) elementos.clone();
+    public String[] getVisoesArray() {
+        return (String[]) visoes.clone();
     }
+
 
     public boolean isAtalho() {
         return atalho;
@@ -60,6 +57,14 @@ public class Documento implements VisaoInterface{
 
     public void setAtalho(boolean atalho) {
         this.atalho = atalho;
+    }
+
+    public int contaElementos(){
+        return elementos.size();
+    }
+
+    public int getTamanho() {
+        return tamanho;
     }
 
     @Override
@@ -160,7 +165,7 @@ public class Documento implements VisaoInterface{
     }
 
     @Override
-    public String visaoPrioritaria() {
+    public String visaoPrioritaria(int prioridade) {
         return null;
     }
 
