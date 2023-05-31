@@ -6,9 +6,18 @@ public class Elemento implements ElementoInterface{
 
     private String valor;
 
+    private boolean ehTitulo;
+
     public Elemento(int prioridade, String valor) {
         this.prioridade = prioridade;
         this.valor = valor;
+        this.ehTitulo = false;
+    }
+
+    public Elemento(int prioridade, String valor, boolean ehTitulo) {
+        this.prioridade = prioridade;
+        this.valor = valor;
+        this.ehTitulo = ehTitulo;
     }
 
     public int getPrioridade() {
@@ -17,6 +26,10 @@ public class Elemento implements ElementoInterface{
 
     public String getValor() {
         return valor;
+    }
+
+    public boolean isEhTitulo() {
+        return ehTitulo;
     }
 
     @Override

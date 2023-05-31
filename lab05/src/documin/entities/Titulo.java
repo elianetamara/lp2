@@ -7,7 +7,7 @@ public class Titulo extends Elemento{
     private boolean linkavel;
 
     public Titulo(int nivel, boolean linkavel, int prioridade, String valor) {
-        super(prioridade, valor);
+        super(prioridade, valor, true);
         this.nivel = nivel;
         this.linkavel = linkavel;
     }

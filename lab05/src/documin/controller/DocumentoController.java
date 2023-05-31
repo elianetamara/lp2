@@ -87,4 +87,24 @@ public class DocumentoController {
         doc.adicionaVisao(visao);
         return doc.getVisoes().indexOf(visao);
     }
+
+    public int criarVisaoPrioritaria(String tituloDoc, int prioridade) {
+        validaTitulo(tituloDoc, documentos);
+        Documento doc = documentos.get(tituloDoc);
+        String visao = doc.visaoPrioritaria(prioridade);
+        doc.adicionaVisao(visao);
+        return doc.getVisoes().indexOf(visao);
+    }
+
+    public int criarVisaoTitulo(String tituloDoc) {
+        validaTitulo(tituloDoc, documentos);
+        Documento doc = documentos.get(tituloDoc);
+        String visao = doc.visaoTitulo();
+        doc.adicionaVisao(visao);
+        return doc.getVisoes().indexOf(visao);
+    }
+
+    public String[] exibirVisao(int visaoId) {
+        return new String[0];
+    }
 }

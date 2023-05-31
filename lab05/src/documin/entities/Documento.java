@@ -2,6 +2,7 @@ package documin.entities;
 
 import java.util.ArrayList;
 
+import static documin.validator.DocumentoValidator.*;
 import static java.lang.Math.ceil;
 
 public class Documento implements VisaoInterface{
@@ -166,12 +167,25 @@ public class Documento implements VisaoInterface{
 
     @Override
     public String visaoPrioritaria(int prioridade) {
-        return null;
+        validaPrioridade(prioridade);
+        String visao = "";
+        for (Elemento e: getElementos()) {
+            if(e.getPrioridade() >= prioridade){
+                visao += e.representacaoCompleta() + "\n";
+            }
+        }
+        return visao;
     }
 
     @Override
     public String visaoTitulo() {
-        return null;
+        String visao = "";
+        for (Elemento e: getElementos()) {
+            if(e.isEhTitulo()){
+                visao += e.representacaoResumida() + "\n";
+            }
+        }
+        return visao;
     }
 
 }

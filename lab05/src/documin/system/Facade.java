@@ -83,15 +83,15 @@ public class Facade{
     }
 
     public int criarVisaoPrioritaria(String tituloDoc, int prioridade) {
-        return 0;
+        return this.documentoController.criarVisaoPrioritaria(tituloDoc, prioridade);
     }
 
     public int criarVisaoTitulo(String tituloDoc) {
-        return 0;
+        return this.documentoController.criarVisaoTitulo(tituloDoc);
     }
 
     public String[] exibirVisao(int visaoId) {
-        return new String[0];
+        return this.documentoController.exibirVisao(visaoId);
     }
 
 }

@@ -6,7 +6,7 @@ public interface VisaoInterface {
 
     String visaoResumida();
     
-    String visaoPrioritaria();
+    String visaoPrioritaria(int prioridade);
 
     String visaoTitulo();
 }
