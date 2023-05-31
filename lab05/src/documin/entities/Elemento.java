@@ -11,6 +11,14 @@ public class Elemento implements ElementoInterface{
         this.valor = valor;
     }
 
+    public int getPrioridade() {
+        return prioridade;
+    }
+
+    public String getValor() {
+        return valor;
+    }
+
     @Override
     public String representacaoCompleta() {
         return valor;

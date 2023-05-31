@@ -68,8 +68,31 @@ public class Documento {
     }
 
     public int criarTermos(String valorTermos, int prioridade, String separador, String ordem) {
-        Elemento e= new Termos(prioridade, valorTermos, ordem, separador);
+        Elemento e = new Termos(prioridade, valorTermos, ordem, separador);
         elementos.add(e);
         return elementos.indexOf(e);
+    }
+
+    public boolean excluirElemento(int elementoPosicao) {
+        elementos.remove(elementoPosicao);
+        return true;
+    }
+
+    public void moverParaCima(int elementoPosicao) {
+        if(elementoPosicao != 0){
+            Elemento e = elementos.get(elementoPosicao);
+            Elemento e1 = elementos.get(elementoPosicao-1);
+            elementos.set(elementoPosicao-1, e);
+            elementos.set(elementoPosicao, e1);
+        }
+    }
+
+    public void moverParaBaixo(int elementoPosicao) {
+        if(elementoPosicao != contaElementos()){
+            Elemento e = elementos.get(elementoPosicao);
+            Elemento e1 = elementos.get(elementoPosicao+1);
+            elementos.set(elementoPosicao+1, e);
+            elementos.set(elementoPosicao, e1);
+        }
     }
 }

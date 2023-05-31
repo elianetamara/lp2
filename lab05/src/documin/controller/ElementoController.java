@@ -49,6 +49,37 @@ public class ElementoController {
     }
 
     public boolean apagarElemento(String tituloDoc, int elementoPosicao) {
-        return false;
+        Documento doc = documentoController.getDocumento(tituloDoc);
+        if(validaPosicaoLista(doc, elementoPosicao)){
+            return doc.excluirElemento(elementoPosicao);
+        }else {
+            return false;
+        }
+    }
+
+    public void moverParaCima(String tituloDoc, int elementoPosicao) {
+        Documento doc = documentoController.getDocumento(tituloDoc);
+        if(validaPosicaoLista(doc, elementoPosicao)){
+            doc.moverParaCima(elementoPosicao);
+        }
+    }
+
+    public void moverParaBaixo(String tituloDoc, int elementoPosicao) {
+        Documento doc = documentoController.getDocumento(tituloDoc);
+        if(validaPosicaoLista(doc, elementoPosicao)){
+            doc.moverParaBaixo(elementoPosicao);
+        }
+    }
+
+    public String pegarRepresentacaoCompleta(String tituloDoc, int elementoPosicao) {
+        Documento doc = documentoController.getDocumento(tituloDoc);
+        if(validaPosicaoLista(doc, elementoPosicao)){
+
+        }
+        return tituloDoc;
+    }
+
+    public String pegarRepresentacaoResumida(String tituloDoc, int elementoPosicao) {
+        return tituloDoc;
     }
 }

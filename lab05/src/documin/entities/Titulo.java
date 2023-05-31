@@ -14,11 +14,14 @@ public class Titulo extends Elemento{
 
     @Override
     public String representacaoCompleta() {
-        return null;
+        if (linkavel){
+            return nivel +". " + getValor() + " - " + nivel+"-"+getValor().toUpperCase();
+        }
+        return representacaoResumida();
     }
 
     @Override
     public String representacaoResumida() {
-        return null;
+        return nivel +". " + getValor();
     }
 }

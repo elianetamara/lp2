@@ -50,11 +50,11 @@ public class Facade{
     }
 
     public String pegarRepresentacaoCompleta(String tituloDoc, int elementoPosicao) {
-        return null;
+        this.elementoController.pegarRepresentacaoCompleta(tituloDoc, elementoPosicao);
     }
 
-    public String pegarrepresentacaoResumida(String tituloDoc, int elementoPosicao) {
-        return null;
+    public String pegarRepresentacaoResumida(String tituloDoc, int elementoPosicao) {
+        this.elementoController.pegarRepresentacaoResumida(tituloDoc, elementoPosicao);
     }
 
     public boolean apagarElemento(String tituloDoc, int elementoPosicao) {
@@ -62,9 +62,11 @@ public class Facade{
     }
 
     public void moverParaCima(String tituloDoc, int elementoPosicao) {
+        this.elementoController.moverParaCima(tituloDoc, elementoPosicao);
     }
 
     public void moverParaBaixo(String tituloDoc, int elementoPosicao) {
+        this.elementoController.moverParaBaixo(tituloDoc, elementoPosicao);
     }
 
     public int criarAtalho(String tituloDoc, String tituloDocReferenciado) {
