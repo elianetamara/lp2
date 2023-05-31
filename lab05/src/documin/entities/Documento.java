@@ -2,6 +2,8 @@ package documin.entities;
 
 import java.util.ArrayList;
 
+import static java.lang.Math.ceil;
+
 public class Documento {
 
     private String titulo;
@@ -9,6 +11,8 @@ public class Documento {
     private int tamanho;
 
     private ArrayList<Elemento> elementos;
+
+    private boolean atalho;
 
     public Documento(String titulo) {
         this.titulo = titulo;
@@ -38,7 +42,17 @@ public class Documento {
         return elementos.get(elementoPosicao);
     }
 
+    public ArrayList<Elemento> getElementos() {
+        return (ArrayList<Elemento>) elementos.clone();
+    }
 
+    public boolean isAtalho() {
+        return atalho;
+    }
+
+    public void setAtalho(boolean atalho) {
+        this.atalho = atalho;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -79,6 +93,10 @@ public class Documento {
         return elementos.indexOf(e);
     }
 
+    public void adicionaElemento(Elemento e){
+        elementos.add(e);
+    }
+
     public boolean excluirElemento(int elementoPosicao) {
         elementos.remove(elementoPosicao);
         return true;
@@ -100,6 +118,15 @@ public class Documento {
             elementos.set(elementoPosicao+1, e);
             elementos.set(elementoPosicao, e1);
         }
+    }
+
+    public int calculaMediaPrioridade(){
+        int sumPrioridades = 0;
+        for (int i = 0; i < contaElementos(); i++) {
+            Elemento e = getElementos().get(i);
+            sumPrioridades += e.getPrioridade();
+        }
+        return (int) ceil(sumPrioridades / contaElementos());
     }
 
 }

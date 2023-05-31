@@ -53,7 +53,7 @@ public class DocumentoController {
     }
 
     public String[] exibirDocumento(String titulo){
-        Documento d = null;
+        Documento d;
         String[] doc = new String[0];
         if(validaTituloDoc(titulo) && validaTituloDocExistente(titulo, documentos)){
            d = documentos.get(titulo);
@@ -63,5 +63,17 @@ public class DocumentoController {
            }
         }
         return doc;
+    }
+
+    public int criarAtalho(String tituloDoc, String tituloDocReferenciado) {
+        hasAtalho(tituloDoc, tituloDocReferenciado, documentos);
+        Documento doc = documentos.get(tituloDoc);
+        Documento docRef = documentos.get(tituloDocReferenciado);
+        Atalho a = new Atalho(docRef.calculaMediaPrioridade(), tituloDocReferenciado, docRef.getElementos());
+        doc.adicionaElemento(a);
+        doc.setAtalho(true);
+        docRef.setAtalho(true);
+
+        return docRef.getElementos().indexOf(a);
     }
 }

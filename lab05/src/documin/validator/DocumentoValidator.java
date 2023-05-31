@@ -42,4 +42,23 @@ public class DocumentoValidator {
             throw new IllegalArgumentException("NÃO EXISTE ELEMENTO NA POSIÇÃO");
         }
     }
+
+    public static void hasAtalho(String tituloDoc, String tituloDocReferenciado, HashMap<String, Documento> docs){
+        if(validaTituloVazioExistente(tituloDoc, tituloDocReferenciado,  docs)){
+            if (docs.get(tituloDoc).isAtalho()) {
+                throw new IllegalStateException("JÁ POSSUI ATALHO");
+            }
+        }
+    }
+
+    private static boolean validaTituloVazioExistente(String tituloDoc, String tituloDocReferenciado, HashMap<String, Documento> docs){
+        if(tituloDoc.isBlank() || tituloDocReferenciado.isBlank()){
+            throw new IllegalArgumentException("UM DOS TÍTULOS INVÁLIDO");
+        }
+        if(!docs.containsKey(tituloDoc) || !docs.containsKey(tituloDocReferenciado)){
+            throw new NoSuchElementException("UM DOS DOCUMENTOS NÃO EXISTE");
+        }else{
+            return true;
+        }
+    }
 }

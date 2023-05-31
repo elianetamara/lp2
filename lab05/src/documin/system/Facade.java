@@ -71,7 +71,7 @@ public class Facade{
     }
 
     public int criarAtalho(String tituloDoc, String tituloDocReferenciado) {
-        return 0;
+        return this.documentoController.criarAtalho(tituloDoc, tituloDocReferenciado);
     }
 
     public int criarVisaoCompleta(String tituloDoc) {
