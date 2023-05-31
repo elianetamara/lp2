@@ -79,4 +79,12 @@ public class DocumentoController {
         doc.adicionaVisao(visao);
         return doc.getVisoes().indexOf(visao);
     }
+
+    public int criarVisaoResumida(String tituloDoc) {
+        validaTitulo(tituloDoc, documentos);
+        Documento doc = documentos.get(tituloDoc);
+        String visao = doc.visaoResumida();
+        doc.adicionaVisao(visao);
+        return doc.getVisoes().indexOf(visao);
+    }
 }

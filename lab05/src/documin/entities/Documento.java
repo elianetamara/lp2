@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import static java.lang.Math.ceil;
 
-public class Documento {
+public class Documento implements VisaoInterface{
 
     private String titulo;
 
@@ -14,16 +14,20 @@ public class Documento {
 
     private boolean atalho;
 
+    private ArrayList<String> visoes;
+
     public Documento(String titulo) {
         this.titulo = titulo;
         this.elementos = new ArrayList<>();
         this.tamanho = 0;
+        this.visoes = new ArrayList<>();
     }
 
     public Documento(String titulo, int tamanho) {
         this.titulo = titulo;
         this.tamanho = tamanho;
         this.elementos = new ArrayList<>(tamanho);
+        this.visoes = new ArrayList<>();
     }
 
     public int contaElementos(){
@@ -40,6 +44,10 @@ public class Documento {
 
     public Elemento getElemento(int elementoPosicao) {
         return elementos.get(elementoPosicao);
+    }
+
+    public ArrayList<String> getVisoes() {
+        return (ArrayList<String>) visoes.clone();
     }
 
     public ArrayList<Elemento> getElementos() {
@@ -93,6 +101,10 @@ public class Documento {
         return elementos.indexOf(e);
     }
 
+    public void adicionaVisao(String v){
+        visoes.add(v);
+    }
+
     public void adicionaElemento(Elemento e){
         elementos.add(e);
     }
@@ -127,6 +139,34 @@ public class Documento {
             sumPrioridades += e.getPrioridade();
         }
         return (int) ceil(sumPrioridades / contaElementos());
+    }
+
+    @Override
+    public String visaoCompleta() {
+        String visao = "";
+        for (Elemento e: getElementos()) {
+            visao += e.representacaoCompleta() + "\n";
+        }
+        return visao;
+    }
+
+    @Override
+    public String visaoResumida() {
+        String visao = "";
+        for (Elemento e: getElementos()) {
+            visao += e.representacaoResumida() + "\n";
+        }
+        return visao;
+    }
+
+    @Override
+    public String visaoPrioritaria() {
+        return null;
+    }
+
+    @Override
+    public String visaoTitulo() {
+        return null;
     }
 
 }

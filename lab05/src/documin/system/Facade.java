@@ -75,11 +75,11 @@ public class Facade{
     }
 
     public int criarVisaoCompleta(String tituloDoc) {
-        return 0;
+        return this.documentoController.criarVisaoCompleta(tituloDoc);
     }
 
     public int criarVisaoResumida(String tituloDoc) {
-        return 0;
+        return this.documentoController.criarVisaoResumida(tituloDoc);
     }
 
     public int criarVisaoPrioritaria(String tituloDoc, int prioridade) {
