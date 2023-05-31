@@ -12,10 +12,18 @@ public class Titulo extends Elemento{
         this.linkavel = linkavel;
     }
 
+    public int getNivel() {
+        return nivel;
+    }
+
+    public boolean isLinkavel() {
+        return linkavel;
+    }
+
     @Override
     public String representacaoCompleta() {
-        if (linkavel){
-            return nivel +". " + getValor() + " - " + nivel+"-"+getValor().toUpperCase();
+        if (isLinkavel()){
+            return getNivel() +". " + getValor() + " - " + getNivel() + "-" + getValor().toUpperCase();
         }
         return representacaoResumida();
     }

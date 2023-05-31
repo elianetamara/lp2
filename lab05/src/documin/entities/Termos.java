@@ -1,5 +1,7 @@
 package documin.entities;
 
+import java.util.*;
+
 public class Termos extends Elemento{
 
     private String separador;
@@ -12,13 +14,49 @@ public class Termos extends Elemento{
         this.separador = separador;
     }
 
+    private List<String> sortTermos() {
+        List<String> termos = Arrays.asList(getValor().split(getSeparador()));
+        if (this.getOrdem().equals("ALFABETICA")) {
+            termos.sort(String::compareToIgnoreCase);
+        } else if (this.getOrdem().equals("TAMANHO")) {
+            termos.sort(Comparator.comparingInt(String::length));
+        }
+        return termos;
+    }
+
+    public String getOrdem() {
+        return ordem;
+    }
+
+    public String getSeparador() {
+        return separador;
+    }
+
     @Override
     public String representacaoCompleta() {
-        return null;
+        List<String> termos = sortTermos();
+        String representacao = "";
+        for (int i = 0; i < termos.size(); i++) {
+            if(i == termos.size()-1){
+                representacao += termos.get(i);
+            }else{
+                representacao += termos.get(i) + ", ";
+            }
+        }
+        return "Total termos: " + termos.size()+ "\n" + representacao;
     }
 
     @Override
     public String representacaoResumida() {
-        return null;
+        List<String> termos = sortTermos();
+        String representacao = "";
+        for (int i = 0; i < termos.size(); i++) {
+            if(i == termos.size()-1){
+                representacao += termos.get(i);
+            }else{
+                representacao += termos.get(i) + getSeparador();
+            }
+        }
+        return representacao;
     }
 }

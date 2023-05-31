@@ -21,11 +21,11 @@ public class Elemento implements ElementoInterface{
 
     @Override
     public String representacaoCompleta() {
-        return valor;
+        return getValor();
     }
 
     @Override
     public String representacaoResumida() {
-        return valor;
+        return getValor();
     }
 }

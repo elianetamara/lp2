@@ -12,14 +12,27 @@ public class Lista extends Elemento{
         this.separador = separador;
     }
 
+    public String getSeparador() {
+        return separador;
+    }
+
+    public String getCaractere() {
+        return caractere;
+    }
+
     @Override
     public String representacaoCompleta() {
-        return null;
+        String[] elemen = getValor().split(getSeparador());
+        String representacao = null;
+        for (String e: elemen) {
+            representacao += getCaractere() + " " + e + "\n";
+        }
+        return representacao;
     }
 
     @Override
     public String representacaoResumida() {
-        return null;
+        return super.representacaoResumida();
     }
 
 }

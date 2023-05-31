@@ -15,7 +15,12 @@ public class DocumentoController {
     }
 
     public Documento getDocumento(String tituloDoc){
+        validaTituloDocExistente(tituloDoc, getDocumentos());
         return documentos.get(tituloDoc);
+    }
+
+    public HashMap<String, Documento> getDocumentos() {
+        return documentos;
     }
 
     public boolean criarDocumento(String titulo) {
@@ -35,9 +40,8 @@ public class DocumentoController {
     }
     
     public void removerDocumento(String titulo) {
-        if(validaTituloDocExistente(titulo, documentos)){
-            documentos.remove(titulo);
-        }
+        validaTituloDocExistente(titulo, documentos);
+        documentos.remove(titulo);
     }
     
     public int contarElementos(String titulo){

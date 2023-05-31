@@ -1,6 +1,8 @@
 package documin.controller;
 
 import documin.entities.Documento;
+import documin.entities.Elemento;
+
 import static documin.validator.DocumentoValidator.*;
 
 
@@ -8,7 +10,7 @@ public class ElementoController {
 
     private DocumentoController documentoController;
 
-    ElementoController() {
+    public ElementoController() {
         documentoController = new DocumentoController();
     }
 
@@ -50,36 +52,33 @@ public class ElementoController {
 
     public boolean apagarElemento(String tituloDoc, int elementoPosicao) {
         Documento doc = documentoController.getDocumento(tituloDoc);
-        if(validaPosicaoLista(doc, elementoPosicao)){
-            return doc.excluirElemento(elementoPosicao);
-        }else {
-            return false;
-        }
+        validaPosicaoLista(doc, elementoPosicao);
+        return doc.excluirElemento(elementoPosicao);
     }
 
     public void moverParaCima(String tituloDoc, int elementoPosicao) {
         Documento doc = documentoController.getDocumento(tituloDoc);
-        if(validaPosicaoLista(doc, elementoPosicao)){
-            doc.moverParaCima(elementoPosicao);
-        }
+        validaPosicaoLista(doc, elementoPosicao);
+        doc.moverParaCima(elementoPosicao);
     }
 
     public void moverParaBaixo(String tituloDoc, int elementoPosicao) {
         Documento doc = documentoController.getDocumento(tituloDoc);
-        if(validaPosicaoLista(doc, elementoPosicao)){
-            doc.moverParaBaixo(elementoPosicao);
-        }
+        validaPosicaoLista(doc, elementoPosicao);
+        doc.moverParaBaixo(elementoPosicao);
     }
 
     public String pegarRepresentacaoCompleta(String tituloDoc, int elementoPosicao) {
         Documento doc = documentoController.getDocumento(tituloDoc);
-        if(validaPosicaoLista(doc, elementoPosicao)){
-
-        }
-        return tituloDoc;
+        Elemento e =  doc.getElemento(elementoPosicao);
+        validaPosicaoLista(doc, elementoPosicao);
+        return e.representacaoCompleta();
     }
 
     public String pegarRepresentacaoResumida(String tituloDoc, int elementoPosicao) {
-        return tituloDoc;
+        Documento doc = documentoController.getDocumento(tituloDoc);
+        Elemento e =  doc.getElemento(elementoPosicao);
+        validaPosicaoLista(doc, elementoPosicao);
+        return e.representacaoResumida();
     }
 }

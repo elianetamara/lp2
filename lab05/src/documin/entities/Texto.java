@@ -6,4 +6,13 @@ public class Texto extends Elemento{
         super(prioridade, valor);
     }
 
+    @Override
+    public String representacaoCompleta() {
+        return super.representacaoCompleta();
+    }
+
+    @Override
+    public String representacaoResumida() {
+        return super.representacaoResumida();
+    }
 }

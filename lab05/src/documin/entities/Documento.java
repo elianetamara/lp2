@@ -34,6 +34,12 @@ public class Documento {
         return tamanho;
     }
 
+    public Elemento getElemento(int elementoPosicao) {
+        return elementos.get(elementoPosicao);
+    }
+
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -95,4 +101,5 @@ public class Documento {
             elementos.set(elementoPosicao, e1);
         }
     }
+
 }

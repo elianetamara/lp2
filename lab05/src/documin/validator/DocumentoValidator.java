@@ -1,7 +1,6 @@
 package documin.validator;
 
 import documin.entities.Documento;
-import documin.entities.Lista;
 
 import java.util.HashMap;
 import java.util.NoSuchElementException;
@@ -24,7 +23,7 @@ public class DocumentoValidator {
 
     public static boolean validaTituloDocExistente(String titulo, HashMap<String, Documento> docs){
         if(!docs.containsKey(titulo)){
-            throw new NoSuchElementException("ELEMENTO NÃO EXISTE");
+            throw new NoSuchElementException("DOCUMENTO NÃO EXISTE");
         }else{
             return true;
         }
@@ -38,11 +37,9 @@ public class DocumentoValidator {
         }
     }
 
-    public static boolean validaPosicaoLista(Documento doc, int posicao){
-        if(doc.getElementosArray()[posicao] == null){
+    public static void validaPosicaoLista(Documento doc, int posicao){
+        if(doc.getElementosArray()[posicao] == null) {
             throw new IllegalArgumentException("NÃO EXISTE ELEMENTO NA POSIÇÃO");
-        }else{
-            return true;
         }
     }
 }

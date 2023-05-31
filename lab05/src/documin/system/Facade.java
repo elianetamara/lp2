@@ -11,6 +11,7 @@ public class Facade{
 
     public Facade() {
         this.documentoController = new DocumentoController();
+        this.elementoController = new ElementoController();
     }
 
     public boolean criarDocumento(String titulo) {
@@ -50,11 +51,11 @@ public class Facade{
     }
 
     public String pegarRepresentacaoCompleta(String tituloDoc, int elementoPosicao) {
-        this.elementoController.pegarRepresentacaoCompleta(tituloDoc, elementoPosicao);
+        return this.elementoController.pegarRepresentacaoCompleta(tituloDoc, elementoPosicao);
     }
 
     public String pegarRepresentacaoResumida(String tituloDoc, int elementoPosicao) {
-        this.elementoController.pegarRepresentacaoResumida(tituloDoc, elementoPosicao);
+        return this.elementoController.pegarRepresentacaoResumida(tituloDoc, elementoPosicao);
     }
 
     public boolean apagarElemento(String tituloDoc, int elementoPosicao) {
