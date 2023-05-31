@@ -24,7 +24,7 @@ public class DocumentoController {
     }
 
     public boolean criarDocumento(String titulo) {
-        if(validaTituloVazio(titulo) && !validaTituloVazioExistente(titulo, documentos)){
+        if(validaTituloVazio(titulo) && !validaDocumentoInexistente(titulo, documentos)){
             documentos.put(titulo ,new Documento(titulo));
             return true;
         }
@@ -32,7 +32,7 @@ public class DocumentoController {
     }
 
     public boolean criarDocumento(String titulo, int tamanhoMaximo) {
-        if(validaTituloVazio(titulo) && validaTamanhoDoc(tamanhoMaximo) && !validaTituloVazioExistente(titulo, documentos)){
+        if(validaTituloVazio(titulo) && validaTamanhoDoc(tamanhoMaximo) && !validaDocumentoInexistente(titulo, documentos)){
             documentos.put(titulo, new Documento(titulo, tamanhoMaximo));
             return true;
         }

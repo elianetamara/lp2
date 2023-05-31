@@ -29,7 +29,7 @@ public class DocumentoValidator {
         return true;
     }
 
-    public static boolean validaTituloVazioExistente(String titulo, HashMap<String, Documento> docs){
+    public static boolean validaDocumentoInexistente(String titulo, HashMap<String, Documento> docs){
         if(!docs.containsKey(titulo)){
             throw new NoSuchElementException("DOCUMENTO NÃO EXISTE");
         }else{
@@ -37,7 +37,7 @@ public class DocumentoValidator {
         }
     }
 
-    public static boolean validaTamListaElemen(Documento doc){
+    public static boolean validaDocumentoCheio(Documento doc){
         if(doc.getTamanho() != 0 && doc.contaElementos() == doc.getTamanho()){
             throw new ArrayIndexOutOfBoundsException("DOCUMENTO JÁ ESTÁ CHEIO");
         }else{
@@ -45,21 +45,21 @@ public class DocumentoValidator {
         }
     }
 
-    public static void validaPosicaoLista(Documento doc, int posicao){
+    public static void validaPosicaoElemento(Documento doc, int posicao){
         if(doc.getElementosArray()[posicao] == null) {
             throw new IllegalArgumentException("NÃO EXISTE ELEMENTO NA POSIÇÃO");
         }
     }
 
     public static void hasAtalho(String tituloDoc, String tituloDocReferenciado, HashMap<String, Documento> docs){
-        if(validaTituloVazioExistente(tituloDoc, tituloDocReferenciado,  docs)){
+        if(validaTituloDocumentoInexistente(tituloDoc, tituloDocReferenciado,  docs)){
             if (docs.get(tituloDoc).isAtalho()) {
                 throw new IllegalStateException("JÁ POSSUI ATALHO");
             }
         }
     }
 
-    private static boolean validaTituloVazioExistente(String tituloDoc, String tituloDocReferenciado, HashMap<String, Documento> docs){
+    private static boolean validaTituloDocumentoInexistente(String tituloDoc, String tituloDocReferenciado, HashMap<String, Documento> docs){
         if(tituloDoc.isBlank() || tituloDocReferenciado.isBlank()){
             throw new IllegalArgumentException("UM DOS TÍTULOS INVÁLIDO");
         }
