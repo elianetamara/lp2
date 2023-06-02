@@ -5,6 +5,8 @@ import prova2.entities.Acao;
 
 import java.util.*;
 
+import static prova2.validator.Validator.verificaAcaoIgual;
+
 public class AcaoController {
 
     private HashMap<Integer, Acao> acoes;
@@ -17,22 +19,25 @@ public class AcaoController {
     }
 
     public void adicionaAcao(int indiceDesafio, String data, int codigo) throws IllegalAccessException {
-        Acao a = desafioController.adicionaAcao(indiceDesafio, data, codigo);
+        verificaAcaoIgual(acoes, codigo);
+        Acao a = new Acao(desafioController.getDesafioById(indiceDesafio), data, codigo);
         acoes.put(codigo, a);
     }
 
-    public void atualizaProgressoAcao(int codigo) throws IllegalAccessException {
+    public void atualizaProgressoAcao(int codigo){
         Acao a = acoes.get(codigo);
         a.setProgresso(10);
-        desafioController.findAndAtualizaDesafioByTitulo(a.getDesafio(), codigo);
-
+        if(a.atingiuMaxProgresso()){
+            desafioController.findAndAtualizaDesafioByTitulo(a.getDesafio());
+        }
     }
 
-    public void atualizaProgressoAcao(int codigo, int progresso) throws IllegalAccessException {
+    public void atualizaProgressoAcao(int codigo, int progresso){
         Acao a = acoes.get(codigo);
         a.setProgresso(progresso);
-        desafioController.findAndAtualizaDesafioByTitulo(a.getDesafio(), codigo, progresso);
-
+        if(a.atingiuMaxProgresso()){
+            desafioController.findAndAtualizaDesafioByTitulo(a.getDesafio());
+        }
     }
 
     public String listarAcaoOrdemProgresso(){

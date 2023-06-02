@@ -29,6 +29,14 @@ public class Acao {
         return desafio;
     }
 
+    public boolean atingiuMaxProgresso(){
+        if(getProgresso() >= 100){
+            setProgresso(100);
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

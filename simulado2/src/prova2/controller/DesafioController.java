@@ -32,24 +32,10 @@ public class DesafioController {
         return getDesafioById(indice).toString();
     }
 
-    public Acao adicionaAcao(int indiceDesafio, String data, int codigo) throws IllegalAccessException {
-        Desafio d = getDesafioById(indiceDesafio);
-        return d.adicionaAcao(data, codigo);
-    }
-
-    public void findAndAtualizaDesafioByTitulo(Desafio desafio, int codigo) throws IllegalAccessException {
+    public void findAndAtualizaDesafioByTitulo(Desafio desafio) {
         for (Desafio d: desafios) {
             if(d.equals(desafio)){
-                d.atualizaProgressoAcao(codigo);
-                break;
-            }
-        }
-    }
-
-    public void findAndAtualizaDesafioByTitulo(Desafio desafio, int codigo, int progresso) throws IllegalAccessException {
-        for (Desafio d: desafios) {
-            if(d.equals(desafio)){
-                d.atualizaProgressoAcao(codigo, progresso);
+                d.increaseQtdExecucoes();
                 break;
             }
         }
