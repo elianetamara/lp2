@@ -10,8 +10,11 @@ public class DocumentoController {
 
     private HashMap<String, Documento> documentos;
 
+    private VisaoController visaoController;
+
     public DocumentoController() {
         documentos = new HashMap<>();
+        visaoController = new VisaoController();
     }
 
     public Documento getDocumento(String tituloDoc){
@@ -75,36 +78,36 @@ public class DocumentoController {
     public int criarVisaoCompleta(String tituloDoc) {
         validaTitulo(tituloDoc, documentos);
         Documento doc = documentos.get(tituloDoc);
-        String visao = doc.visaoCompleta();
-        doc.adicionaVisao(visao);
-        return doc.getVisoes().indexOf(visao);
+        String[] visaoCompleta = visaoController.visaoCompleta(doc);
+        visaoController.adicionaVisao(visaoCompleta);
+        return visaoController.getVisoes().indexOf(visaoCompleta);
     }
 
     public int criarVisaoResumida(String tituloDoc) {
         validaTitulo(tituloDoc, documentos);
         Documento doc = documentos.get(tituloDoc);
-        String visao = doc.visaoResumida();
-        doc.adicionaVisao(visao);
-        return doc.getVisoes().indexOf(visao);
+        String[] visaoResumida = visaoController.visaoResumida(doc);
+        visaoController.adicionaVisao(visaoResumida);
+        return visaoController.getVisoes().indexOf(visaoResumida);
     }
 
     public int criarVisaoPrioritaria(String tituloDoc, int prioridade) {
         validaTitulo(tituloDoc, documentos);
         Documento doc = documentos.get(tituloDoc);
-        String visao = doc.visaoPrioritaria(prioridade);
-        doc.adicionaVisao(visao);
-        return doc.getVisoes().indexOf(visao);
+        String[] visaoPrioritaria = visaoController.visaoPrioritaria(prioridade, doc);
+        visaoController.adicionaVisao(visaoPrioritaria);
+        return visaoController.getVisoes().indexOf(visaoPrioritaria);
     }
 
     public int criarVisaoTitulo(String tituloDoc) {
         validaTitulo(tituloDoc, documentos);
         Documento doc = documentos.get(tituloDoc);
-        String visao = doc.visaoTitulo();
-        doc.adicionaVisao(visao);
-        return doc.getVisoes().indexOf(visao);
+        String[] visaoTitulo = visaoController.visaoTitulo(doc);
+        visaoController.adicionaVisao(visaoTitulo);
+        return visaoController.getVisoes().indexOf(visaoTitulo);
     }
 
     public String[] exibirVisao(int visaoId) {
-        return new String[0];
+        return visaoController.getVisaoById(visaoId);
     }
 }

@@ -33,6 +33,21 @@ public class Elemento implements ElementoInterface{
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Elemento elemento = (Elemento) o;
+
+        return valor.equals(elemento.valor);
+    }
+
+    @Override
+    public int hashCode() {
+        return valor.hashCode();
+    }
+
+    @Override
     public String representacaoCompleta() {
         return getValor();
     }

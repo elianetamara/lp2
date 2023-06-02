@@ -2,8 +2,7 @@ package documin.validator;
 
 import documin.entities.Documento;
 
-import java.util.HashMap;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class DocumentoValidator {
 
@@ -55,9 +54,9 @@ public class DocumentoValidator {
         }
     }
 
-    public static void validaPosicaoVisao(Documento doc, int posicao){
-        if(doc.getVisoesArray()[posicao] == null) {
-            throw new IllegalArgumentException("NÃO EXISTE ELEMENTO NA POSIÇÃO");
+    public static void validaPosicaoVisao(ArrayList visoes, int visaoId){
+        if(visoes.get(visaoId) == null) {
+            throw new IllegalArgumentException("NÃO EXISTE VISÃONA POSIÇÃO");
         }
     }
 

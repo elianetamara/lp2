@@ -2,11 +2,11 @@ package documin.entities;
 
 public interface VisaoInterface {
 
-    String visaoCompleta();
+    String[] visaoCompleta(Documento doc);
 
-    String visaoResumida();
+    String[] visaoResumida(Documento doc);
     
-    String visaoPrioritaria(int prioridade);
+    String[] visaoPrioritaria(int prioridade, Documento doc);
 
-    String visaoTitulo();
+    String[] visaoTitulo(Documento doc);
 }

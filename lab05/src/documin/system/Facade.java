@@ -1,7 +1,6 @@
 package documin.system;
 
-import documin.controller.DocumentoController;
-import documin.controller.ElementoController;
+import documin.controller.*;
 
 public class Facade{
 
