@@ -1,7 +1,6 @@
 package documin.controller;
 
 import documin.entities.Documento;
-import documin.entities.Elemento;
 
 import static documin.validator.DocumentoValidator.*;
 

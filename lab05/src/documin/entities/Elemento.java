@@ -1,6 +1,8 @@
 package documin.entities;
 
-public class Elemento implements ElementoInterface{
+import documin.interfaces.ElementoInterface;
+
+public class Elemento implements ElementoInterface {
 
     private int prioridade;
 

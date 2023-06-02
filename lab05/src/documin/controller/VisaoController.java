@@ -1,11 +1,11 @@
 package documin.controller;
 
 import documin.entities.*;
+import documin.interfaces.VisaoInterface;
 
 import java.util.ArrayList;
 
-import static documin.validator.DocumentoValidator.validaPosicaoVisao;
-import static documin.validator.DocumentoValidator.validaPrioridade;
+import static documin.validator.DocumentoValidator.*;
 
 public class VisaoController implements VisaoInterface {
 

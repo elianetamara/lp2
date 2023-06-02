@@ -1,15 +1,14 @@
 package documin.tests;
 
 import documin.system.Facade;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 
 class FacadeTest {
 
     private Facade facade;
     @BeforeEach
-    void FacadeTest() {
+    void setUp() {
         facade = new Facade();
     }
     @Test

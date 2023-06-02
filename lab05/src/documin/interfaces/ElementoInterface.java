@@ -1,4 +1,4 @@
-package documin.entities;
+package documin.interfaces;
 
 public interface ElementoInterface {
 

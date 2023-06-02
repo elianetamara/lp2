@@ -1,4 +1,6 @@
-package documin.entities;
+package documin.interfaces;
+
+import documin.entities.Documento;
 
 public interface VisaoInterface {
 
