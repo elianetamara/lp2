@@ -1,7 +1,6 @@
 package prova2.system;
 
-import prova2.controller.AcaoController;
-import prova2.controller.DesafioController;
+import prova2.controller.*;
 
 public class MeuDesafioMinhaVida {
 
@@ -15,8 +14,16 @@ public class MeuDesafioMinhaVida {
         acaoController = new AcaoController();
     }
 
-    public int adicionaDesafio(String titulo, String descricao) throws IllegalAccessException {
-        return this.desafioController.adicionaDesafio(titulo, descricao);
+    public int adicionaDesafioPessoal(String titulo, String descricao) throws IllegalAccessException {
+        return this.desafioController.adicionaDesafioPessoal(titulo, descricao);
+    }
+
+    public int adicionaDesafioMaterial(String titulo, String descricao, int investimento) throws IllegalAccessException {
+        return this.desafioController.adicionaDesafioMaterial(titulo, descricao, investimento);
+    }
+
+    public int adicionaDesafioSocial(String titulo, String descricao, int qtdPessoas) throws IllegalAccessException {
+        return this.desafioController.adicionaDesafioSocial(titulo, descricao, qtdPessoas);
     }
 
     public String exibirDesafio(int indice) throws IllegalAccessException {

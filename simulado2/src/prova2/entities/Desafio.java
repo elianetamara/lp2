@@ -2,7 +2,7 @@ package prova2.entities;
 
 import static prova2.validator.Validator.*;
 
-public class Desafio {
+public class Desafio implements  DesafioInterface{
 
     private String titulo;
 
@@ -10,12 +10,26 @@ public class Desafio {
 
     private int qtdExecucoes;
 
+    private int satisfacao;
+
     public Desafio(String titulo, String descricao) {
         verificaTitulo(titulo);
         this.titulo = titulo;
         this.descricao = descricao;
         this.qtdExecucoes = 0;
+        this.satisfacao = 0;
+    }
 
+    public void setSatisfacao(int satisfacao) {
+        this.satisfacao = satisfacao;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public int getQtdExecucoes() {
+        return qtdExecucoes;
     }
 
     public void increaseQtdExecucoes() {
@@ -43,4 +57,8 @@ public class Desafio {
         return titulo.hashCode();
     }
 
+    @Override
+    public void calculoSatisfacao() {
+        setSatisfacao(0);
+    }
 }
