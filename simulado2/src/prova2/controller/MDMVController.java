@@ -1,17 +1,21 @@
 package controller;
 
+import comparator.AcaoComparator;
 import entities.*;
 
-import java.util.ArrayList;
+import java.util.*;
 
 import static validator.Validator.*;
 
-public class DesafioController {
+public class MDMVController {
 
     private ArrayList<Desafio> desafios;
 
-    public DesafioController(){
+    private HashMap<Integer, Acao> acoes;
+
+    public MDMVController(){
         desafios = new ArrayList<>();
+        this.acoes = new HashMap<>();
     }
 
     public Desafio getDesafioById(int indice) throws IllegalAccessException {
@@ -52,5 +56,37 @@ public class DesafioController {
                 break;
             }
         }
+    }
+
+    public void adicionaAcao(int indiceDesafio, String data, int codigo) throws IllegalAccessException {
+        verificaAcaoIgual(acoes, codigo);
+        Acao a = new Acao(getDesafioById(indiceDesafio), data, codigo);
+        acoes.put(codigo, a);
+    }
+
+    public void atualizaProgressoAcao(int codigo){
+        Acao a = acoes.get(codigo);
+        a.setProgresso(10);
+        if(a.atingiuMaxProgresso()){
+            findAndAtualizaDesafioByTitulo(a.getDesafio());
+        }
+    }
+
+    public void atualizaProgressoAcao(int codigo, int progresso){
+        Acao a = acoes.get(codigo);
+        a.setProgresso(progresso);
+        if(a.atingiuMaxProgresso()){
+            findAndAtualizaDesafioByTitulo(a.getDesafio());
+        }
+    }
+
+    public String listarAcaoOrdemProgresso(){
+        String saida = "";
+        ArrayList<Acao> acoesRetorno = (ArrayList<Acao>) acoes.values();
+        Collections.sort(acoesRetorno, new AcaoComparator());
+        for (Acao a: acoesRetorno) {
+            saida += a.toString()+ "\n";
+        }
+        return saida;
     }
 }
