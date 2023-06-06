@@ -1,6 +1,6 @@
-package prova2.entities;
+package entities;
 
-import static prova2.validator.Validator.*;
+import static validator.Validator.*;
 
 public class Desafio implements  DesafioInterface{
 

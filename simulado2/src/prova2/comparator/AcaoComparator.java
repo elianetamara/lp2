@@ -1,6 +1,6 @@
-package prova2.comparator;
+package comparator;
 
-import prova2.entities.Acao;
+import entities.Acao;
 
 import java.util.Comparator;
 

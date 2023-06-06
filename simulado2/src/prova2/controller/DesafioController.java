@@ -1,10 +1,10 @@
-package prova2.controller;
+package controller;
 
-import prova2.entities.*;
+import entities.*;
 
 import java.util.ArrayList;
 
-import static prova2.validator.Validator.*;
+import static validator.Validator.*;
 
 public class DesafioController {
 

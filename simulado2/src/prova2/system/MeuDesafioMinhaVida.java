@@ -1,6 +1,7 @@
-package prova2.system;
+package system;
 
-import prova2.controller.*;
+import controller.AcaoController;
+import controller.DesafioController;
 
 public class MeuDesafioMinhaVida {
 

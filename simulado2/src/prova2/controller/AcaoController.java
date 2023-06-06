@@ -1,11 +1,12 @@
-package prova2.controller;
+package controller;
 
-import prova2.comparator.AcaoComparator;
-import prova2.entities.Acao;
+import comparator.AcaoComparator;
+import entities.Acao;
+import controller.DesafioController;
 
 import java.util.*;
 
-import static prova2.validator.Validator.verificaAcaoIgual;
+import static validator.Validator.verificaAcaoIgual;
 
 public class AcaoController {
 

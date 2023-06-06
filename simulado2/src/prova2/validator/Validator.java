@@ -1,7 +1,7 @@
-package prova2.validator;
+package validator;
 
-import prova2.entities.Acao;
-import prova2.entities.Desafio;
+import entities.Acao;
+import entities.Desafio;
 
 import java.util.ArrayList;
 import java.util.HashMap;

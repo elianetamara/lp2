@@ -1,4 +1,4 @@
-package prova2.entities;
+package entities;
 
 public class DesafioPessoal extends Desafio{
 
