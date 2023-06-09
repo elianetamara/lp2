@@ -45,12 +45,8 @@ public class DocumentoValidator {
      * @throws NoSuchElementException   se o documento não existir no mapa de documentos.
      */
     public static void validaTitulo(String titulo, HashMap<String, Documento> docs) {
-        if (titulo.isBlank()) {
-            throw new IllegalArgumentException("TÍTULO INVÁLIDO");
-        }
-        if (!docs.containsKey(titulo)) {
-            throw new NoSuchElementException("DOCUMENTO NÃO EXISTE");
-        }
+        validaTituloVazio(titulo);
+        validaDocumentoInexistente(titulo, docs);
     }
 
     /**
@@ -112,11 +108,11 @@ public class DocumentoValidator {
      *
      * @param doc     O documento.
      * @param posicao A posição do elemento.
-     * @throws IllegalArgumentException se não houver elemento na posição especificada.
+     * @throws ArrayIndexOutOfBoundsException se não houver elemento na posição especificada.
      */
     public static void validaPosicaoElemento(Documento doc, int posicao) {
         if (doc.getElementosArray()[posicao] == null) {
-            throw new NullPointerException("NÃO EXISTE ELEMENTO NA POSIÇÃO");
+            throw new ArrayIndexOutOfBoundsException("NÃO EXISTE ELEMENTO NA POSIÇÃO");
         }
     }
 
@@ -125,11 +121,11 @@ public class DocumentoValidator {
      *
      * @param visoes   A lista de visões.
      * @param visaoId  O ID da visão.
-     * @throws IllegalArgumentException se não houver visão na posição especificada.
+     * @throws IndexOutOfBoundsException se não houver visão na posição especificada.
      */
     public static void validaPosicaoVisao(ArrayList visoes, int visaoId) {
         if (visoes.get(visaoId) == null) {
-            throw new NullPointerException("NÃO EXISTE VISÃO NA POSIÇÃO");
+            throw new IndexOutOfBoundsException("NÃO EXISTE VISÃO NA POSIÇÃO");
         }
     }
 

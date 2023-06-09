@@ -44,7 +44,8 @@ public class Documento {
      * @return um array contendo os elementos do documento
      */
     public Elemento[] getElementosArray() {
-        return (Elemento[]) elementos.clone();
+        Elemento[] saida = elementos.toArray(new Elemento[contaElementos()]);
+        return saida;
     }
 
     /**
