@@ -23,7 +23,7 @@ class ElementosTest {
     @BeforeEach
     void setUp() {
         lista = new Lista(1, "termos - da - lista", "*", "-");
-        termos = new Termos(1, "T3 | A2 | M3", "NENHUM", "|");
+        termos = new Termos(1, "T1 | A2 | M3", "NENHUM", "|");
         termosTam = new Termos(1, "Teste | Alfabeto | Mão", "TAMANHO", "|");
         termosAlf = new Termos(1, "T3 | A2 | M3", "ALFABETICA", "|");
         texto = new Texto(2, "Texto teste");
@@ -44,7 +44,7 @@ class ElementosTest {
         assertEquals("3. Titulo Linkável - 3-TITULO LINKÁVEL", tituloLinkavel.representacaoCompleta());
         assertEquals("Total termos: 3\n" + " A2 ,  M3, T3 ", termosAlf.representacaoCompleta());
         assertEquals("Total termos: 3\n" + " Alfabeto , Teste ,  Mão", termosTam.representacaoCompleta());
-        assertEquals("Total termos: 3\n" + "T3 ,  A2 ,  M3", termos.representacaoCompleta());
+        assertEquals("Total termos: 3\n" + "T1 ,  A2 ,  M3", termos.representacaoCompleta());
         assertEquals("Total termos: 3\n" + "Teste ,  termos ,  Aleatórios\n", atalho.representacaoCompleta());
     }
 
@@ -56,6 +56,7 @@ class ElementosTest {
         assertEquals("3. Titulo Linkável", tituloLinkavel.representacaoResumida());
         assertEquals(" A2  |  M3 | T3 ", termosAlf.representacaoResumida());
         assertEquals(" Alfabeto  | Teste  |  Mão", termosTam.representacaoResumida());
+        assertEquals("T1  |  A2  |  M3", termos.representacaoResumida());
         assertEquals("Teste  /  termos  /  Aleatórios\n", atalho.representacaoResumida());
     }
 }
