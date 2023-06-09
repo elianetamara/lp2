@@ -17,7 +17,7 @@ public class Facade {
      */
     public Facade() {
         this.documentoController = new DocumentoController();
-        this.elementoController = new ElementoController();
+        this.elementoController = new ElementoController(documentoController);
     }
 
     // Métodos de controle de documento

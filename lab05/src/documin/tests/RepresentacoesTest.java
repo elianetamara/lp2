@@ -5,11 +5,7 @@ import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
- * Testa reperesentações dos elementos
- * @author eliane - 122110693
- */
-class ElementosTest {
+class RepresentacoesTest {
 
     private Atalho atalho;
     private Lista lista;
@@ -29,10 +25,12 @@ class ElementosTest {
         texto = new Texto(2, "Texto teste");
         titulo = new Titulo(3, false, 2, "Titulo");
         tituloLinkavel = new Titulo(3, true, 2, "Titulo Linkável");
+
         // criando documento para ser usado na criação de atalho
         Documento documentoRef = new Documento("docRef");
         documentoRef.criarTermos("Teste / termos / Aleatórios",4, "/", "nenhuma");
         documentoRef.criarTitulo("Documentos Texto", 3, 1, true);
+
         atalho = new Atalho(documentoRef.calculaMediaPrioridade(), "docRef", documentoRef.getElementos());
     }
 

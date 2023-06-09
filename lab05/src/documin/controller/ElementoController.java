@@ -14,8 +14,8 @@ public class ElementoController {
 
     private DocumentoController documentoController;
 
-    public ElementoController() {
-        documentoController = new DocumentoController();
+    public ElementoController(DocumentoController documentoController) {
+        this.documentoController = documentoController;
     }
 
     /**
@@ -27,7 +27,7 @@ public class ElementoController {
      * @return A posição do elemento criado no documento.
      * @throws IllegalArgumentException se o título do documento ou a prioridade for inválido.
      * @throws NoSuchElementException   se o documento não existir.
-     * @throws IllegalStateException    se o documento estiver cheio.
+     * @throws ArrayIndexOutOfBoundsException    se o documento estiver cheio.
      */
     public int criarTexto(String tituloDoc, String valor, int prioridade) {
         validaTitulo(tituloDoc, documentoController.getDocumentos());
@@ -48,7 +48,7 @@ public class ElementoController {
      * @return A posição do elemento criado no documento.
      * @throws IllegalArgumentException se o título do documento ou a prioridade for inválido.
      * @throws NoSuchElementException   se o documento não existir.
-     * @throws IllegalStateException    se o documento estiver cheio.
+     * @throws ArrayIndexOutOfBoundsException    se o documento estiver cheio.
      */
     public int criarTitulo(String tituloDoc, String valor, int prioridade, int nivel, boolean linkavel) {
         validaTitulo(tituloDoc, documentoController.getDocumentos());
@@ -69,7 +69,7 @@ public class ElementoController {
      * @return A posição do elemento criado no documento.
      * @throws IllegalArgumentException se o título do documento ou a prioridade for inválido.
      * @throws NoSuchElementException   se o documento não existir.
-     * @throws IllegalStateException    se o documento estiver cheio.
+     * @throws ArrayIndexOutOfBoundsException    se o documento estiver cheio.
      */
     public int criarLista(String tituloDoc, String valorLista, int prioridade, String separador, String charLista) {
         validaTitulo(tituloDoc, documentoController.getDocumentos());
@@ -90,7 +90,7 @@ public class ElementoController {
      * @return A posição do elemento criado no documento.
      * @throws IllegalArgumentException se o título do documento, a prioridade ou a ordem for inválido.
      * @throws NoSuchElementException   se o documento não existir.
-     * @throws IllegalStateException    se o documento estiver cheio.
+     * @throws ArrayIndexOutOfBoundsException    se o documento estiver cheio.
      */
     public int criarTermos(String tituloDoc, String valorTermos, int prioridade, String separador, String ordem) {
         validaTitulo(tituloDoc, documentoController.getDocumentos());

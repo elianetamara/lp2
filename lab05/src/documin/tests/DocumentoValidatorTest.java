@@ -78,6 +78,12 @@ class DocumentoValidatorTest {
     }
 
     @Test
+    void validaDocumentoExistente() {
+        assertDoesNotThrow(() -> DocumentoValidator.validaDocumentoExistente("Documento3", docs));
+        assertThrows(NoSuchElementException.class, () -> DocumentoValidator.validaDocumentoExistente("docTeste", docs));
+    }
+
+    @Test
     void validaDocumentoCheio() {
             assertDoesNotThrow(() -> DocumentoValidator.validaDocumentoCheio(new Documento("Doc", 0)));
             assertThrows(ArrayIndexOutOfBoundsException.class, () -> DocumentoValidator.validaDocumentoCheio(doc));

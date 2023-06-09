@@ -72,7 +72,7 @@ public class DocumentoController {
      * @throws NoSuchElementException   se o documento já existir.
      */
     public boolean criarDocumento(String titulo, int tamanhoMaximo) {
-        if (validaTituloVazio(titulo) && validaTamanhoDoc(tamanhoMaximo) && !validaDocumentoInexistente(titulo, documentos)) {
+        if (validaTituloVazio(titulo) && validaTamanhoDoc(tamanhoMaximo) && validaDocumentoExistente(titulo, documentos)) {
             documentos.put(titulo, new Documento(titulo, tamanhoMaximo));
             return true;
         }

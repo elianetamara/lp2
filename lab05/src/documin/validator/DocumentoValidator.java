@@ -92,6 +92,22 @@ public class DocumentoValidator {
     }
 
     /**
+     * Valida se um documento existe no mapa de documentos.
+     *
+     * @param titulo O título do documento.
+     * @param docs   O mapa de documentos existentes.
+     * @return true se o documento não existir.
+     * @throws NoSuchElementException se o documento não existir no mapa de documentos.
+     */
+    public static boolean validaDocumentoExistente(String titulo, HashMap<String, Documento> docs) {
+        if (docs.containsKey(titulo)) {
+            throw new NoSuchElementException("DOCUMENTO JÁ EXISTE");
+        } else {
+            return true;
+        }
+    }
+
+    /**
      * Valida se um documento está cheio.
      *
      * @param doc O documento a ser validado.
