@@ -30,6 +30,10 @@ class DocumentoValidatorTest {
     }
 
     @Test
+    void validaOrdemTermos() {
+    }
+
+    @Test
     void validaDocumentoInexistente() {
     }
 

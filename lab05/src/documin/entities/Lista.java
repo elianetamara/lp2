@@ -49,7 +49,7 @@ public class Lista extends Elemento {
     @Override
     public String representacaoCompleta() {
         String[] elemen = getValor().split(getSeparador());
-        String representacao = null;
+        String representacao = "";
         for (String e: elemen) {
             representacao += getCaractere() + " " + e + "\n";
         }

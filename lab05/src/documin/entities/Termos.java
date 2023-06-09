@@ -1,6 +1,7 @@
 package documin.entities;
 
 import java.util.*;
+import java.util.regex.Pattern;
 
 /**
  * Classe que representa um conjunto de termos.
@@ -10,6 +11,8 @@ public class Termos extends Elemento {
 
     private String separador;
     private String ordem;
+
+    private String[] termos;
 
     /**
      * Construtor da classe Termos.
@@ -23,6 +26,7 @@ public class Termos extends Elemento {
         super(prioridade, valor);
         this.ordem = ordem;
         this.separador = separador;
+        this.termos = getValor().split(Pattern.quote(separador));
     }
 
     /**
@@ -31,13 +35,12 @@ public class Termos extends Elemento {
      * @return Uma lista de termos ordenados.
      */
     private List<String> sortTermos() {
-        List<String> termos = Arrays.asList(getValor().split(getSeparador()));
         if (this.getOrdem().equals("ALFABETICA")) {
-            termos.sort(String::compareToIgnoreCase);
+            Arrays.sort(termos, (s1, s2) -> s1.compareToIgnoreCase(s2));
         } else if (this.getOrdem().equals("TAMANHO")) {
-            termos.sort(Comparator.comparingInt(String::length));
+            Arrays.sort(termos, (s1, s2) -> Integer.compare(s2.length(), s1.length()));
         }
-        return termos;
+        return List.of(termos);
     }
 
     /**
@@ -90,7 +93,7 @@ public class Termos extends Elemento {
             if(i == termos.size()-1){
                 representacao += termos.get(i);
             }else{
-                representacao += termos.get(i) + getSeparador();
+                representacao += termos.get(i) + " " + getSeparador() + " ";
             }
         }
         return representacao;

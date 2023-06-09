@@ -68,6 +68,18 @@ public class DocumentoValidator {
     }
 
     /**
+     * Valida se a ordem dos termos é valida
+     *
+     * @param ordem A ordem dos termos
+     * @throws IllegalArgumentException se a ordem for inválida.
+     */
+    public static void validaOrdemTermos(String ordem) {
+        if (!ordem.equalsIgnoreCase("alfabetica") && !ordem.equalsIgnoreCase("tamanho") && !ordem.equalsIgnoreCase("nenhum")) {
+            throw new IllegalArgumentException("ORDEM INVÁLIDA");
+        }
+    }
+
+    /**
      * Valida se um documento não existe no mapa de documentos.
      *
      * @param titulo O título do documento.

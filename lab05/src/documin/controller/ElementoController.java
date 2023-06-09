@@ -88,13 +88,14 @@ public class ElementoController {
      * @param separador    O separador dos termos.
      * @param ordem        A ordem dos termos.
      * @return A posição do elemento criado no documento.
-     * @throws IllegalArgumentException se o título do documento ou a prioridade for inválido.
+     * @throws IllegalArgumentException se o título do documento, a prioridade ou a ordem for inválido.
      * @throws NoSuchElementException   se o documento não existir.
      * @throws IllegalStateException    se o documento estiver cheio.
      */
     public int criarTermos(String tituloDoc, String valorTermos, int prioridade, String separador, String ordem) {
         validaTitulo(tituloDoc, documentoController.getDocumentos());
         Documento doc = documentoController.getDocumento(tituloDoc);
+        validaOrdemTermos(ordem);
         validaPrioridade(prioridade);
         validaDocumentoCheio(doc);
         return doc.criarTermos(valorTermos, prioridade, separador, ordem);
