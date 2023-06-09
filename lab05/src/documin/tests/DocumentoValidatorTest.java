@@ -111,7 +111,7 @@ class DocumentoValidatorTest {
         // título vazio
         assertThrows(IllegalArgumentException.class, () -> DocumentoValidator.hasAtalho("", "Documento2", docs));
         assertThrows(IllegalArgumentException.class, () -> DocumentoValidator.hasAtalho("Documento1", "", docs));
-        // dopcumento não existe
+        // documento não existe
         assertThrows(NoSuchElementException.class, () -> DocumentoValidator.hasAtalho("Documento3", "Documento2", docs));
         assertThrows(NoSuchElementException.class, () -> DocumentoValidator.hasAtalho("Documento1", "Documento3", docs));
     }

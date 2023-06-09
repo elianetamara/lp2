@@ -10,14 +10,7 @@ class DocumentoControllerTest {
     @BeforeEach
     void setUp() {
         documentoController = new DocumentoController();
-    }
 
-    @Test
-    void getDocumento() {
-    }
-
-    @Test
-    void getDocumentos() {
     }
 
     @Test
