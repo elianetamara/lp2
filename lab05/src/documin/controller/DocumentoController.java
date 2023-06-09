@@ -57,7 +57,7 @@ public class DocumentoController {
         Documento d = documentos.get(titulo);
         String[] doc = new String[d.contaElementos()];
         for (int i = 0; i < d.contaElementos(); i++) {
-            doc[i] = d.getElementosArray()[i].toString();
+            doc[i] = d.getElementosArray()[i].representacaoResumida();
         }
 
         return doc;
