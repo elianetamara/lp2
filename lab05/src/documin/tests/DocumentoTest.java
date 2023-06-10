@@ -22,7 +22,7 @@ class DocumentoTest {
         assertEquals(0, documento.criarTexto("Exemplo de texto", 2));
         assertEquals(1, documento.criarTitulo("Titulo", 2, 3, false));
         assertEquals(2, documento.criarTitulo("Titulo Linkável", 2, 3, true));
-        assertEquals(3, documento.criarLista("termos - da - lista" ,1, "*", "-"));
+        assertEquals(3, documento.criarLista("termos - da - lista" ,1, "-", "*"));
         assertEquals(4, documento.criarTermos("T3 | A2 | M3", 1, "|", "ALFABETICA"));
         assertEquals(5, documento.criarTermos("T1 | A2 | M3", 1,"|", "NENHUM"));
         assertEquals(6, documento.criarTermos("Teste | Alfabeto | Mão", 1,"|", "TAMANHO"));

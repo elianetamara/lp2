@@ -55,7 +55,7 @@ public class DocumentoController {
      * @throws NoSuchElementException   se o documento já existir.
      */
     public boolean criarDocumento(String titulo) {
-        if (validaTituloVazio(titulo) && !validaDocumentoInexistente(titulo, documentos)) {
+        if (validaTituloVazio(titulo) && validaDocumentoExistente(titulo, documentos)) {
             documentos.put(titulo, new Documento(titulo));
             return true;
         }
@@ -142,7 +142,7 @@ public class DocumentoController {
         doc.setAtalho(true);
         docRef.setAtalho(true);
 
-        return docRef.getElementos().indexOf(a);
+        return doc.getElementos().indexOf(a);
     }
 
     /**

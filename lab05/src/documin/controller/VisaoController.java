@@ -61,7 +61,7 @@ public class VisaoController implements VisaoInterface {
         for (Elemento e : doc.getElementos()) {
             visao.add(e.representacaoCompleta());
         }
-        return (String[]) visao.toArray();
+        return visao.toArray(new String[visao.size()]);
     }
 
     /**
@@ -76,7 +76,7 @@ public class VisaoController implements VisaoInterface {
         for (Elemento e : doc.getElementos()) {
             visao.add(e.representacaoResumida());
         }
-        return (String[]) visao.toArray();
+        return visao.toArray(new String[visao.size()]);
     }
 
     /**
@@ -96,7 +96,7 @@ public class VisaoController implements VisaoInterface {
                 visao.add(e.representacaoCompleta());
             }
         }
-        return (String[]) visao.toArray();
+        return visao.toArray(new String[visao.size()]);
     }
 
     /**
@@ -113,6 +113,6 @@ public class VisaoController implements VisaoInterface {
                 visao.add(e.representacaoResumida());
             }
         }
-        return (String[]) visao.toArray();
+        return visao.toArray(new String[visao.size()]);
     }
 }

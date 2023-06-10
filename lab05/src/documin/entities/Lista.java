@@ -1,5 +1,7 @@
 package documin.entities;
 
+import java.util.regex.Pattern;
+
 /**
  * Classe que representa uma lista de elementos.
  * @author eliane - 122110693
@@ -48,7 +50,7 @@ public class Lista extends Elemento {
      */
     @Override
     public String representacaoCompleta() {
-        String[] elemen = getValor().split(getSeparador());
+        String[] elemen = getValor().split(Pattern.quote(getSeparador()));
         String representacao = "";
         for (String e: elemen) {
             representacao += getCaractere() + " " + e + "\n";
