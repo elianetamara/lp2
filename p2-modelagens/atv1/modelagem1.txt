@@ -1,0 +1,63 @@
+**- O valor do bordado deveria ser calculado apenas na classe Compra através de um método privado
+
+- Dentro da classe Bordado deveria haver também um método privado contaPontosBordado(): int, que seria responsável por contabilizar quantos pontos o bordado possui
+
+- As relações da classe compra seria de associação com a classe Bordado e de Composição com a classe BEP, as de Bordado seria de associação com a classe Compra e de composição com a classe BEP.**
+
+MainBEP
+association BEP
+---
+---
++ main(args: String[]): void
+- menuPrincipal(scanner: Scanner):str
+- menusAuxiliares(opcao: str, scanner: Scanner): void
+---
+
+BEP
+---
+- bordados: Bordado[]
+- compras: Compra[]
+---
++ BEP()
++ getCompra(numCompra: int): Compra
++ getBordado(identificacao: int): Bordado
++ cadastrarBordado(numBordado:int, qtdLinha: int, qtdColuna: int):void
++ atualizarBordado(numBordado:int, ponto:str, linha:int, coluna:int):void
++ imprimirBordado(numBordado:int):str
++ listarBordados():str
++ alterarTamanhoBordado(numBordado:int, qtdLinha: int, qtdColuna: int):void
++ cadastrarCompra(valor: double, numBordados:int):void
++ imprimirCompra(numeroDaCompra:int):str
+---
+
+
+Bordado
+aggregates BEP
+---
+- qtdLinhas: int
+- qtdColunas: int
+- bordadura: str[][]
+- valorBordado: double
+---
++ Bordado(qtdLinhas:int, qtdColunas:int)
++ adicionarPonto(ponto:str, linha:int, coluna:int):void
++ mudaTamanho(qtdLinhas:int, qtdColunas:int):void
++ toString():str
++ getValorBordado():double
+---
+
+
+Compra
+aggregates BEP
+composes Bordado
+---
+- bordadosComprados: Bordado[][]
+- valor: double
+- numBordados: int
+- numCompra:int
+---
++ Compra(numCompra: int)
++ setValor(valor: double):void
++ setNumBordados(numBordados: int):void
++ toString():str
+---

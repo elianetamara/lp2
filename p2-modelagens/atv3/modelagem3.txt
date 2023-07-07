@@ -1,0 +1,172 @@
+**-Lista bordado recebe qual o id do bordado correspondente 
+- o cadastra robô retangular deveria receber 4 posições, o seu só recebe uma 
+-Cadastra robô limpador deveria receber 2 posições 
+-Cadastra robô produção recebe também como parâmetro a posição que ele vai ocupar 
+90-100**
+
+Main
+association FaBorSystem
+---
+- faBorSystem: FaBorSystem
+---
++ main(args: String[]): void
+---
+
+FaBorSystem
+composes BordadoController, RoboController, LinhaProducao
+---
+- bordadoController: BordadoController
+- roboController: RoboController
+- linhaProducao: LinhaProducao
+---
++ FaBorSystem()
++ cadastraBordado(altura: int, largura: int): int
++ listaBordado(): String
++ cadastraRoboLimpador(idRobo: String): String
++ cadastraRoboBorda(idRobo: String): String
++ cadastraRoboRetangular(idRobo: String, posicao1: int(), posicao2: int()): String
++ cadastraRoboPonto(idRobo: String, posicao: int()): String
++ cadastraProducao(idRobo: String): void
++ processaBordado(idBordado: int): double
++ pegaPeso(): int
++ apagaRobo(idRobo: String): void
++ contaProcessamentos(idBordado: int): int
++ estadoBordado(idBordado: int): String
+---
+
+
+BordadoController
+composes Bordado
+---
+- bordados: Map <Integer, Bordado>
+---
++ BordadoController()
++ cadastraBordado(altura:int, largura:int):int
++ listaBordado(): String
++ getBordado(idBordado: int): Bordado
++ contaProcessamento(id: int): int
++ recuperaEstado(id: int, numeroEstado: int): String
+---
+
+
+Bordado
+association Ponto<Enum>
+---
+- painel: Ponto<Enum>[][]
+- id: int
+- processamento: int
+- estado: List<String>
+---
++ Bordado(altura: int, largura: int)
++ toString(): String
++ getPainel(): Ponto<Enum>[][]
++ setPainel(bordadoProcessado: Ponto<Enum>[][]): void
++ setId(id: int): void
++ getId(): int
++ increaseProcessamentos(): void
++ getProcessamentos(): int
++ addEstado(estado: String): void
++ getEstado(id: int): String
++ equals(o: Object): boolean
++ hashCode(): int
+---
+
+
+Ponto<Enum>
+---
+- tipoPonto: str
+---
++ PontoCruz(): void
++ SemPonto(): void
++ getTipoPonto(): str
+---
+
+
+RoboController
+composes Robo <Abstract>
+---
+- robos: Map<String, Robo>
+---
++ RoboController()
++ cadastraRoboLimpador(idRobo: String): String
++ cadastraRoboBorda(idRobo: String): String
++ cadastraRoboRetangulo(idRobo: String, x1: int, y1: int, x2: int, y2: int): String
++ cadastraRoboPonto(idRobo: String, x: int, y: int): String
++ getRobo(idRobo: String): Robo
++ apagaRobo(idRobo: String): void
+---
+
+
+Robo <Abstract>
+aggregates LinhaProducao
+---
+- idRobo: String
+- peso: int
+- custo: double
+---
++ Robo(idRobo: String)
++ processa(bordado: Bordado): double
++ pegaPeso(): int
++ getId(): String
++ toString(): String
++ equals(o: Object): boolean
++ hashCode(): int
+# setPeso(peso: int): void
+# setCusto(custo: double): void
+---
+
+
+RoboLimpador
+extends Robo <Abstract>
+---
+---
++ RoboLimpador(idRobo: String)
++ processa(bordado: Bordado): double
+---
+
+
+RoboBorda
+extends Robo <Abstract>
+---
+---
++ RoboBorda(idRobo: String)
++ processa(bordado: Bordado): double
+---
+
+
+RoboRetangulo
+extends Robo <Abstract>
+---
+- posicao1: Tuple[]
+- posicao2: Tuple[]
+---
++ RoboRetangulo(idRobo: String, x1: int, y1: int, x2: int, y2: int)
++ processa(bordado: Bordado): double
++ toString(): String
+---
+
+
+RoboPonto
+extends Robo <Abstract>
+---
+- posicao: Tuple[]
+---
++ RoboPonto(nomeRobo: String, x: int, y: int)
++ processa(bordado: Bordado): double
++ toString(): String
+---
+
+
+LinhaProducao
+aggregates BordadoController, RoboController
+---
+- linhaProducao: List<Robo>
+- roboController: RoboController
+- bordadoController: BordadoController
+---
++ LinhaProducao(roboController: RoboController,bordadoController: BordadoController)
++ cadastraProducao(idRobo: String, posicao: int): void
++ processaBordado(idBordado: int): double
++ pegaPeso(): int
++ apagaRobo(idRobo: String): void
+---

@@ -1,0 +1,88 @@
+//80-100
+
+MainProg2pedia
+association Prog2pediaController
+---
+- prog2pedia: Prog2pediaController
+---
++ main(args: String[]): void
+- menuPrincipal(scanner: Scanner):String
+- menusAuxiliares(opcao: str, scanner: Scanner): void
+---
+
+
+Prog2pediaController
+composes Prog2pediaRepository
+---
+- prog2pediaRepo: Prog2pediaRepository
+---
++ Prog2pediaController()
++ cadastraColaborador(nome: String, email: String): boolean
++ listarColaboradores(): String
++ cadastraPagina(titulo: String, emailColaborador: String): boolean
++ lerPagina(titulo: String): String
++ editarPagina(titulo: String, colaborador: String, conteudo: String): boolean
++ listarHistorico(): String
++ getColaborador(emailColaborador: String): Colaborador
++ adicionaTema(titulo: String, tema: String): boolean
++ listarPaginaPorTema(tema: String): String
++ adicionaColaboradorEspecial(titulo: String, colaborador: String): boolean
+---
+
+
+Prog2pediaRepository
+aggregates Pagina, Colaborador
+---
+- paginas: HashMap<String, Pagina>
+- colaboradores: HashMap<String, Colaborador>
+- historico: ArrayList<String>
+---
++ Prog2pediaRepository()
++ cadastraColaborador(nome: String, email: String): boolean
++ listarColaboradores(): ArrayList<String>
++ cadastraPagina(titulo: String, emailColaborador: String): boolean
++ lerPagina(titulo: String): String
++ editarPagina(titulo: String, colaborador: String, conteudo: String): boolean
+- adicionaRegistroHistorico(titulo: String, colaborador: String, conteudo: String, data: String): boolean
++ getHistorico(): ArrayList<String>
++ getColaborador(emailColaborador: String): Colaborador
++ adicionaTema(titulo: String, tema: String): boolean
++ listarPaginaPorTema(tema: String): ArrayList<String>
++ adicionaColaboradorEspecial(titulo: String, colaborador: String): boolean
+---
+
+
+Pagina
+aggregates Colaborador
+---
+- titulo: String
+- conteudo: String
+- temas: HashSet<String>
+- colaboradores: ArrayList<Colaborador>
+- colaboradoresEspeciais: ArrayList<Colaborador>
+---
++ Pagina(titulo: String, conteudo: String)
++ hashCode(): int
++ equals(o: Object): boolean
++ toString(): str
++ adicionaTema(tema: String): boolean
++ setConteudo(conteudo: String): boolean
++ adicionaColaborador(colaborador: String): boolean
++ adicionaColaboradorEspecial(colaborador: String): boolean
++ temColaboradorEspecial(colaborador: String): boolean
+---
+ 
+
+Colaborador
+---
+- nome: String
+- email: String
+- colaboracoes: int
+---
++ Colaborador(nome: String, email: String)
++ hashCode(): int
++ equals(o: Object): boolean
++ toString(): str
++ getColaboracoes(): int
++ increaseColaboracoes():void
+---
