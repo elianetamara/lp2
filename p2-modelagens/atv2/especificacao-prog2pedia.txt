@@ -1,0 +1,114 @@
+Vamos modelar uma biblioteca online de conteúdos de Orientação a Objetos, que chamaremos de Prog2pedia. Nesse sistema será possível cadastrar, ler e editar conteúdos. A funcionalidade de cadastro e edição fica reservada aos colaboradores e um histórico das atualizações de conteúdos deve ser mantido. Veja a listagem das ações possíveis do sistema.
+
+1- cadastrar página
+2- ler página
+3- editar página
+4- cadastrar colaborador
+5- adicionar colaborador especial
+6- listar colaboradores
+7- listar histórico de edições de páginas
+8- adicionar temas a páginas
+9- listar páginas por tema
+
+O sistema armazena páginas onde cada uma delas é identificada unicamente pelo título e possui ainda um conteúdo e um conjunto de temas relacionados (opcional); as páginas são criadas com conteúdo vazio e os temas são strings e não devem ser cadastrados nas páginas de forma repetida. É possível ler uma página específica (pelo título) ou pedir ao sistema uma página aleatória, sem a necessidade de passar um título para isto. Uma página pode ser editada várias vezes por diferentes colaboradores. Além de editar páginas existentes, o colaborador também tem permissão para cadastrar novas páginas. Um colaborador possui nome e email, sendo este último o que o identifica unicamente no sistema. Veja exemplos dessas ações no sistema:
+
+4- cadastrar colaborador
+nome? Livia S. Campos
+
+email? livia@computacao.ufcg.edu.br
+
+4- cadastrar colaborador
+nome? Matheus G.
+
+email? matheusgr@computacao.ufcg.edu.br
+
+6- listar colaboradores
+Livia S. Campos; livia@computacao.ufcg.edu.br; 0 atualizações
+
+Matheus G.; matheusgr@computacao.ufcg.edu.br; 0 atualizações
+
+1- cadastrar página
+titulo? Criação de classes
+
+colaborador? livia@computacao.ufcg.edu.br
+
+1- cadastrar página
+titulo? Referência a objetos
+
+colaborador? livia@computacao.ufcg.edu.br
+
+2- ler página
+titulo? Referência a objetos
+
+Referência a objetos;
+
+ 
+A edição em uma página altera seu conteúdo e, por padrão, toda página criada pode ser editada por qualquer colaborador. No entanto, é possível restringir a edição de uma página a apenas um grupo de colaboradores (chamados colaboradores especiais). Ao adicionar um colaborador especial a uma página pela primeira vez, a edição da mesma  fica restrita apenas a esse colaborador. É possível adicionar mais colaboradores especiais a uma página e apenas estes terão permissão de alterar a página. A quantidade de vezes que uma pessoa é cadastrada como colaborador  especial em uma página não é relevante. Veja o exemplo abaixo.
+
+3- editar página
+titulo? Referência a objetos
+
+colaborador? matheusgr@computacao.ufcg.edu.br
+
+conteúdo? Uma referência é uma forma de acessar o objeto na memória…
+
+2- ler página
+titulo? Referência a objetos
+
+Referência a objetos; Uma referência é uma forma de acessar o objeto na memória…
+
+6- listar colaboradores
+Livia S. Campos; livia@computacao.ufcg.edu.br; 0 atualizações
+
+Matheus G.; matheusgr@computacao.ufcg.edu.br; 1 atualizações
+
+5- adicionar colaborador especial
+titulo? Referência a objetos
+
+colaborador? livia@computacao.ufcg.edu.br
+
+3- editar página
+titulo? Referência a objetos
+
+colaborador? matheusgr@computacao.ufcg.edu.br
+
+Operação não permitida!
+
+ 
+O sistema mantém versões dos conteúdos, para tal é necessário ter um histórico das atualizações realizadas incluindo data da alteração (que é a data atual do sistema quando uma alteração é realizada), quem fez alteração no conteúdo, o título da página alterada e a última versão da página (antes da alteração realizada). Deve ser possível listar o histórico das alterações no sistema, na ordem em que aconteceram. Veja um exemplo dessa função:
+
+7- listar histórico de edições de páginas
+14/10/2020; matheusgr@computacao.ufcg.edu.br; Referência a objetos; Uma referência é uma forma de acessar o objeto na memória…
+
+3- editar página
+titulo? Criação de classes
+
+colaborador? livia@computacao.ufcg.edu.br
+
+conteúdo? Uma classe é um tipo de dado que representa objetos…
+
+7- listar histórico de edições de páginas
+14/10/2020; matheusgr@computacao.ufcg.edu.br; Referência a objetos; Uma referência é uma forma de acessar o objeto na memória…
+
+14/10/2020; livia@computacao.ufcg.edu.br; Criação de classes; Uma classe é um tipo de dado que representa objetos…
+
+ 
+As páginas podem estar associadas a 0 ou mais temas. Tal característica permite buscar páginas também pelo tema. Nesse caso, serão retornadas todas as páginas que abordam aquele tema.
+
+8- adicionar temas a páginas
+titulo? Criação de classes
+
+tema? classes e objetos
+
+8- adicionar temas a páginas
+titulo? Referência a objetos
+
+tema? classes e objetos
+
+9.listar páginas por tema
+
+tema? classes e objetos
+
+Referência a objetos; Uma referência é uma forma de acessar o objeto na memória…
+
+Criação de classes;

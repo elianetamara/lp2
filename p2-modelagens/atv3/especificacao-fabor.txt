@@ -1,0 +1,155 @@
+Na Fábrica de Bordados (FaBor) é possível criar uma linha de produção que pode receber até 5 robôs que, em ordem, colocam ou alteram pontos de um bordado. Um bordado é um painel de pontos de determinada largura e altura composta de pontos em cada unidade de medida ao longo do bordado. Por padrão os pontos do bordado podem ser:
+
+
+- o (sem ponto)
+
+- x (ponto em cruz)
+
+
+Assim, um bordado 2x2 vazio seria representado como:
+
+oo
+
+oo
+
+
+[CADASTRA BORDADO] No sistema deve ser possível cadastrar bordados retangulares. Um bordado recebe uma altura e largura representando a quantidade de pontos existentes nesse bordado. Para cada bordado, o sistema retorna um número representando a identificação única desse bordado no sistema. No exemplo, podemos ver o cadastro do bordado 2x2 que recebe, como identificador, o número 123:
+
+
+> CADASTRA_BORDADO 2 2
+
+123
+
+> CADASTRA_BORDADO 5 5
+
+392
+
+
+[LISTA BORDADO] Os bordados podem ser exibidos a partir de seu código. O valor retornado é uma impressão dos pontos do bordado de forma contínua.
+
+
+> LISTA_BORDADO 123
+
+oo
+
+oo
+
+
+[CADASTRA ROBÔ] Nesse sistema, é possível cadastrar um robô para ser usado em uma linha de produção. Existem diferentes tipos de robô e cada robô atuará, quando estiver na linha de produção, para colocar (ou tirar) pontos dos bordados. Cada robô tem um custo de ativação que é proporcional a quantidade de pontos alterados e o custo de alteração por ponto. Esse custo de ativação é referente ao custo do robô para atuar em cima de um bordado, e é calculado a partir do custo por ponto multiplicado pelo número de pontos processados pelo robô (sejam eles alterados ou não). Além disso, todo robô tem uma representação textual genérica, bem como um peso associado.
+
+
+Para cada tipo diferente de robô, há uma operação de criação que inicializa os parâmetros base do robô. Durante a criação, o usuário define um código único para cada robô criado. A FaBor começa com 4 tipos de robôs pré-cadastrados no sistema e que podem ser colocados em sua linha de produção:
+
+LIMPADOR
+
+Peso 1
+
+Custo 0.01 por ponto
+
+Ação Remove todos os pontos de um bordado
+
+BORDA
+
+Peso 3
+
+Custo 0.5  por ponto
+
+Ação Cria pontos “x” que formam um retângulo na borda de um bordado. O robô se adapta ao tamanho bordado a ser processado.
+
+RETANGULO
+
+Peso 5
+
+Custo 1.1  por ponto
+
+Ação Recebe como parâmetros iniciais duas posições (x1, y1) e (x2, y2), e insere pontos “x” que formarão um retângulo em que (x1, y1) e (x2, y2) representam pontos opostos do retângulo
+
+PONTO
+
+Peso 2
+
+Custo 1.5  por ponto
+
+Ação Recebe como parâmetros iniciais uma posição X e Y, e insere um ponto “x” nessa posição de um bordado
+
+
+São exemplos de operações nesse sistema:
+
+> CADASTRA_ROBO_LIMPADOR F1
+
+Robô F1 cadastrado!
+
+> CADASTRA_ROBO_BORDA F4
+
+Robô F4 cadastrado!
+
+> CADASTRA_ROBO_RETANGULO 1 1 4 4 R1
+
+Robô R1 cadastrado!
+
+> CADASTRA_ROBO_PONTO 2 2 P1
+
+Robô P1 cadastrado!
+
+
+[ADICIONA ROBÔ NA LINHA DE PRODUÇÃO] Uma linha de produção comporta até 5 robôs em 5 posições (1, 2, 3, 4 e 5). Um bordado processado por um robô terá seus pontos alterados de acordo com os procedimentos realizados pelos robôs.
+
+
+> CADASTRA_PROD F4 1
+
+> CADASTRA_PROD P1 4
+
+
+[PROCESSANDO BORDADOS] Cada bordado pode ser então processado na linha de produção. Isto significa que cada bordado é processado em ordem, começando do robô registrado na posição 1 (caso exista) até o robô da posição 5, recebendo alterações no seu ponto de forma sequencial. Essa operação retorna o custo total realizado pelas operações do robô.
+
+
+> PROCESSA 392
+
+9.5
+
+> LISTA_BORDADO 392
+
+xxxxx
+
+xxoox
+
+xooox
+
+xooox
+
+xxxxx
+
+
+[PESAGEM DOS ROBÔS NA LINHA DE PRODUÇÃO] É importante avaliar também o peso dos robôs de forma a construir uma bancada e linha de montagem adequada para a carga colocada no sistema. Nesse sentido, pedimos também a operação “PEGA PESO” que pegará o peso dos robôs na linha de produção.
+
+
+> PEGA_PESO
+
+7
+
+
+[APAGA ROBÔ] Deve ser possível remover um robô do sistema. Ao removê-lo do sistema, ele é automaticamente removido da linha de montagem, caso lá esteja. Para remover um robô do sistema, basta passar o seu código.
+
+
+> APAGA_ROBO P1
+
+
+[EXIBE HISTÓRICO DO BORDADO] Para acompanhar o processo realizado na linha de montagem, deve ser possível ter um histórico do estado dos bordados ao longo das passagens pela linha de produção (um mesmo bordado pode passar várias vezes pela linha de montagem). Desta forma, são registradas duas operações: uma para pegar o total de vezes que o bordado passou pela linha de produção, e outra para recuperar o estado do bordado antes de passar, pela n-ésima vez na linha de montagem. Veja o exemplo a seguir:
+
+
+> CONTA_PROCESSAMENTOS 392
+
+1
+
+> ESTADO_BORDADO 392 1
+
+ooooo
+
+ooooo
+
+ooooo
+
+ooooo
+
+ooooo
+

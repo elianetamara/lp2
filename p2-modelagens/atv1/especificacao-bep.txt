@@ -1,0 +1,311 @@
+Considere um sistema de controle de bordados chamado de "O Bordado que Está Presente'' (BEP)! O BEP sistema permite você cadastrar até dez bordados, colocar pontos em bordados já cadastrados, imprimir um bordado, listar um resumo sobre os bordados cadastrados e cadastrar compras de bordados.
+
+O usuário irá interagir com o BEP através de uma interface simples por linha de comando que imprime um menu, e captura ações e valores relativos àquelas ações.
+
+Cada uma das funcionalidades do sistema é descrita a seguir.
+
+-----------------
+Menu e Ações
+-----------------
+Durante a primeira execução, o BEP imprime uma mensagem de boas-vindas. em seguida, e em todos os pedidos por ação, irá imprimir a quantidade de bordados que é possível cadastrar, o menu de ações e um prompt pedindo por uma ação. Veja o exemplo:
+
+Bem-vindo ao BEP!
+
+Voce pode cadastrar 10 bordados. O que deseja fazer?
+
+A - Cadastrar bordado
+
+B - Atualizar bordado
+
+C - Imprimir bordado
+
+D - Listar bordados
+
+E - Alterar tamanho do bordado
+
+F - Cadastrar compra
+
+G - Imprimir compra
+
+Acao?
+
+Ao colocar uma ação inválida, o sistema apenas imprime a mensagem "ERRO" e reimprime o menu. Veja o exemplo (entrada do usuário em vermelho):
+
+Bem-vindo ao sistema de bordados!
+
+Voce pode cadastrar 10 bordados. O que deseja fazer?
+
+A - Cadastrar bordado
+
+B - Atualizar bordado
+
+C - Imprimir bordado
+
+D - Listar bordados
+
+E - Alterar tamanho do bordado
+
+F - Cadastrar compra
+
+G - Imprimir compra
+
+Acao? K
+
+ERRO!
+
+Voce pode cadastrar 10 bordados. O que deseja fazer?
+
+A - Cadastrar bordado
+
+B - Atualizar bordado
+
+C - Imprimir bordado
+
+D - Listar bordados
+
+E - Alterar tamanho do bordado
+
+F - Cadastrar compra
+
+G - Imprimir compra
+
+Acao? 
+
+-----------------
+Cadastrar bordado
+-----------------
+O bordado cadastrado tem uma identificação entre 0 e 9 (inclusive)
+Caso o usuário cadastre um novo bordado com uma identificação de um bordado já cadastrado anteriormente, o bordado original é sobrescrito com o novo bordado.
+O bordado cadastrado deve ter a quantidade de linhas e colunas como um valor entre 2 e 100 (inclusive)
+Ao inserir um valor com erro, o programa deve imediatamente sinalizar um erro (ERRO!) e imprimir o menu de ações.
+Veja o exemplo (entrada do usuário em vermelho):
+
+Acao? A
+
+Numero do bordado? [0-9] 0
+
+Numero de linhas? [2-100] 10
+
+Numero de colunas [2-100] 5
+
+Voce pode cadastrar 9 bordados. O que deseja fazer?
+
+A - Cadastrar bordado
+
+B - Atualizar bordado
+
+C - Imprimir bordado
+
+D - Listar bordados
+
+E - Alterar tamanho do bordado
+
+F - Cadastrar compra
+
+G - Imprimir compra
+
+Acao? A
+
+Numero do bordado? [0-9] 0
+
+Numero de linhas? [2-100] 1000
+
+ERRO!
+
+Voce pode cadastrar 9 bordados. O que deseja fazer?
+
+...
+
+-----------------
+Atualizar bordado
+-----------------
+O bordado é atualizado podendo colocar 5 diferentes tipos de pontos ( / \ | - ou x ) ou um espaço em branco para sinalizar que o nó atual deve ser removido
+Uma mensagem de erro é exibida imediatamente após o usuário digitar uma identificação de bordado, um símbolo ou linha/coluna inválida. O programa para de receber entradas e volta a imprimir o menu.
+Veja o exemplo:
+
+Acao? B
+
+Numero do bordado? [0-9] 0
+
+No a ser colocado no bordado? [/ \ | - x, vazio para remover] \
+
+Linha a ser inserida? [1-10] 2
+
+Coluna a ser inserida? [1-5] 3
+
+-----------------
+Imprimir bordado
+-----------------
+O bordado deve ser impresso com a adição de uma borda, respeitando a dimensão do bordado. Novamente, em caso de inserção de um bordado inválido, o BEP sinaliza o erro ("ERRO!") e retorna ao menu. Veja o exemplo. A primeira linha do bordado (bem como a primeira coluna) começa de cima para baixo na tela e da esquerda para a direita, respectivamente. O bordado de exemplo está com um ponto inserido na linha 2, coluna 3.
+
+Acao? C
+
+Bordado a ser impresso? 0
+
+|-----|
+
+|     |
+
+|  \  |
+
+|     |
+
+|     |
+
+|     |
+
+|     |
+
+|     |
+
+|     |
+
+|     |
+
+|     |
+
+|-----|
+
+-----------------
+Listar bordados
+-----------------
+A listagem de bordados deve exibir uma visão resumida dos bordados cadastrados, um por linha, no formato "ID - número de linhas x número de colunas - número de pontos pontos". Veja o exemplo:
+
+Acao? D
+
+0 - 10 x 5 - 1 pontos
+
+Alterar tamanho do bordado
+O bordado pode ter seu tamanho atualizado a partir da identificação entre 0 e 9 (inclusive)
+O bordado cadastrado deve ter a quantidade de linhas e colunas como um valor entre 2 e 100 (inclusive)
+Caso o bordado reduza de tamanho, mas existe algum ponto cadastrado em uma posição que seria removida, o programa deve sinalizar um erro (ERRO!), e retornar a impressão do menu de ações.
+Ao inserir um valor com erro, o programa deve imediatamente sinalizar um erro (ERRO!) e imprimir o menu de ações.
+Veja o exemplo (entrada do usuário em vermelho):
+
+Acao? A
+
+Numero do bordado? [0-9] 0
+
+Numero de linhas? [2-100] 10
+
+Numero de colunas [2-100] 5
+
+Voce pode cadastrar 9 bordados. O que deseja fazer?
+
+A - Cadastrar bordado
+
+B - Atualizar bordado
+
+C - Imprimir bordado
+
+D - Listar bordados
+
+E - Alterar tamanho do bordado
+
+F - Cadastrar compra
+
+G - Imprimir compra
+
+Acao? E
+
+Numero do bordado? [0-9] 0
+
+Numero de linhas? [2-100] 20
+
+Numero de colunas [2-100] 4
+
+Voce pode cadastrar 9 bordados. O que deseja fazer?
+
+...
+
+------------------------
+Cadastrar Compra Bordado
+------------------------
+Os bordados podem ser agrupados em uma compra. Cada compra engloba 1 ou mais bordados e tem um preço associado. O preço de um bordado depende da quantidade de pontos cadastrados no bordado, nesse caso, cada ponto cadastrado vale R$1,00. 
+
+Uma compra pode ter até 10 bordados, e cada bordado pode aparecer em mais de uma compra. É possível cadastrar até 10 compras no sistema (identificadas pelo valor 1-10).
+
+Se algum dos bordados a serem comprados não existir, ou já faça parte da compra, deve-se sinalizar um ERRO e a compra não será efetivada.
+
+Uma substituição de um bordado (um novo bordado é cadastrado em um número já existente) NÃO AFETA as compras já realizadas. O bordado antigo é mantido na compra.
+
+As compras são cadastradas no sistema e é retornado o número da compra. Deve-se manter as últimas 10 compras realizadas no sistema, então, pode-se perder compras mais antigas.
+
+Acao? F
+
+Numero dos bordados a serem comprados? [0-9] 1 4
+
+1
+
+Acao? F
+
+Numero dos bordados a serem comprados? [0-9] 1 2
+
+2
+
+Acao? F
+
+Numero dos bordados a serem comprados? [0-9] 1 1
+
+ERRO!
+
+-----------------
+Imprimir Compra
+-----------------
+A impressão das compras devem exibir os bordados pertencentes à compra e o valor total da compra.
+
+Acao? G
+
+Numero da compra? 1
+
+
+Bordado 1
+
+|-----|
+
+|     |
+
+|  \  |
+
+|     |
+
+|     |
+
+|     |
+
+|     |
+
+|     |
+
+|     |
+
+|     |
+
+|     |
+
+|-----|
+
+
+
+
+Bordado 4
+
+|---------|
+
+|         |
+
+|      x  |
+
+|    xx   |
+
+|    x    |
+
+|         |
+
+|---------|
+
+
+
+
+Total da compra: R$5,00
+
